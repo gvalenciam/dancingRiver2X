@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+
+
+<!--
+<body>
+<div id="img1">
+<img src="cita-blanco.png" alt="" id="img0" width="120px" height="120px" >
+
+</div>
+
+<div id="img2">
+    <img src="moore_logo.png" alt="" width="120px" height="120px" >
+
+</div>
+
+<div id="img3">
+    <img src="river_test_2.png"  alt="" width="120px" height="120px" >
+
+</div>
+
+
+<style>
+    #ch1 {
+        position: absolute;
+        border: 1px solid red;
+        top: 70px;
+        right: 15px;
+        background-image: url("cita-blanco.png");
+        width: 120px;
+        height: 120px;
+    }
+    #ch2 {
+        position: absolute;
+        border: 1px solid blue;
+        top: 70px;
+        right: 15px;
+        background-image: url("moore_logo.png");
+        width: 120px;
+        height: 120px;
+    }
+
+
+</style>
+
+<div>
+    <div id="ch1">
+
+    </div>
+    <div id="ch2">
+
+
+    </div>
+
+</div>
+<script>
+    $("#ch1").hide();
+
+    $("#ch1").fadeIn(2000, function () {
+    });
+    $("#ch2").fadeIn(2000, function () {
+
+    });
+
+    $("#img3").fadeIn(2000, function () {
+
+    });
+
+
+
+</script>
+
+
+</body>
+-->
+
+<body>
+<style>
+
+    body{
+        background-color: rgba(0,0,0,1.0);
+    }
+    #div1{
+
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        top: 0;
+
+
+    }
+    #div2{
+
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        top: 0;
+
+
+    }
+    #div3{
+
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        top: 0;
+
+
+    }
+    #div4{
+
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        top: 0;
+
+
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+
+
+
+
+
+<div>
+
+    <div id="div1" style="display:none;background-image:url(river_1.png);background-size: cover;"></div><br>
+    <div id="div2" style="display:none;background-image:url(pez_1.png);background-size: cover;"></div><br>
+    <div id="div3" style="display:none;background-image:url(pez_2.png);background-size: cover;"></div>
+    <div id="div4" style="display:none;background-image:url(pez_3.png);background-size: cover;"></div>
+
+</div>
+
+
+<script>
+    $(document).ready(function(){
+        /*$("button").click(function(){
+            $("#div1").fadeIn(2000);
+            $("#div1").hide(3000);
+            $("#div2").fadeIn("slow");
+            $("#div1").hide(3000);
+            $("#div3").fadeIn(3000);
+            $("#div1").hide(3000);
+        });*/
+        $("#div1").hide();
+        $("#div2").hide();
+        $("#div3").hide();
+        $("#div4").hide();
+        $( "#div1" ).fadeIn( 1000, function() {
+            $( "#div2" ).fadeIn( 500, function() {
+                // Animation complete
+                $( "#div3" ).fadeIn( 500, function() {
+                    // Animation complete
+                    $( "#div4" ).fadeIn( 500, function() {
+                        // Animation complete
+                    });
+                });
+            });
+        });
+
+
+    });
+</script>
+
+
+
+</body>
+
+
+</html>
