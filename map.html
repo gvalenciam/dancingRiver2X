@@ -5,286 +5,59 @@
 <head>
 
     <meta charset="UTF-8">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-    <!--<script type="text/javascript" src="js/sliderText.js"></script>-->
 
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <!--JQuery JS Script-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!--JQuery JS Script-->
+
+    <!--Bootstrap JS script-->
+    <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <!--Bootstrap JS script-->
+
+    <!--Bootstrap CSS Style-->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <!--Bootstrap CSS Style-->
+
+    <!--Radio buttons CSS style (selection animation)-->
     <link rel="stylesheet" href="css/radioButtonsStyle.css">
-    <link rel="stylesheet" href="css/bootstrap-slider-bar.css">
+    <!--Radio buttons CSS style (selection animation)-->
+
+    <!--Bootstrap slider CSS Style (Needed for timeline slider-->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-slider-bar.css">
+    <!--Bootstrap slider CSS Style (Needed for timeline slider-->
+
+    <!--Timeline slider CSS style (range selector and bullet year indicator)-->
     <link rel="stylesheet" href="css/newSlider.css">
+    <!--Timeline slider CSS style (range selector and bullet year indicator)-->
+
+    <!--TODO: Missing Windows font include-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans+Narrow"/>
+    <!--TODO: Missing Windows font include-->
+
+    <!--Map overlay CSS style-->
+    <!--TODO: If a new overlay is added include its style in this file (use it as guideline too)-->
+    <link rel="stylesheet" href="css/map/map-overlay-elements.css">
+    <!--TODO: If a new overlay is added include its style in this file (use it as guideline too)-->
+    <!--Map overlay CSS style-->
 
     <style>
-        /* Set the size of the div element that contains the map */
 
         #main-wrapper {
-
+            display: block;
+        }
+        #loading {
+            display: block;
             position: absolute;
             top: 0;
             left: 0;
-            bottom: 0;
-            right: 0;
-
-        }
-
-        #map {
-            position: relative;
-            height: 100%;   /* The height is 400 pixels */
-            width: 100%; /* The width is the width of the web page */
-        }
-
-        #over_map {
-            background-color: transparent;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 1000000;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.35);
-        }
-
-        #flexSideBar {
-            background-color: rgba(255,255,255,0.8);
-            position: absolute;
-            top: 70px;
-            right: 10px;
-            z-index: 1000001;
-            border-radius: 6px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            padding: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.35);
-        }
-
-        #huallagaSlider{
-            position: absolute;
-            left: 10px;
-            right: 65px;
-            bottom: 10px;
-            z-index: 1000001;
-            border-radius: 6px;
-            padding: 10px;
-        }
-
-        #riverButtonsBar{
-            position: absolute;
-            left: 10px;
-            right: 10px;
-            top: 50vh;
-            z-index: 1000001;
-            border-radius: 6px;
-            padding: 0px;
-            width: 14vw;
-        }
-
-        #metricsContainer{
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            z-index: 1000001;
-            border-radius: 6px;
-            padding: 20px;
-            min-width: 14vw;
-        }
-
-        #riverButtonsBarContainer{
-            width: 14vw;
-            height: 22vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            align-content: space-around;
-            justify-content: space-around;
-        }
-
-        #crossSectionsCardsContainer{
-
-            position: absolute;
-            left: 48.5vw;
-            width: 50vw;
-            height: 95vh;
-            top: 2.5vh;
-            z-index: 1000001;
-            background-color: transparent;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-
-        }
-
-        #crossSectionsCardA{
-
-            width: 49.5vw;
-            height: 45vh;
-            background-color: white;
-            z-index: 1000005;
-
-        }
-
-        #crossSectionsCardB{
-
-            width: 49.5vw;
-            height: 45vh;
-            background-color: white;
-            z-index: 1000005;
-
-        }
-
-        #senamhiCardsContainer{
-
-            position: absolute;
-            left: 48.5vw;
-            width: 50vw;
-            height: 95vh;
-            top: 2.5vh;
-            z-index: 1000001;
-            background-color: transparent;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-
-        }
-
-        #senamhiCardA{
-
-            width: 49.5vw;
-            height: 45vh;
-            background-color: white;
-            z-index: 1000005;
-
-        }
-
-        #senamhiCardB{
-
-            width: 49.5vw;
-            height: 45vh;
-            background-color: white;
-            z-index: 1000005;
-
-        }
-
-        #UHGCardsContainer{
-
-            position: absolute;
-            left: 48.5vw;
-            width: 50vw;
-            height: 95vh;
-            top: 2.5vh;
-            z-index: 1000001;
-            background-color: transparent;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-
-        }
-
-        #UHGCardA{
-
-            width: 49.5vw;
-            height: 45vh;
-            background-color: white;
-            z-index: 1000005;
-
-        }
-
-        #UHGCardB{
-
-            width: 49.5vw;
-            height: 45vh;
-            background-color: white;
-            z-index: 1000005;
-
-        }
-
-        #UHSCardsContainer{
-
-            position: absolute;
-            left: 48.5vw;
-            width: 50vw;
-            height: 95vh;
-            top: 2.5vh;
-            z-index: 1000001;
-            background-color: transparent;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-
-        }
-
-        #UHSCardA{
-
-            width: 49.5vw;
-            height: 45vh;
-            background-color: white;
-            z-index: 1000005;
-
-        }
-
-        #UHSCardB{
-
-            width: 49.5vw;
-            height: 45vh;
-            background-color: white;
-            z-index: 1000005;
-
-        }
-
-        #imageZoomOverlay{
-
-            position: absolute;
-            left: 0vw;
-            right: 0vw;
-            top: 0vh;
-            bottom: 0vh;
+            z-index: 100;
             width: 100vw;
             height: 100vh;
-            z-index: 1000001;
-            background-color: rgba(0,0,0,0.5);
-            display: flex;
-            /*flex-direction: column;*/
-            align-items: center;
-            justify-content: center;
-
+            background-color: rgba(192, 192, 192, 0.5);
+            background-image: url("Gif/generated_gifs/cita.gif");
+            background-repeat: no-repeat;
+            background-position: center;
         }
-
-        #droneVideoButton{
-
-            position: absolute;
-            left: 70px;
-            bottom: 70px;
-            width: 80px;
-            height: 80px;
-            z-index: 1000001;
-            background-color: rgba(255,255,255,0.85);
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-        }
-
-        #droneVideoOverlay{
-
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            top: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1000001;
-            background-color: rgba(255,255,255,0.85);
-            /*display: none;*/
-            /*display: flex;*/
-            /*align-items: center;*/
-            /*justify-content: center;*/
-
-        }
-
 
     </style>
 
@@ -292,805 +65,739 @@
 
 <body>
 
-<div id="main-wrapper">
+    <div id="main-wrapper">
 
-    <div id="map"></div>
+        <!--Google Maps DIV-->
+        <div id="map"></div>
+        <!--Google Maps DIV-->
 
-    <style>
+        <!--Left radio accordion overlay container-->
+        <div id="over_map" style="background-color: transparent">
 
-        .accordionLabel{
-            font-family: "PT Sans Narrow";
-            font-size: 18px;
-        }
+            <div id="accordion">
 
-    </style>
+                <!--Accordion Titles Style-->
+                <style>
 
-    <div id="over_map" style="background-color: transparent">
+                    .accordionLabel{
+                        font-family: "PT Sans Narrow";
+                        font-size: 18px;
+                    }
 
-        <div id="accordion">
+                </style>
+                <!--Accordion Titles Style-->
 
-            <div class="card" style="border-radius: 0px; border: 0px solid rgba(0,0,0,0.2); border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
-                <div class="card-header" id="headingOne" style="border-bottom: none">
-                    <h5 class="mb-0">
-                        <button id="morphoButton" class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="background-color: transparent; font-family: 'PT Sans Narrow'; font-size: 22px">
-                            Morphometrics
-                        </button>
-                    </h5>
-                </div>
+                <!--Accordion First Section-->
+                <div class="card" style="border-radius: 0px; border: 0px solid rgba(0,0,0,0.2); border-top-left-radius: 5px; border-top-right-radius: 5px;">
 
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion" style="background-color: rgba(200,200,200,0.125)">
+                    <!--Accordion First Section Title-->
+                    <div class="card-header" id="headingOne" style="border-bottom: none">
+                        <h5 class="mb-0">
+                            <button id="morphoButton" class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="background-color: transparent; font-family: 'PT Sans Narrow'; font-size: 22px">
+                                Morphometrics
+                            </button>
+                        </h5>
+                    </div>
+                    <!--Accordion First Section Title-->
 
-                    <p class="accordionLabel" style="margin: 0; padding: 10px; text-align: center; font-size: 17px">Hover on river for details</p>
+                    <!--Accordion First Section Content-->
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion" style="background-color: rgba(200,200,200,0.125)">
+                        <p class="accordionLabel" style="margin: 0; padding: 10px; text-align: center; font-size: 17px">Hover on river for details</p>
+                    </div>
+                    <!--Accordion First Section Content-->
 
-                </div>
+                    <!--Accordion First Section Future additions -->
+                    <!--TODO: Ask for future additions data (no matter if fake)-->
+                    <!--
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion" style="background-color: rgba(200,200,200,0.125)">
+                        <div class="card-body">
 
-                <!--<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion" style="background-color: rgba(200,200,200,0.125)">-->
-                    <!--<div class="card-body">-->
+                            <div class="cntr" style="overflow-x: hidden; height: auto;max-height: 180px;">
 
-                        <!--<div class="cntr" style="overflow-x: hidden; height: auto;max-height: 180px;">-->
+                                <div style="display: flex">
 
-                            <!--<div style="display: flex">-->
+                                    <label for="radioWidth" class="btn-radio">
+                                        <input type="radio" id="radioWidth" class="radio-river-button" name="radio-width" checked>
+                                        <svg width="20px" height="20px" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="9"></circle>
+                                            <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                                            <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                                        </svg>
+                                        <span class="accordionLabel">Average Width</span>
+                                    </label>
 
-                                <!--<label for="radioWidth" class="btn-radio">-->
-                                    <!--<input type="radio" id="radioWidth" class="radio-river-button" name="radio-width" checked>-->
-                                    <!--<svg width="20px" height="20px" viewBox="0 0 20 20">-->
-                                        <!--<circle cx="10" cy="10" r="9"></circle>-->
-                                        <!--<path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>-->
-                                        <!--<path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>-->
-                                    <!--</svg>-->
-                                    <!--<span class="accordionLabel">Average Width</span>-->
-                                <!--</label>-->
+                                </div>
 
-                            <!--</div>-->
+                                <div style="display: flex">
 
-                            <!--<div style="display: flex">-->
+                                    <label for="radioSinuosity" class="btn-radio">
+                                        <input type="radio" id="radioSinuosity" class="radio-river-button" name="radio-sinuosity">
+                                        <svg width="20px" height="20px" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="9"></circle>
+                                            <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                                            <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                                        </svg>
+                                        <span class="accordionLabel">Sinuosity</span>
+                                    </label>
 
-                                <!--<label for="radioSinuosity" class="btn-radio">-->
-                                    <!--<input type="radio" id="radioSinuosity" class="radio-river-button" name="radio-sinuosity">-->
-                                    <!--<svg width="20px" height="20px" viewBox="0 0 20 20">-->
-                                        <!--<circle cx="10" cy="10" r="9"></circle>-->
-                                        <!--<path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>-->
-                                        <!--<path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>-->
-                                    <!--</svg>-->
-                                    <!--<span class="accordionLabel">Sinuosity</span>-->
-                                <!--</label>-->
+                                </div>
 
-                            <!--</div>-->
+                                <div style="display: flex">
 
-                            <!--<div style="display: flex">-->
+                                    <label for="radioArcWavelen" class="btn-radio">
+                                        <input type="radio" id="radioArcWavelen" class="radio-river-button" name="radio-wavelen">
+                                        <svg width="20px" height="20px" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="9"></circle>
+                                            <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                                            <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                                        </svg>
+                                        <span class="accordionLabel">Arc Wave Length</span>
+                                    </label>
 
-                                <!--<label for="radioArcWavelen" class="btn-radio">-->
-                                    <!--<input type="radio" id="radioArcWavelen" class="radio-river-button" name="radio-wavelen">-->
-                                    <!--<svg width="20px" height="20px" viewBox="0 0 20 20">-->
-                                        <!--<circle cx="10" cy="10" r="9"></circle>-->
-                                        <!--<path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>-->
-                                        <!--<path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>-->
-                                    <!--</svg>-->
-                                    <!--<span class="accordionLabel">Arc Wave Length</span>-->
-                                <!--</label>-->
+                                </div>
 
-                            <!--</div>-->
+                                <div style="display: flex">
 
-                            <!--&lt;!&ndash;<div style="display: flex">&ndash;&gt;-->
+                                    <label for="radioActivity" class="btn-radio">
+                                        <input type="radio" id="radioActivity" class="radio-river-button" name="radio-activity">
+                                        <svg width="20px" height="20px" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="9"></circle>
+                                            <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                                            <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                                        </svg>
+                                        <span class="accordionLabel">Activity</span>
+                                    </label>
 
-                                <!--&lt;!&ndash;<label for="radioActivity" class="btn-radio">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<input type="radio" id="radioActivity" class="radio-river-button" name="radio-activity">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<svg width="20px" height="20px" viewBox="0 0 20 20">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<circle cx="10" cy="10" r="9"></circle>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;</svg>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<span class="accordionLabel">Activity</span>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</label>&ndash;&gt;-->
+                                </div>
 
-                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <div style="display: flex">
 
-                            <!--&lt;!&ndash;<div style="display: flex">&ndash;&gt;-->
+                                    <label for="radioEroDepo" class="btn-radio">
+                                        <input type="radio" id="radioEroDepo" class="radio-river-button" name="radio-ero-depo">
+                                        <svg width="20px" height="20px" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="9"></circle>
+                                            <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                                            <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                                        </svg>
+                                        <span class="accordionLabel">Erosion - Deposition</span>
+                                    </label>
 
-                                <!--&lt;!&ndash;<label for="radioEroDepo" class="btn-radio">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<input type="radio" id="radioEroDepo" class="radio-river-button" name="radio-ero-depo">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<svg width="20px" height="20px" viewBox="0 0 20 20">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<circle cx="10" cy="10" r="9"></circle>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;</svg>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<span class="accordionLabel">Erosion - Deposition</span>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</label>&ndash;&gt;-->
+                                </div>
 
-                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <div style="display: flex">
 
-                            <!--&lt;!&ndash;<div style="display: flex">&ndash;&gt;-->
+                                    <label for="radioMigration" class="btn-radio">
+                                        <input type="radio" id="radioMigration" class="radio-river-button" name="radio-migration">
+                                        <svg width="20px" height="20px" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="9"></circle>
+                                            <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                                            <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                                        </svg>
+                                        <span class="accordionLabel">Migration</span>
+                                    </label>
 
-                                <!--&lt;!&ndash;<label for="radioMigration" class="btn-radio">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<input type="radio" id="radioMigration" class="radio-river-button" name="radio-migration">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<svg width="20px" height="20px" viewBox="0 0 20 20">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<circle cx="10" cy="10" r="9"></circle>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;</svg>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<span class="accordionLabel">Migration</span>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</label>&ndash;&gt;-->
+                                </div>
 
-                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <div style="display: flex">
 
-                            <!--&lt;!&ndash;<div style="display: flex">&ndash;&gt;-->
+                                    <label for="radioIslands" class="btn-radio">
+                                        <input type="radio" id="radioIslands" class="radio-river-button" name="radio-island">
+                                        <svg width="20px" height="20px" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="9"></circle>
+                                            <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                                            <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                                        </svg>
+                                        <span class="accordionLabel">Islands</span>
+                                    </label>
 
-                                <!--&lt;!&ndash;<label for="radioIslands" class="btn-radio">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<input type="radio" id="radioIslands" class="radio-river-button" name="radio-island">&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<svg width="20px" height="20px" viewBox="0 0 20 20">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<circle cx="10" cy="10" r="9"></circle>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;</svg>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<span class="accordionLabel">Islands</span>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</label>&ndash;&gt;-->
-
-                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-                        <!--</div>-->
-
-                    <!--</div>-->
-                <!--</div>-->
-
-            </div>
-
-            <div class="card" style="border-radius: 0px; border: 0px solid rgba(0,0,0,0.2); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px">
-
-                <div class="card-header" id="headingTwo" style="border-bottom: none">
-                    <h5 class="mb-0">
-                        <button class="btn collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="background-color: transparent; font-family: 'PT Sans Narrow'; font-size: 22px">
-                            Field Measurements
-                        </button>
-                    </h5>
-                </div>
-
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion" style="background-color: rgba(200,200,200,0.125)">
-
-                    <div class="card-body">
-
-                        <div class="cntr">
-
-                            <div style="display: flex">
-
-                                <label for="radioUHD" class="btn-radio">
-                                    <input type="radio" id="radioUHD" class="radio-river-button" name="radio-UHD">
-                                    <svg width="20px" height="20px" viewBox="0 0 20 20">
-                                        <circle cx="10" cy="10" r="9"></circle>
-                                        <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
-                                        <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
-                                    </svg>
-                                    <span class="accordionLabel">Cross Sections</span>
-                                </label>
-
-                            </div>
-
-                            <div style="display: flex">
-
-                                <label for="radioUHG" class="btn-radio">
-                                    <input type="radio" id="radioUHG" class="radio-river-button" name="radio-UHG">
-                                    <svg width="20px" height="20px" viewBox="0 0 20 20">
-                                        <circle cx="10" cy="10" r="9"></circle>
-                                        <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
-                                        <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
-                                    </svg>
-                                    <span class="accordionLabel">Longitudinal Sections</span>
-                                </label>
-
-                            </div>
-
-                            <div style="display: flex">
-
-                                <label for="radioUHS" class="btn-radio">
-                                    <input type="radio" id="radioUHS" class="radio-river-button" name="radio-UHS">
-                                    <svg width="20px" height="20px" viewBox="0 0 20 20">
-                                        <circle cx="10" cy="10" r="9"></circle>
-                                        <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
-                                        <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
-                                    </svg>
-                                    <span class="accordionLabel">UHD</span>
-                                </label>
+                                </div>
 
                             </div>
 
                         </div>
-
                     </div>
+                    -->
+                    <!--TODO: Ask for future additions data (no matter if fake)-->
+                    <!--Accordion First Section Future additions -->
+
                 </div>
+                <!--Accordion First Section-->
+
+
+                <!--Accordion Second Section-->
+                <div class="card" style="border-radius: 0px; border: 0px solid rgba(0,0,0,0.2); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px">
+
+                    <!--Accordion Second Section Title-->
+                    <div class="card-header" id="headingTwo" style="border-bottom: none">
+                        <h5 class="mb-0">
+                            <button class="btn collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="background-color: transparent; font-family: 'PT Sans Narrow'; font-size: 22px">
+                                Field Measurements
+                            </button>
+                        </h5>
+                    </div>
+                    <!--Accordion Second Section Title-->
+
+                    <!--Accordion Second Section Content-->
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion" style="background-color: rgba(200,200,200,0.125)">
+
+                        <div class="card-body">
+
+                            <div class="cntr">
+
+                                <div style="display: flex">
+
+                                    <label for="radioUHD" class="btn-radio">
+                                        <input type="radio" id="radioUHD" class="radio-river-button" name="radio-UHD">
+                                        <svg width="20px" height="20px" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="9"></circle>
+                                            <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                                            <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                                        </svg>
+                                        <span class="accordionLabel">Cross Sections</span>
+                                    </label>
+
+                                </div>
+
+                                <div style="display: flex">
+
+                                    <label for="radioUHG" class="btn-radio">
+                                        <input type="radio" id="radioUHG" class="radio-river-button" name="radio-UHG">
+                                        <svg width="20px" height="20px" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="9"></circle>
+                                            <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                                            <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                                        </svg>
+                                        <span class="accordionLabel">Longitudinal Sections</span>
+                                    </label>
+
+                                </div>
+
+                                <div style="display: flex">
+
+                                    <label for="radioUHS" class="btn-radio">
+                                        <input type="radio" id="radioUHS" class="radio-river-button" name="radio-UHS">
+                                        <svg width="20px" height="20px" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="9"></circle>
+                                            <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                                            <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                                        </svg>
+                                        <span class="accordionLabel">UHD</span>
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--Accordion Second Section Content-->
+
+                </div>
+                <!--Accordion Second Section-->
+
+
+                <!--Accordion Third Section-->
+                <div class="card" style="border-radius: 0px; border: 0px solid rgba(0,0,0,0.2); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+
+                    <!--Accordion Third Section Title-->
+                    <div class="card-header" id="headingThree" style="border-bottom: none">
+                        <h5 class="mb-0">
+                            <button id="senamhiButton" class="btn" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne" style="background-color: transparent; font-family: 'PT Sans Narrow'; font-size: 22px">
+                                SENAMHI
+                            </button>
+                        </h5>
+                    </div>
+                    <!--Accordion Third Section Title-->
+
+                    <!--Accordion Third Section Content-->
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion" style="background-color: rgba(200,200,200,0.125); border-bottom-left-radius: 5px;  border-bottom-right-radius: 5px">
+                        <p class="accordionLabel" style="margin: 0; padding: 10px; text-align: center">Click on marker for details</p>
+                    </div>
+                    <!--Accordion Third Section Content-->
+
+                </div>
+                <!--Accordion Third Section-->
+
 
             </div>
 
-            <div class="card" style="border-radius: 0px; border: 0px solid rgba(0,0,0,0.2); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+        </div>
+        <!--Left radio accordion overlay container-->
 
-                <div class="card-header" id="headingThree" style="border-bottom: none">
-                    <h5 class="mb-0">
-                        <button id="senamhiButton" class="btn" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne" style="background-color: transparent; font-family: 'PT Sans Narrow'; font-size: 22px">
-                            SENAMHI
-                        </button>
-                    </h5>
-                </div>
 
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion" style="background-color: rgba(200,200,200,0.125); border-bottom-left-radius: 5px;  border-bottom-right-radius: 5px">
+        <!--Year Slider overlay container-->
+        <div id="huallagaSlider">
 
-                    <p class="accordionLabel" style="margin: 0; padding: 10px; text-align: center">Click on marker for details</p>
-
-                </div>
-
+            <!--Year bullet indicator + timeline selector-->
+            <div class="range-slider">
+                <span id="rs-bullet" class="rs-label">1989</span>
+                <input id="rs-range-line" class="rs-range" type="range" value="1989" min="1989" max="2017" step="4">
             </div>
+            <!--Year bullet indicator + timeline selector-->
+
+            <!--Timeline min & max years labels-->
+            <div class="box-minmax">
+                <span id="sliderMinSpan">1989</span><span id="sliderMaxSpan">2017</span>
+            </div>
+            <!--Timeline min & max years labels-->
+
         </div>
+        <!--Year Slider overlay container-->
 
-    </div>
 
-    <style>
+        <!--River Buttons overlay container-->
+        <div id="riverButtonsBar">
 
-        .flexSideBarUTEC{
+            <!--River Buttons initial CSS Style-->
+            <style>
 
-            background-color: rgba(255,0,0,0.2);
-            width: 30px;
-            height: 30px;
-            border-radius: 15px;
-            border: 1px solid black;
-            cursor: pointer;
-            margin-bottom: 15px;
+                .riverButton{
+                    cursor: pointer;
+                    background-color: rgba(255,255,255,0.8);
+                    width: 12vw;
+                    border-radius: 5px;
+                }
 
-        }
+            </style>
+            <!--River Buttons initial CSS Style-->
 
-        .flexSideBarSenamhiTimeline{
+            <!--Four River Buttons -->
+            <div id="riverButtonsBarContainer">
+                <button id="huallagaRiverButton" class="riverButton">Huallaga</button>
+                <button id="ucayaliRiverButton" class="riverButton">Ucayali</button>
+                <button id="maranonRiverButton" class="riverButton">Marañon</button>
+                <button id="amazonasRiverButton" class="riverButton">Amazonas</button>
+            </div>
+            <!--Four River Buttons -->
 
-            background-color: rgba(0,255,0,0.2);
-            width: 30px;
-            height: 30px;
-            border-radius: 15px;
-            border: 1px solid black;
-            cursor: pointer;
-            margin-bottom: 15px;
-
-        }
-
-        .flexSideBarDroneFlights{
-
-            background-color: rgba(0,0,255,0.2);
-            width: 30px;
-            height: 30px;
-            border-radius: 15px;
-            border: 1px solid black;
-            cursor: pointer;
-
-        }
-
-    </style>
-
-    <!--<div id="flexSideBar">-->
-
-        <!--<div>-->
-            <!--<button id="flexSideBarUTECButton" class="flexSideBarUTEC"></button>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<button id="flexSideBarSenamhiButton" class="flexSideBarSenamhiTimeline"></button>-->
-        <!--</div>-->
-
-        <!--<div>-->
-            <!--<button id="flexSideBarDroneButton" class="flexSideBarDroneFlights"></button>-->
-        <!--</div>-->
-
-    <!--</div>-->
-
-    <style>
-
-        #huallagaSlider{
-
-            z-index: 4000;
-
-        }
-
-    </style>
-
-    <div id="huallagaSlider">
-
-        <!--
-        <div id="year-slider" class="d-flex justify-content-center slidecontainer">
-            <span class="font-weight-bold mr-2" style="font-family: 'PT Sans Narrow'; font-size: 19px">1989</span>
-            <form class="range-field w-100">
-                <input id="yearRangeWidth" class="slider" style="width:100%;" type="range" min="1989" max="2017" step="4" value="1989" />
-                <p class="sliderText" style="text-align: center; margin-top: 5px; font-family: 'PT Sans Narrow'; font-size: 20px">Year <span id="demo">1989</span> </p>
-            </form>
-            <span class="font-weight-bold ml-2" style="font-family: 'PT Sans Narrow'; font-size: 19px">2017</span>
         </div>
-        -->
+        <!--River Buttons overlay container-->
 
-        <div class="range-slider">
-            <span id="rs-bullet" class="rs-label">1989</span>
-            <input id="rs-range-line" class="rs-range" type="range" value="1989" min="1989" max="2017" step="4">
+
+        <!--Morphometrics overlay container -->
+        <!--TODO: shows up when cursor hovers on a river polygon -->
+        <div id="metricsContainer" style="background-color: rgba(255,255,255,0.75)">
+
+            <p style="font-weight: bold"> Morphometrics</p>
+            <p id="metricsTextWidth" style="color: rgba(0,0,0,0.75); margin: 0; text-align: left"></p>
+            <p id="metricsTextSin" style="color: rgba(0,0,0,0.75); margin: 0; text-align: left"></p>
+            <p id="metricsTextWave" style="color: rgba(0,0,0,0.75); margin: 0; text-align: left"></p>
+
         </div>
-
-        <div class="box-minmax">
-            <span id="sliderMinSpan">1989</span><span id="sliderMaxSpan">2017</span>
-        </div>
-
-    </div>
-
-    <div id="riverButtonsBar">
-
-        <style>
-
-            .riverButton{
-
-                cursor: pointer;
-                background-color: rgba(255,255,255,0.8);
-                width: 12vw;
-                border-radius: 5px;
-
-            }
-
-        </style>
-
-        <div id="riverButtonsBarContainer">
-            <button id="huallagaRiverButton" class="riverButton">Huallaga</button>
-            <button id="ucayaliRiverButton" class="riverButton">Ucayali</button>
-            <button id="maranonRiverButton" class="riverButton">Marañon</button>
-            <button id="amazonasRiverButton" class="riverButton">Amazonas</button>
-        </div>
+        <!--TODO: shows up when cursor hovers on a river polygon -->
+        <!--Morphometrics overlay container -->
 
 
-    </div>
+        <!--Cross Section Cards container-->
+        <!--TODO: shows up when a cross section marker is clicked (selected) showing two cards with cross section images + dropwdown station selector-->
+        <div id="crossSectionsCardsContainer">
 
-    <div id="metricsContainer" style="background-color: rgba(255,255,255,0.75)">
-
-        <p style="font-weight: bold"> Morphometrics</p>
-        <p id="metricsTextWidth" style="color: rgba(0,0,0,0.75); margin: 0; text-align: left"></p>
-        <p id="metricsTextSin" style="color: rgba(0,0,0,0.75); margin: 0; text-align: left"></p>
-        <p id="metricsTextWave" style="color: rgba(0,0,0,0.75); margin: 0; text-align: left"></p>
-
-    </div>
-
-    <div id="crossSectionsCardsContainer">
-
+            <!--Cross section top card-->
             <div id="crossSectionsCardA" style="box-shadow: rgba(0,0,0,0.35) 3.5px 5px 15px">
 
-                <div class="row" style="margin: 0">
+                    <div class="row" style="margin: 0">
 
-                    <div class="col-11" style="padding: 0; width: 100%; height: 45vh; display: flex; flex-direction: column; justify-content: space-around">
+                        <div class="col-11" style="padding: 0; width: 100%; height: 45vh; display: flex; flex-direction: column; justify-content: space-around">
 
-                        <div style="display: flex; flex-direction: row-reverse; align-items: flex-start; margin-right: 50px">
+                            <div style="display: flex; flex-direction: row-reverse; align-items: flex-start; margin-right: 50px">
 
-                            <div class="dropdown" style="margin-left: 10px; margin-top: 10px">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonTop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Section 1
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonTop" style="overflow-x: hidden; height: auto; max-height: 200px">
-                                    <button class="dropdown-item" type="button" name="1">Section 1</button>
-                                    <button class="dropdown-item" type="button" name="2">Section 2</button>
-                                    <button class="dropdown-item" type="button" name="3">Section 3</button>
-                                    <button class="dropdown-item" type="button" name="4">Section 4</button>
-                                    <button class="dropdown-item" type="button" name="5">Section 5</button>
-                                    <button class="dropdown-item" type="button" name="6">Section 6</button>
-                                    <button class="dropdown-item" type="button" name="7">Section 7</button>
-                                    <button class="dropdown-item" type="button" name="8">Section 8</button>
-                                    <button class="dropdown-item" type="button" name="9">Section 9</button>
-                                    <button class="dropdown-item" type="button" name="10">Section 10</button>
+                                <!--Section dropdown selector-->
+                                <!--TODO: add section buttons by code instead of hardcoded buttons-->
+                                <div class="dropdown" style="margin-left: 10px; margin-top: 10px">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonTop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Section 1
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonTop" style="overflow-x: hidden; height: auto; max-height: 200px">
+                                        <button class="dropdown-item" type="button" name="1">Section 1</button>
+                                        <button class="dropdown-item" type="button" name="2">Section 2</button>
+                                        <button class="dropdown-item" type="button" name="3">Section 3</button>
+                                        <button class="dropdown-item" type="button" name="4">Section 4</button>
+                                        <button class="dropdown-item" type="button" name="5">Section 5</button>
+                                        <button class="dropdown-item" type="button" name="6">Section 6</button>
+                                        <button class="dropdown-item" type="button" name="7">Section 7</button>
+                                        <button class="dropdown-item" type="button" name="8">Section 8</button>
+                                        <button class="dropdown-item" type="button" name="9">Section 9</button>
+                                        <button class="dropdown-item" type="button" name="10">Section 10</button>
+                                    </div>
                                 </div>
+                                <!--TODO: add section buttons by code instead of hardcoded buttons-->
+                                <!--Section dropdown selector-->
+
+                                <!--Cross section name obtained using reverse geocoding-->
+                                <p id="crossSectionLocationNameTop" style="margin-top: 15px; margin-left: 15px"></p>
+                                <!--Cross section name obtained using reverse geocoding-->
+
                             </div>
 
-                            <p id="crossSectionLocationNameTop" style="margin-top: 15px; margin-left: 15px">TEST</p>
+                            <!--Cross section card image-->
+                            <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
+                            <div style="display: flex; align-items: center; justify-content: center">
+                                <img id="crossSectionImageTop" src="data/cross_sections_images/huallaga/Section 1.png" width="600px" height="225px">
+                            </div>
+                            <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
+                            <!--Cross section card image-->
 
                         </div>
 
-                        <!--<p id="crossSectionCoordinates">TEST</p>-->
-
-                        <div style="display: flex; align-items: center; justify-content: center">
-
-                            <img id="crossSectionImageTop" src="data/cross_sections_images/huallaga/Section 1.png" width="600px" height="225px">
-
+                        <!--Color Column matching selected marker-->
+                        <!--TODO: when cross section marker is selected, its color changes to red -->
+                        <div class="row col-1" style="padding: 0; margin: 0">
+                            <div class="col-6" style="background-color: transparent; padding: 0; width: 50%; height: 45vh"></div>
+                            <div class="col-6" style="background-color: #E7402B; padding: 0; width: 50%; height: 45vh"></div>
                         </div>
+                        <!--TODO: when cross section marker is selected, its color changes to red -->
+                        <!--Color Column matching selected marker-->
 
                     </div>
 
+                </div>
+            <!--Cross section top card-->
+
+            <!--Cross section bottom card-->
+            <div id="crossSectionsCardB" style="box-shadow: rgba(0,0,0,0.35) 3.5px 5px 15px">
+
+                    <div class="row" style="margin: 0">
+
+                        <div class="col-11" style="padding: 0; width: 100%; height: 45vh; display: flex; flex-direction: column; justify-content: space-around">
+
+                            <div style="display: flex; flex-direction: row-reverse; align-items: flex-start; margin-right: 50px">
+
+                                <!--Section dropdown selector-->
+                                <!--TODO: add section buttons by code instead of hardcoded buttons-->
+                                <div class="dropdown" style="margin-left: 10px; margin-top: 10px">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonBottom" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Section 1
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBottom" style="overflow-x: hidden; height: auto; max-height: 200px">
+                                        <button class="dropdown-item" type="button" name="1">Section 1</button>
+                                        <button class="dropdown-item" type="button" name="2">Section 2</button>
+                                        <button class="dropdown-item" type="button" name="3">Section 3</button>
+                                        <button class="dropdown-item" type="button" name="4">Section 4</button>
+                                        <button class="dropdown-item" type="button" name="5">Section 5</button>
+                                        <button class="dropdown-item" type="button" name="6">Section 6</button>
+                                        <button class="dropdown-item" type="button" name="7">Section 7</button>
+                                        <button class="dropdown-item" type="button" name="8">Section 8</button>
+                                        <button class="dropdown-item" type="button" name="9">Section 9</button>
+                                        <button class="dropdown-item" type="button" name="10">Section 10</button>
+                                    </div>
+                                </div>
+                                <!--Section dropdown selector-->
+                                <!--TODO: add section buttons by code instead of hardcoded buttons-->
+
+                                <!--Cross section name obtained using reverse geocoding-->
+                                <p id="crossSectionLocationNameBottom" style="margin-top: 15px; margin-left: 15px"></p>
+                                <!--Cross section name obtained using reverse geocoding-->
+
+                            </div>
+
+                            <!--Cross section card image-->
+                            <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
+                            <div style="display: flex; align-items: center; justify-content: center">
+                                <img id="crossSectionImageBottom" src="data/cross_sections_images/huallaga/Section 1.png" width="600px" height="225px">
+                            </div>
+                            <!--Cross section card image-->
+                            <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
+
+                        </div>
+
+                        <!--Color Column matching selected marker-->
+                        <!--TODO: when cross section marker is selected using the dropdown, its color changes to blue -->
+                        <div class="row col-1" style="padding: 0; margin: 0;">
+                            <div class="col-6" style="background-color: transparent; padding: 0; height: 45vh"></div>
+                            <div class="col-6" style="background-color: #0097CE; padding: 0; height: 45vh"></div>
+                        </div>
+                        <!--TODO: when cross section marker is selected using the dropdown, its color changes to blue -->
+                        <!--Color Column matching selected marker-->
+
+                    </div>
+
+                </div>
+            <!--Cross section bottom card-->
+
+
+        </div>
+        <!--TODO: shows up when a cross section marker is clicked (selected) showing two cards with cross section images + dropwdown station selector-->
+        <!--Cross Section Cards container-->
+
+
+        <!--SENAMHI Cards container-->
+        <div id="senamhiCardsContainer">
+
+            <!--SENAMHI top card-->
+            <div id="senamhiCardA">
+
+                <div class="row" style="margin: 0">
+
+                    <!--SENAMHI card image-->
+                    <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
+                    <div class="col-11" style="padding: 0; width: 100%; height: 45vh; display: flex; flex-direction: column; justify-content: space-around">
+
+                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+                            <p style="font-size: 25px; font-family: 'PT Sans Narrow'">Water Level</p>
+                            <img id="senamhiImageTop" src="senamhi_graph.png" width="500px" height="275px">
+                        </div>
+
+                    </div>
+                    <!--SENAMHI card image-->
+                    <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
+
+                    <!--Color Column matching selected marker-->
+                    <!--TODO: when SENAMHI marker is selected, its color changes to blue -->
                     <div class="row col-1" style="padding: 0; margin: 0">
-
-                        <div class="col-6" style="background-color: transparent; padding: 0; width: 50%; height: 45vh">
-
-                        </div>
-
-                        <div class="col-6" style="background-color: #E7402B; padding: 0; width: 50%; height: 45vh">
-
-                        </div>
-
+                        <div class="col-6" style="background-color: transparent; padding: 0; width: 50%; height: 45vh"></div>
+                        <div class="col-6" style="background-color: #0097CE; padding: 0; width: 50%; height: 45vh"></div>
                     </div>
+                    <!--TODO: when SENAMHI marker is selected, its color changes to blue -->
+                    <!--Color Column matching selected marker-->
 
                 </div>
 
             </div>
+            <!--SENAMHI top card-->
 
-            <div id="crossSectionsCardB">
+            <!--SENAMHI bottom card-->
+            <div id="senamhiCardB">
 
                 <div class="row" style="margin: 0">
 
+                    <!--SENAMHI card image-->
+                    <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
                     <div class="col-11" style="padding: 0; width: 100%; height: 45vh; display: flex; flex-direction: column; justify-content: space-around">
 
-                        <div style="display: flex; flex-direction: row-reverse; align-items: flex-start; margin-right: 50px">
-
-                            <div class="dropdown" style="margin-left: 10px; margin-top: 10px">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonBottom" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Section 1
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBottom" style="overflow-x: hidden; height: auto; max-height: 200px">
-                                    <button class="dropdown-item" type="button" name="1">Section 1</button>
-                                    <button class="dropdown-item" type="button" name="2">Section 2</button>
-                                    <button class="dropdown-item" type="button" name="3">Section 3</button>
-                                    <button class="dropdown-item" type="button" name="4">Section 4</button>
-                                    <button class="dropdown-item" type="button" name="5">Section 5</button>
-                                    <button class="dropdown-item" type="button" name="6">Section 6</button>
-                                    <button class="dropdown-item" type="button" name="7">Section 7</button>
-                                    <button class="dropdown-item" type="button" name="8">Section 8</button>
-                                    <button class="dropdown-item" type="button" name="9">Section 9</button>
-                                    <button class="dropdown-item" type="button" name="10">Section 10</button>
-                                </div>
-                            </div>
-
-                            <p id="crossSectionLocationNameBottom" style="margin-top: 15px; margin-left: 15px">TEST</p>
-
-                        </div>
-
-                        <!--<p id="crossSectionCoordinates">TEST</p>-->
-
-                        <div style="display: flex; align-items: center; justify-content: center">
-
-                            <img id="crossSectionImageBottom" src="data/cross_sections_images/huallaga/Section 1.png" width="600px" height="225px">
-
+                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+                            <p style="font-size: 25px; font-family: 'PT Sans Narrow'">Timeline</p>
+                            <img id="senamhiImageBottom" src="timeline.png" width="600px" height="250px">
                         </div>
 
                     </div>
+                    <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
+                    <!--SENAMHI card image-->
 
-                    <div class="row col-1" style="padding: 0; margin: 0;">
+                    <!--Color Column matching selected marker-->
+                    <!--TODO: when SENAMHI marker is selected, its color changes to blue -->
+                    <div class="row col-1" style="padding: 0; margin: 0">
+                        <div class="col-6" style="background-color: transparent; padding: 0; width: 50%; height: 45vh"></div>
+                        <div class="col-6" style="background-color: #0097CE; padding: 0; width: 50%; height: 45vh"></div>
+                    </div>
+                    <!--TODO: when SENAMHI marker is selected, its color changes to blue -->
+                    <!--Color Column matching selected marker-->
 
-                        <div class="col-6" style="background-color: transparent; padding: 0; height: 45vh">
+                </div>
 
+            </div>
+            <!--SENAMHI bottom card-->
+
+        </div>
+        <!--SENAMHI Cards container-->
+
+
+        <!--UHG Cards container-->
+        <div id="UHGCardsContainer">
+
+            <!--UHG top card-->
+            <div id="UHGCardA">
+
+                <div class="row" style="margin: 0">
+
+                    <!--UHG card image-->
+                    <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
+                    <div class="col-11" style="padding: 0; width: 100%; height: 45vh; display: flex; flex-direction: column; justify-content: space-around">
+
+                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+                            <p style="font-size: 25px; font-family: 'PT Sans Narrow'"> UHD </p>
+                            <img id="" src="data/cross_sections_images/huallaga/Section%201.png" width="500px" height="275px">
                         </div>
 
-                        <div class="col-6" style="background-color: #0097CE; padding: 0; height: 45vh">
+                    </div>
+                    <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
+                    <!--UHG card image-->
 
+                    <!--Color Column-->
+                    <div class="row col-1" style="padding: 0; margin: 0">
+                        <div class="col-6" style="background-color: transparent; padding: 0; width: 50%; height: 45vh"></div>
+                        <div class="col-6" style="background-color: #E7402B; padding: 0; width: 50%; height: 45vh"></div>
+                    </div>
+                    <!--Color Column-->
+
+                </div>
+
+            </div>
+            <!--UHG top card-->
+
+            <!--UHG bottom card-->
+            <div id="UHGCardB">
+
+                <!--Properties table -->
+                <!--TODO: Ask for parameters to be shown in the table-->
+                <table class="table" style="text-align: center; margin: 0; height: 100%">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" style="width: 50%">Property</th>
+                        <th scope="col" style="width: 50%;">Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td> Date </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Qtotal</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Average speed</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Average speed</td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--TODO: Ask for parameters to be shown in the table-->
+                <!--Properties table -->
+
+            </div>
+            <!--UHG bottom card-->
+
+        </div>
+        <!--UHG Cards container-->
+
+
+        <!--UHS Cards container-->
+        <div id="UHSCardsContainer">
+
+            <!--UHS top card-->
+            <div id="UHSCardA">
+
+                <div class="row" style="margin: 0">
+
+                    <!--UHS card image-->
+                    <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
+                    <div class="col-11" style="padding: 0; width: 100%; height: 45vh; display: flex; flex-direction: column; justify-content: space-around">
+
+                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+                            <p style="font-size: 25px; font-family: 'PT Sans Narrow'"> Day 1 (From AAA to BBB) </p>
+                            <img id="UHSImageTop" src="UHSRed.png" width="500px" height="275px">
                         </div>
 
                     </div>
+                    <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
+                    <!--UHS card image-->
+
+                    <!--Color Column-->
+                    <div class="row col-1" style="padding: 0; margin: 0">
+                        <div class="col-6" style="background-color: transparent; padding: 0; width: 50%; height: 45vh"></div>
+                        <div class="col-6" style="background-color: #E7402B; padding: 0; width: 50%; height: 45vh"></div>
+                    </div>
+                    <!--Color Column-->
 
                 </div>
 
             </div>
+            <!--UHS top card-->
 
-    </div>
+            <!--UHS bottom card-->
+            <div id="UHSCardB">
 
-    <div id="senamhiCardsContainer">
+                <div class="row" style="margin: 0">
 
-        <div id="senamhiCardA">
+                    <!--UHS card image-->
+                    <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
+                    <div class="col-11" style="padding: 0; width: 100%; height: 45vh; display: flex; flex-direction: column; justify-content: space-around">
 
-            <div class="row" style="margin: 0">
-
-                <div class="col-11" style="padding: 0; width: 100%; height: 45vh; display: flex; flex-direction: column; justify-content: space-around">
-
-                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-
-                        <p style="font-size: 25px; font-family: 'PT Sans Narrow'">Water Level</p>
-                        <img id="senamhiImageTop" src="senamhi_graph.png" width="500px" height="275px">
-
-                    </div>
-
-                </div>
-
-                <div class="row col-1" style="padding: 0; margin: 0">
-
-                    <div class="col-6" style="background-color: transparent; padding: 0; width: 50%; height: 45vh">
+                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+                            <p style="font-size: 25px; font-family: 'PT Sans Narrow'"> Day 2 (From AAA to BBB) </p>
+                            <img id="UHSImageBottom" src="UHSBlue.png" width="500px" height="275px">
+                        </div>
 
                     </div>
+                    <!--TODO: use width and height relative to the parent W & H instead of fixed values-->
+                    <!--UHS card image-->
 
-                    <div class="col-6" style="background-color: #0097CE; padding: 0; width: 50%; height: 45vh">
-
+                    <!--Color Column-->
+                    <div class="row col-1" style="padding: 0; margin: 0">
+                        <div class="col-6" style="background-color: transparent; padding: 0; width: 50%; height: 45vh"></div>
+                        <div class="col-6" style="background-color: #0097CE; padding: 0; width: 50%; height: 45vh"></div>
                     </div>
+                    <!--Color Column-->
 
                 </div>
 
             </div>
+            <!--UHS bottom card-->
 
         </div>
+        <!--UHS Cards container-->
 
-        <div id="senamhiCardB">
+        <!--Drone video button overlay-->
+        <div id="droneVideoButton">
+            <img src="drone_pro.png" width="70px" height="70px" style="background-size: cover; border-radius: 35px; cursor: pointer">
+        </div>
+        <!--Drone video button overlay-->
 
-            <div class="row" style="margin: 0">
 
-                <div class="col-11" style="padding: 0; width: 100%; height: 45vh; display: flex; flex-direction: column; justify-content: space-around">
+        <!--Image zoom overlay container-->
+        <!--TODO: shown when a card image is clicked (shows a zoom version of the clicked image)-->
+        <div id="imageZoomOverlay">
 
-                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+            <div style="background-color: rgba(255,255,255,0.9); width: 80%; height: 90%">
+                <img id="imageZoom" src="" style="min-height: 100%; min-width: 100%; background-size: cover; height: 100%; width: 100%">
+            </div>
 
-                        <p style="font-size: 25px; font-family: 'PT Sans Narrow'">Timeline</p>
-                        <img id="senamhiImageBottom" src="timeline.png" width="600px" height="250px">
+        </div>
+        <!--TODO: shown when a card image is clicked (shows a zoom version of the clicked image)-->
+        <!--Image zoom overlay container-->
 
-                    </div>
 
-                </div>
+        <!--Video elements CSS style-->
+        <link rel="stylesheet" href="css/map/video-overlay-elements.css">
+        <!--Video elements CSS style-->
 
-                <div class="row col-1" style="padding: 0; margin: 0">
+        <!--Drone video overlay-->
+        <!--TODO: shown after pressing the drone button, shows an overlay with a play & close button to control the video-->
+        <div id="droneVideoOverlay">
 
-                    <div class="col-6" style="background-color: transparent; padding: 0; width: 50%; height: 45vh">
+            <video loop id="myVideo" style="display: block; z-index: 3000">
+                <source src="Sunset+drone+flight+deep+in+Amazon+Jungle,+Bolivia.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
 
-                    </div>
+            <div id="videoFooter" class="content" style="display: block; z-index: 3000">
 
-                    <div class="col-6" style="background-color: #0097CE; padding: 0; width: 50%; height: 45vh">
-
-                    </div>
-
-                </div>
+                <h1>Drone Flying in Huallaga</h1>
+                <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei. Id qui nemore latine molestiae, ad mutat oblique delicatissimi pro.</p>
+                <button id="myBtn" onclick="myFunction()">Play</button>
+                <button id="myBtnClose" onclick="myFunctionClose()">Close</button>
 
             </div>
 
         </div>
+        <!--TODO: shown after pressing the drone button, shows an overlay with a play & close button to control the video-->
+        <!--Drone video overlay-->
+
+        <!--Video player logic JS script-->
+        <script type="text/javascript" src="js/map/drone-overlay-logic.js"></script>
+        <!--Video player logic JS script-->
 
     </div>
 
-    <div id="UHGCardsContainer">
+    <div id="loading"></div>
 
-        <div id="UHGCardA">
+    <!--Main map JS script-->
+    <!--TODO: The WHOLE code is located in this file-->
+    <script src="js/map/generalMap.js"></script>
+    <!--TODO: The WHOLE code is located in this file-->
+    <!--Main map JS script-->
 
-            <div class="row" style="margin: 0">
 
-                <div class="col-11" style="padding: 0; width: 100%; height: 45vh; display: flex; flex-direction: column; justify-content: space-around">
+    <!--Google maps map async load-->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq3F5ugcDYAm1NwcZ1gQL4IIszRpQmm_k&callback=initMap"></script>
+    <!--Google maps map async load-->
 
-                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-
-                        <p style="font-size: 25px; font-family: 'PT Sans Narrow'"> UHD </p>
-                        <img id="" src="data/cross_sections_images/huallaga/Section%201.png" width="500px" height="275px">
-
-                    </div>
-
-                </div>
-
-                <div class="row col-1" style="padding: 0; margin: 0">
-
-                    <div class="col-6" style="background-color: transparent; padding: 0; width: 50%; height: 45vh">
-
-                    </div>
-
-                    <div class="col-6" style="background-color: #E7402B; padding: 0; width: 50%; height: 45vh">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div id="UHGCardB">
-
-            <table class="table" style="text-align: center; margin: 0; height: 100%">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col" style="width: 50%">Property</th>
-                    <th scope="col" style="width: 50%;">Value</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td> Date </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Qtotal</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Average speed</td>
-                    <td></td>
-                </tr>
-
-                <tr>
-                    <td>Average speed</td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
-
-        </div>
-
-    </div>
-
-    <div id="UHSCardsContainer">
-
-        <div id="UHSCardA">
-
-            <div class="row" style="margin: 0">
-
-                <div class="col-11" style="padding: 0; width: 100%; height: 45vh; display: flex; flex-direction: column; justify-content: space-around">
-
-                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-
-                        <p style="font-size: 25px; font-family: 'PT Sans Narrow'"> Day 1 (From AAA to BBB) </p>
-                        <img id="UHSImageTop" src="UHSRed.png" width="500px" height="275px">
-
-                    </div>
-
-                </div>
-
-                <div class="row col-1" style="padding: 0; margin: 0">
-
-                    <div class="col-6" style="background-color: transparent; padding: 0; width: 50%; height: 45vh">
-
-                    </div>
-
-                    <div class="col-6" style="background-color: #E7402B; padding: 0; width: 50%; height: 45vh">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div id="UHSCardB">
-
-            <div class="row" style="margin: 0">
-
-                <div class="col-11" style="padding: 0; width: 100%; height: 45vh; display: flex; flex-direction: column; justify-content: space-around">
-
-                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-
-                        <p style="font-size: 25px; font-family: 'PT Sans Narrow'"> Day 2 (From AAA to BBB) </p>
-                        <img id="UHSImageBottom" src="UHSBlue.png" width="500px" height="275px">
-
-                    </div>
-
-                </div>
-
-                <div class="row col-1" style="padding: 0; margin: 0">
-
-                    <div class="col-6" style="background-color: transparent; padding: 0; width: 50%; height: 45vh">
-
-                    </div>
-
-                    <div class="col-6" style="background-color: #0097CE; padding: 0; width: 50%; height: 45vh">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div id="droneVideoButton">
-
-        <img src="drone_pro.png" width="70px" height="70px" style="background-size: cover; border-radius: 35px; cursor: pointer">
-
-    </div>
-
-    <div id="imageZoomOverlay">
-
-        <div style="background-color: rgba(255,255,255,0.9); width: 80%; height: 90%">
-
-            <img id="imageZoom" src="" style="min-height: 100%; min-width: 100%; background-size: cover; height: 100%; width: 100%">
-
-        </div>
-
-    </div>
-
-
-    <style>
-
-        #myVideo {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            top: 0;
-            min-width: 100%;
-            min-height: 100%;
-        }
-
-        .content {
-            position: fixed;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            color: #f1f1f1;
-            width: 100%;
-            padding: 20px;
-        }
-
-        #myBtn {
-            width: 200px;
-            font-size: 18px;
-            padding: 10px;
-            border: none;
-            background: #000;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        #myBtn:hover {
-            background: #ddd;
-            color: black;
-        }
-
-        #myBtnClose {
-            width: 200px;
-            font-size: 18px;
-            padding: 10px;
-            border: none;
-            background: #000;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        #myBtnClose:hover {
-            background: #ddd;
-            color: black;
-        }
-
-    </style>
-
-    <div id="droneVideoOverlay">
-
-        <video loop id="myVideo" style="display: block; z-index: 3000">
-
-            <!--<source src="../Code%20Geass%20Opening%201%20HD.mp4" type="video/mp4">-->
-            <source src="Sunset+drone+flight+deep+in+Amazon+Jungle,+Bolivia.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-
-        </video>
-
-        <div id="videoFooter" class="content" style="display: block; z-index: 3000">
-
-            <h1>Drone Flying in Huallaga</h1>
-            <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei. Id qui nemore latine molestiae, ad mutat oblique delicatissimi pro.</p>
-            <button id="myBtn" onclick="myFunction()">Play</button>
-            <button id="myBtnClose" onclick="myFunctionClose()">Close</button>
-
-        </div>
-
-
-    </div>
-
-
-    <script>
-
-        var video = document.getElementById("myVideo");
-        var btn = document.getElementById("myBtn");
-        var videoFooter = document.getElementById("videoFooter");
-        var droneVideoOverlay = document.getElementById("droneVideoOverlay");
-
-        function myFunction() {
-            if (video.paused) {
-                video.play();
-                btn.innerHTML = "Pause";
-            } else {
-                video.pause();
-                btn.innerHTML = "Play";
-            }
-        }
-
-        function myFunctionClose() {
-            // video.style.display = "none";
-            // videoFooter.style.display = "none";
-            video.pause();
-            video.currentTime = 0;
-            btn.innerHTML = "Play";
-
-            $("#droneVideoOverlay").fadeOut(350, function () {
-
-            });
-            // droneVideoOverlay.style.display = "none";
-        }
-
-    </script>
-
-</div>
-
-<script src="js/generalMap.js"></script>
-<!--<script type="text/javascript" src="js/newSlider.js"></script>-->
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq3F5ugcDYAm1NwcZ1gQL4IIszRpQmm_k&callback=initMap">
-</script>
 
 </body>
 </html>

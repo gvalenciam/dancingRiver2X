@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <meta charset="UTF-8">
 
     <title>Amazon Basin</title>
 
+    <!--JQuery JS Script-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!--JQuery JS Script-->
 
+    <!--Bootstrap JS script-->
+    <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <!--Bootstrap JS script-->
 
+    <!--Bootstrap CSS Style-->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <!--Bootstrap CSS Style-->
+
+    <!--Bottom Cards section CSS Style-->
+    <link rel="stylesheet" href="css/bottom-cards-style.css">
+    <!--Bottom Cards section CSS Style-->
+
+    <!--Image Handling JS Scripts-->
     <script src="./lib/CLDRPluralRuleParser/CLDRPluralRuleParser.js"></script>
     <script src="./lib/jquery.i18n/jquery.i18n.js"></script>
     <script src="./lib/jquery.i18n/jquery.i18n.messagestore.js"></script>
@@ -19,1190 +31,440 @@
     <script src="./lib/jquery.i18n/jquery.i18n.parser.js"></script>
     <script src="./lib/jquery.i18n/jquery.i18n.emitter.js"></script>
     <script src="./lib/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
-
-
+    <!--Image Handling JS Scripts-->
 
     <script src="./lib/history/jquery.history.js"></script>
     <script src="./lib/url/url.min.js"></script>
 
+    <!--Country Picker CSS Style-->
     <link rel="stylesheet" href="jquery.ccpicker.css">
+    <!--Country Picker CSS Style-->
 
 </head>
 
-<style>
+<body>
 
-    *, *:before, *:after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        background: #1f1f1f;
-        font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    }
-
-    .cont {
-        position: relative;
-        overflow: hidden;
-        height: 100vh;
-        padding: 80px 70px;
-    }
-    .cont__inner {
-        position: relative;
-        height: 100%;
-    }
-    .cont__inner:hover .el__bg:after {
-        opacity: 1;
-    }
-
-    .el {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 19.2%;
-        height: 100%;
-        background: #252525;
-        transition: width 0.7s, opacity 0.6s 0.7s, z-index 0s 1.3s, -webkit-transform 0.6s 0.7s;
-        transition: transform 0.6s 0.7s, width 0.7s, opacity 0.6s 0.7s, z-index 0s 1.3s;
-        transition: transform 0.6s 0.7s, width 0.7s, opacity 0.6s 0.7s, z-index 0s 1.3s, -webkit-transform 0.6s 0.7s;
-        will-change: transform, width, opacity;
-    }
-    .el:not(.s--active) {
-        cursor: pointer;
-    }
-    .el__overflow {
-        overflow: hidden;
-        position: relative;
-        height: 100%;
-    }
-    .el__inner {
-        overflow: hidden;
-        position: relative;
-        height: 100%;
-        transition: -webkit-transform 1s;
-        transition: transform 1s;
-        transition: transform 1s, -webkit-transform 1s;
-    }
-    .cont.s--inactive .el__inner {
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-    }
-    .el__bg {
-        position: relative;
-        width: calc(100vw - 140px);
-        height: 100%;
-        transition: -webkit-transform 0.6s 0.7s;
-        transition: transform 0.6s 0.7s;
-        transition: transform 0.6s 0.7s, -webkit-transform 0.6s 0.7s;
-        will-change: transform;
-    }
-    .el__bg:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: -5%;
-        width: 100%;
-        height: 110%;
-        background-size: cover;
-        background-position: center center;
-        transition: -webkit-transform 1s;
-        transition: transform 1s;
-        transition: transform 1s, -webkit-transform 1s;
-        -webkit-transform: translate3d(0, 0, 0) scale(1);
-        transform: translate3d(0, 0, 0) scale(1);
-    }
-    .cont.s--inactive .el__bg:before {
-        -webkit-transform: translate3d(0, -100%, 0) scale(1.2);
-        transform: translate3d(0, -100%, 0) scale(1.2);
-    }
-    .el.s--active .el__bg:before {
-        transition: -webkit-transform 0.8s;
-        transition: transform 0.8s;
-        transition: transform 0.8s, -webkit-transform 0.8s;
-    }
-    .el__bg:after {
-        content: "";
-        z-index: 1;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.3);
-        opacity: 0;
-        transition: opacity 0.5s;
-    }
-    .cont.s--el-active .el__bg:after {
-        transition: opacity 0.5s 1.4s;
-        opacity: 1 !important;
-    }
-    .el__preview-cont {
-        z-index: 2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        transition: all 0.3s 1.2s;
-    }
-    .cont.s--inactive .el__preview-cont {
-        opacity: 0;
-        -webkit-transform: translateY(10px);
-        transform: translateY(10px);
-    }
-    .cont.s--el-active .el__preview-cont {
-        opacity: 0;
-        -webkit-transform: translateY(30px);
-        transform: translateY(30px);
-        transition: all 0.5s;
-    }
-    .el__heading {
-        color: #fff;
-        text-transform: uppercase;
-        font-size: 18px;
-    }
-    .el__content {
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        padding: 30px;
-        opacity: 0;
-        pointer-events: none;
-        transition: all 0.1s;
-    }
-    .el.s--active .el__content {
-        z-index: 2;
-        opacity: 1;
-        pointer-events: auto;
-        transition: all 0.5s 1.4s;
-    }
-    .el__text {
-        text-transform: uppercase;
-        font-size: 40px;
-        color: #fff;
-    }
-    .el__close-btn {
-        z-index: -1;
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        width: 60px;
-        height: 60px;
-        opacity: 0;
-        pointer-events: none;
-        transition: all 0s 0.45s;
-        cursor: pointer;
-    }
-    .el.s--active .el__close-btn {
-        z-index: 5;
-        opacity: 1;
-        pointer-events: auto;
-        transition: all 0s 1.4s;
-    }
-    .el__close-btn:before, .el__close-btn:after {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 50%;
-        width: 100%;
-        height: 8px;
-        margin-top: -4px;
-        background: #fff;
-        opacity: 0;
-        transition: opacity 0s;
-    }
-    .el.s--active .el__close-btn:before, .el.s--active .el__close-btn:after {
-        opacity: 1;
-    }
-    .el__close-btn:before {
-        -webkit-transform: rotate(45deg) translateX(100%);
-        transform: rotate(45deg) translateX(100%);
-    }
-    .el.s--active .el__close-btn:before {
-        transition: all 0.3s 1.4s cubic-bezier(0.72, 0.09, 0.32, 1.57);
-        -webkit-transform: rotate(45deg) translateX(0);
-        transform: rotate(45deg) translateX(0);
-    }
-    .el__close-btn:after {
-        -webkit-transform: rotate(-45deg) translateX(100%);
-        transform: rotate(-45deg) translateX(100%);
-    }
-    .el.s--active .el__close-btn:after {
-        transition: all 0.3s 1.55s cubic-bezier(0.72, 0.09, 0.32, 1.57);
-        -webkit-transform: rotate(-45deg) translateX(0);
-        transform: rotate(-45deg) translateX(0);
-    }
-    .el__index {
-        overflow: hidden;
-        position: absolute;
-        left: 0;
-        bottom: -80px;
-        width: 100%;
-        height: 100%;
-        min-height: 250px;
-        text-align: center;
-        font-size: 20vw;
-        line-height: 0.85;
-        font-weight: bold;
-        transition: opacity 0.3s 1.4s, -webkit-transform 0.5s;
-        transition: transform 0.5s, opacity 0.3s 1.4s;
-        transition: transform 0.5s, opacity 0.3s 1.4s, -webkit-transform 0.5s;
-        -webkit-transform: translate3d(0, 1vw, 0);
-        transform: translate3d(0, 1vw, 0);
-    }
-    .el:hover .el__index {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-    .cont.s--el-active .el__index {
-        transition: opacity 0.3s, -webkit-transform 0.5s;
-        transition: transform 0.5s, opacity 0.3s;
-        transition: transform 0.5s, opacity 0.3s, -webkit-transform 0.5s;
-        opacity: 0;
-    }
-    .el__index-back, .el__index-front {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-    }
-    .el__index-back {
-        color: #2f3840;
-        opacity: 0;
-        transition: opacity 0.25s 0.25s;
-    }
-    .el:hover .el__index-back {
-        transition: opacity 0.25s;
-        opacity: 1;
-    }
-    .el__index-overlay {
-        overflow: hidden;
-        position: relative;
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-        transition: -webkit-transform 0.5s 0.1s;
-        transition: transform 0.5s 0.1s;
-        transition: transform 0.5s 0.1s, -webkit-transform 0.5s 0.1s;
-        color: transparent;
-    }
-    .el__index-overlay:before {
-        content: attr(data-index);
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        color: #fff;
-        -webkit-transform: translate3d(0, -100%, 0);
-        transform: translate3d(0, -100%, 0);
-        transition: -webkit-transform 0.5s 0.1s;
-        transition: transform 0.5s 0.1s;
-        transition: transform 0.5s 0.1s, -webkit-transform 0.5s 0.1s;
-    }
-    .el:hover .el__index-overlay {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-    .el:hover .el__index-overlay:before {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-    .el:nth-child(1) {
-        -webkit-transform: translate3d(0%, 0, 0);
-        transform: translate3d(0%, 0, 0);
-        -webkit-transform-origin: 50% 50%;
-        transform-origin: 50% 50%;
-    }
-    .cont.s--el-active .el:nth-child(1):not(.s--active) {
-        -webkit-transform: scale(0.5) translate3d(0%, 0, 0);
-        transform: scale(0.5) translate3d(0%, 0, 0);
-        opacity: 0;
-        transition: opacity 0.95s, -webkit-transform 0.95s;
-        transition: transform 0.95s, opacity 0.95s;
-        transition: transform 0.95s, opacity 0.95s, -webkit-transform 0.95s;
-    }
-    .el:nth-child(1) .el__inner {
-        transition-delay: 0s;
-    }
-    .el:nth-child(1) .el__bg {
-        -webkit-transform: translate3d(0%, 0, 0);
-        transform: translate3d(0%, 0, 0);
-    }
-    .el:nth-child(1) .el__bg:before {
-        transition-delay: 0s;
-        background-image: url('DJI_0124.JPG');
-    }
-    .el:nth-child(2) {
-        -webkit-transform: translate3d(105.2083333333%, 0, 0);
-        transform: translate3d(105.2083333333%, 0, 0);
-        -webkit-transform-origin: 155.2083333333% 50%;
-        transform-origin: 155.2083333333% 50%;
-    }
-    .cont.s--el-active .el:nth-child(2):not(.s--active) {
-        -webkit-transform: scale(0.5) translate3d(105.2083333333%, 0, 0);
-        transform: scale(0.5) translate3d(105.2083333333%, 0, 0);
-        opacity: 0;
-        transition: opacity 0.95s, -webkit-transform 0.95s;
-        transition: transform 0.95s, opacity 0.95s;
-        transition: transform 0.95s, opacity 0.95s, -webkit-transform 0.95s;
-    }
-    .el:nth-child(2) .el__inner {
-        transition-delay: 0.1s;
-    }
-    .el:nth-child(2) .el__bg {
-        -webkit-transform: translate3d(-19.2%, 0, 0);
-        transform: translate3d(-19.2%, 0, 0);
-    }
-    .el:nth-child(2) .el__bg:before {
-        transition-delay: 0.1s;
-        background-image: url('DJI_0106.JPG');
-    }
-    .el:nth-child(3) {
-        -webkit-transform: translate3d(210.4166666667%, 0, 0);
-        transform: translate3d(210.4166666667%, 0, 0);
-        -webkit-transform-origin: 260.4166666667% 50%;
-        transform-origin: 260.4166666667% 50%;
-    }
-    .cont.s--el-active .el:nth-child(3):not(.s--active) {
-        -webkit-transform: scale(0.5) translate3d(210.4166666667%, 0, 0);
-        transform: scale(0.5) translate3d(210.4166666667%, 0, 0);
-        opacity: 0;
-        transition: opacity 0.95s, -webkit-transform 0.95s;
-        transition: transform 0.95s, opacity 0.95s;
-        transition: transform 0.95s, opacity 0.95s, -webkit-transform 0.95s;
-    }
-    .el:nth-child(3) .el__inner {
-        transition-delay: 0.2s;
-    }
-    .el:nth-child(3) .el__bg {
-        -webkit-transform: translate3d(-38.4%, 0, 0);
-        transform: translate3d(-38.4%, 0, 0);
-    }
-    .el:nth-child(3) .el__bg:before {
-        transition-delay: 0.2s;
-        background-image: url('antartic.jpg');
-    }
-    .el:nth-child(4) {
-        -webkit-transform: translate3d(315.625%, 0, 0);
-        transform: translate3d(315.625%, 0, 0);
-        -webkit-transform-origin: 365.625% 50%;
-        transform-origin: 365.625% 50%;
-    }
-    .cont.s--el-active .el:nth-child(4):not(.s--active) {
-        -webkit-transform: scale(0.5) translate3d(315.625%, 0, 0);
-        transform: scale(0.5) translate3d(315.625%, 0, 0);
-        opacity: 0;
-        transition: opacity 0.95s, -webkit-transform 0.95s;
-        transition: transform 0.95s, opacity 0.95s;
-        transition: transform 0.95s, opacity 0.95s, -webkit-transform 0.95s;
-    }
-    .el:nth-child(4) .el__inner {
-        transition-delay: 0.3s;
-    }
-    .el:nth-child(4) .el__bg {
-        -webkit-transform: translate3d(-57.6%, 0, 0);
-        transform: translate3d(-57.6%, 0, 0);
-    }
-    .el:nth-child(4) .el__bg:before {
-        transition-delay: 0.3s;
-        background-image: url('pacific_ocean.jpg');
-    }
-    .el:nth-child(5) {
-        -webkit-transform: translate3d(420.8333333333%, 0, 0);
-        transform: translate3d(420.8333333333%, 0, 0);
-        -webkit-transform-origin: 470.8333333333% 50%;
-        transform-origin: 470.8333333333% 50%;
-    }
-    .cont.s--el-active .el:nth-child(5):not(.s--active) {
-        -webkit-transform: scale(0.5) translate3d(420.8333333333%, 0, 0);
-        transform: scale(0.5) translate3d(420.8333333333%, 0, 0);
-        opacity: 0;
-        transition: opacity 0.95s, -webkit-transform 0.95s;
-        transition: transform 0.95s, opacity 0.95s;
-        transition: transform 0.95s, opacity 0.95s, -webkit-transform 0.95s;
-    }
-    .el:nth-child(5) .el__inner {
-        transition-delay: 0.4s;
-    }
-    .el:nth-child(5) .el__bg {
-        -webkit-transform: translate3d(-76.8%, 0, 0);
-        transform: translate3d(-76.8%, 0, 0);
-    }
-    .el:nth-child(5) .el__bg:before {
-        transition-delay: 0.4s;
-        background-image: url('DJI_0130.JPG');
-    }
-    .el:hover .el__bg:after {
-        opacity: 0;
-    }
-    .el.s--active {
-        z-index: 1;
-        width: 100%;
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        transition: width 0.7s 0.7s, z-index 0s, -webkit-transform 0.6s;
-        transition: transform 0.6s, width 0.7s 0.7s, z-index 0s;
-        transition: transform 0.6s, width 0.7s 0.7s, z-index 0s, -webkit-transform 0.6s;
-    }
-    .el.s--active .el__bg {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        transition: -webkit-transform 0.6s;
-        transition: transform 0.6s;
-        transition: transform 0.6s, -webkit-transform 0.6s;
-    }
-    .el.s--active .el__bg:before {
-        transition-delay: 0.6s;
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-
-    .icon-link {
-        position: absolute;
-        left: 5px;
-        bottom: 5px;
-        width: 32px;
-    }
-    .icon-link img {
-        width: 100%;
-        vertical-align: top;
-    }
-    .icon-link--twitter {
-        left: auto;
-        right: 5px;
-    }
-
-
-</style>
-
-<!--<style>-->
-
-<!--*, *:before, *:after {-->
-<!--box-sizing: border-box;-->
-<!--margin: 0;-->
-<!--padding: 0;-->
-<!--}-->
-
-<!--body {-->
-<!--background: #15181A;-->
-<!--font-family: "Open Sans", Helvetica, Arial, sans-serif;-->
-<!--}-->
-
-<!--.skw-pages {-->
-<!--overflow: hidden;-->
-<!--position: relative;-->
-<!--height: 100vh;-->
-<!--}-->
-
-<!--.skw-page {-->
-<!--position: absolute;-->
-<!--left: 0;-->
-<!--top: 0;-->
-<!--width: 100%;-->
-<!--}-->
-<!--.skw-page__half {-->
-<!--position: absolute;-->
-<!--top: 0;-->
-<!--width: 50%;-->
-<!--height: 100vh;-->
-<!--transition: -webkit-transform 1s;-->
-<!--transition: transform 1s;-->
-<!--transition: transform 1s, -webkit-transform 1s;-->
-<!--}-->
-<!--.skw-page__half&#45;&#45;left {-->
-<!--left: 0;-->
-<!-- -webkit-transform: translate3d(-32.4vh, 100%, 0);-->
-<!--transform: translate3d(-32.4vh, 100%, 0);-->
-<!--}-->
-<!--.skw-page__half&#45;&#45;right {-->
-<!--left: 50%;-->
-<!-- -webkit-transform: translate3d(32.4vh, -100%, 0);-->
-<!--transform: translate3d(32.4vh, -100%, 0);-->
-<!--}-->
-<!--.skw-page.active .skw-page__half {-->
-<!-- -webkit-transform: translate3d(0, 0, 0);-->
-<!--transform: translate3d(0, 0, 0);-->
-<!--}-->
-<!--.skw-page__skewed {-->
-<!--overflow: hidden;-->
-<!--position: absolute;-->
-<!--top: 0;-->
-<!--width: 140%;-->
-<!--height: 100%;-->
-<!-- -webkit-transform: skewX(-18deg);-->
-<!--transform: skewX(-18deg);-->
-<!--background: #000;-->
-<!--}-->
-<!--.skw-page__half&#45;&#45;left .skw-page__skewed {-->
-<!--left: -40%;-->
-<!--}-->
-<!--.skw-page__half&#45;&#45;right .skw-page__skewed {-->
-<!--right: -40%;-->
-<!--}-->
-<!--.skw-page__content {-->
-<!--display: flex;-->
-<!--align-items: center;-->
-<!--justify-content: center;-->
-<!--flex-flow: column wrap;-->
-<!--position: absolute;-->
-<!--left: 0;-->
-<!--top: 0;-->
-<!--width: 100%;-->
-<!--height: 100%;-->
-<!--padding: 0 30%;-->
-<!--color: #fff;-->
-<!-- -webkit-transform: skewX(18deg);-->
-<!--transform: skewX(18deg);-->
-<!--transition: opacity 1s, -webkit-transform 1s;-->
-<!--transition: transform 1s, opacity 1s;-->
-<!--transition: transform 1s, opacity 1s, -webkit-transform 1s;-->
-<!--background-size: cover;-->
-<!--}-->
-<!--.skw-page__half&#45;&#45;left .skw-page__content {-->
-<!--padding-left: 30%;-->
-<!--padding-right: 30%;-->
-<!-- -webkit-transform-origin: 100% 0;-->
-<!--transform-origin: 100% 0;-->
-<!--}-->
-<!--.skw-page__half&#45;&#45;right .skw-page__content {-->
-<!--padding-left: 30%;-->
-<!--padding-right: 30%;-->
-<!-- -webkit-transform-origin: 0 100%;-->
-<!--transform-origin: 0 100%;-->
-<!--}-->
-<!--.skw-page.inactive .skw-page__content {-->
-<!--opacity: 0.5;-->
-<!-- -webkit-transform: skewX(18deg) scale(0.95);-->
-<!--transform: skewX(18deg) scale(0.95);-->
-<!--}-->
-<!--.skw-page__heading {-->
-<!--margin-bottom: 15px;-->
-<!--text-transform: uppercase;-->
-<!--font-size: 25px;-->
-<!--text-align: center;-->
-<!--}-->
-<!--.skw-page__description {-->
-<!--font-size: 18px;-->
-<!--text-align: center;-->
-<!--}-->
-<!--.skw-page__link {-->
-<!--color: #FFA0A0;-->
-<!--}-->
-<!--.skw-page-1 .skw-page__half&#45;&#45;left .skw-page__content {-->
-<!--background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/mousover-img-1.jpg");-->
-<!--}-->
-<!--.skw-page-1 .skw-page__half&#45;&#45;right .skw-page__content {-->
-<!--background: #292929;-->
-<!--}-->
-<!--.skw-page-2 .skw-page__half&#45;&#45;left .skw-page__content {-->
-<!--background: #292929;-->
-<!--}-->
-<!--.skw-page-2 .skw-page__half&#45;&#45;right .skw-page__content {-->
-<!--background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/slider-2.jpg");-->
-<!--}-->
-<!--.skw-page-3 .skw-page__half&#45;&#45;left .skw-page__content {-->
-<!--background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/mousover-img-2.jpg");-->
-<!--}-->
-<!--.skw-page-3 .skw-page__half&#45;&#45;right .skw-page__content {-->
-<!--background: #292929;-->
-<!--}-->
-<!--.skw-page-4 .skw-page__half&#45;&#45;left .skw-page__content {-->
-<!--background: #292929;-->
-<!--}-->
-<!--.skw-page-4 .skw-page__half&#45;&#45;right .skw-page__content {-->
-<!--background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-3.jpg");-->
-<!--}-->
-<!--.skw-page-5 .skw-page__half&#45;&#45;left .skw-page__content {-->
-<!--background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/img-test.jpg");-->
-<!--}-->
-<!--.skw-page-5 .skw-page__half&#45;&#45;right .skw-page__content {-->
-<!--background: #292929;-->
-<!--}-->
-
-
-
-<!--</style>-->
-
-<!--<body>-->
-
-<!--<div class="skw-pages">-->
-<!--<div class="skw-page skw-page-1 active">-->
-<!--<div class="skw-page__half skw-page__half&#45;&#45;left">-->
-<!--<div class="skw-page__skewed">-->
-<!--<div class="skw-page__content"></div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="skw-page__half skw-page__half&#45;&#45;right">-->
-<!--<div class="skw-page__skewed">-->
-<!--<div class="skw-page__content">-->
-<!--<h2 class="skw-page__heading">Skewed One Page Scroll</h2>-->
-<!--<p class="skw-page__description">Just scroll down</p>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="skw-page skw-page-2">-->
-<!--<div class="skw-page__half skw-page__half&#45;&#45;left">-->
-<!--<div class="skw-page__skewed">-->
-<!--<div class="skw-page__content">-->
-<!--<h2 class="skw-page__heading">Page 2</h2>-->
-<!--<p class="skw-page__description">Nothing to do here, continue scrolling.</p>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="skw-page__half skw-page__half&#45;&#45;right">-->
-<!--<div class="skw-page__skewed">-->
-<!--<div class="skw-page__content"></div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="skw-page skw-page-3">-->
-<!--<div class="skw-page__half skw-page__half&#45;&#45;left">-->
-<!--<div class="skw-page__skewed">-->
-<!--<div class="skw-page__content"></div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="skw-page__half skw-page__half&#45;&#45;right">-->
-<!--<div class="skw-page__skewed">-->
-<!--<div class="skw-page__content">-->
-<!--<h2 class="skw-page__heading">Page 3</h2>-->
-<!--<p class="skw-page__description">The end is near, I promise!</p>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="skw-page skw-page-4">-->
-<!--<div class="skw-page__half skw-page__half&#45;&#45;left">-->
-<!--<div class="skw-page__skewed">-->
-<!--<div class="skw-page__content">-->
-<!--<h2 class="skw-page__heading">Page 4</h2>-->
-<!--<p class="skw-page__description">Ok, ok, just one more scroll!</p>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="skw-page__half skw-page__half&#45;&#45;right">-->
-<!--<div class="skw-page__skewed">-->
-<!--<div class="skw-page__content"></div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="skw-page skw-page-5">-->
-<!--<div class="skw-page__half skw-page__half&#45;&#45;left">-->
-<!--<div class="skw-page__skewed">-->
-<!--<div class="skw-page__content"></div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="skw-page__half skw-page__half&#45;&#45;right">-->
-<!--<div class="skw-page__skewed">-->
-<!--<div class="skw-page__content">-->
-<!--<h2 class="skw-page__heading">Epic finale</h2>-->
-<!--<p class="skw-page__description">-->
-<!--Feel free to check-->
-<!--<a class="skw-page__link" href="https://codepen.io/suez/pens/public/" target="_blank">my other pens</a> and follow me on-->
-<!--<a class="skw-page__link" href="https://twitter.com/NikolayTalanov" target="_blank">Twitter</a>-->
-<!--</p>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<script>-->
-
-<!--$(document).ready(function() {-->
-
-<!--var curPage = 1;-->
-<!--var numOfPages = $(".skw-page").length;-->
-<!--var animTime = 1000;-->
-<!--var scrolling = false;-->
-<!--var pgPrefix = ".skw-page-";-->
-
-<!--function pagination() {-->
-<!--scrolling = true;-->
-
-<!--$(pgPrefix + curPage).removeClass("inactive").addClass("active");-->
-<!--$(pgPrefix + (curPage - 1)).addClass("inactive");-->
-<!--$(pgPrefix + (curPage + 1)).removeClass("active");-->
-
-<!--setTimeout(function() {-->
-<!--scrolling = false;-->
-<!--}, animTime);-->
-<!--};-->
-
-<!--function navigateUp() {-->
-<!--if (curPage === 1) return;-->
-<!--curPage&#45;&#45;;-->
-<!--pagination();-->
-<!--};-->
-
-<!--function navigateDown() {-->
-<!--if (curPage === numOfPages) return;-->
-<!--curPage++;-->
-<!--pagination();-->
-<!--};-->
-
-<!--$(document).on("mousewheel DOMMouseScroll", function(e) {-->
-<!--if (scrolling) return;-->
-<!--if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {-->
-<!--navigateUp();-->
-<!--} else {-->
-<!--navigateDown();-->
-<!--}-->
-<!--});-->
-
-<!--$(document).on("keydown", function(e) {-->
-<!--if (scrolling) return;-->
-<!--if (e.which === 38) {-->
-<!--navigateUp();-->
-<!--} else if (e.which === 40) {-->
-<!--navigateDown();-->
-<!--}-->
-<!--});-->
-
-<!--});-->
-
-
-<!--</script>-->
-
-<!--</body>-->
-
-<body >
-
-<style>
-
-    html{
-
-        scroll-behavior: smooth;
-        overscroll-behavior: contain;
-        background-color: transparent;
-        /*overflow: hidden;*/
-
-    }
-    .scrolling-box{
-
-        background-color: transparent;
-        display: block;
-
-    }
-    ::-webkit-scrollbar {
-        display: none;
-    }﻿
-
-</style>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <!-- <a class="navbar-brand" href="#">Demo</a> -->
-    <a class="navbar-brand" >
-        <img width="80%" height="80%" src="Logo-CITA.png">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav" style="display: flex; justify-content: flex-end">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#1" data-i18n="Main_header"> <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#2" data-i18n="Projects_header"></a>
-            </li>
-            <li class="nav-item" style="margin-left: 50px;">
-
-                <img id="bandera" width="38px" height="26px" src="./img/us.png" style="overflow: auto ;">
-                <select id="idiom" name="idiom"  onchange="myFunction()"  >
-                    <option value="English">English</option>
-                    <option value="Spanish">Español</option>
-
-                </select>
-
-
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<div class="scrolling-box">
-
-    <!--<nav>-->
-    <!--<a href="#1">1</a>-->
-    <!--<a href="#2">2</a>-->
-    <!--</nav>-->
-
+    <!--TODO: Define this style css File-->
     <style>
 
-        .intro-center {
+        html{
 
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-family: Verdana cursive;
-
+            scroll-behavior: smooth;
+            overscroll-behavior: contain;
+            background-color: transparent;
 
         }
+        .scrolling-box{
+
+            background-color: transparent;
+            display: block;
+
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }﻿
 
     </style>
+    <!--TODO: Define this style css File-->
+
+    <!--Nav Bar Section-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+        <!--CITA Image left side-->
+        <a class="navbar-brand">
+            <img width="80%" height="80%" src="Logo-CITA.png">
+        </a>
+        <!--CITA Image left side-->
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!--Navbar options right sided-->
+        <div class="collapse navbar-collapse d-none d-sm-block" id="navbarNav" style="display: flex; justify-content: flex-end">
+            <ul class="navbar-nav">
+
+                <!--Main section navbar link -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="#1" data-i18n="Main_header"> <span class="sr-only">(current)</span></a>
+                </li>
+                <!--Main section navbar link -->
+
+                <!--Projects section navbar link-->
+                <li class="nav-item">
+                    <a class="nav-link" href="#2" data-i18n="Projects_header"></a>
+                </li>
+                <!--Projects section navbar link-->
+
+                <!--Language Flag icon-->
+                <li class="nav-item" style="align-self: center; padding: 0.4rem 0.5rem 0.4rem 2.0rem; display: flex; justify-content: space-between; align-content: space-between">
+                    <img id="bandera" width="38px" height="26px" src="img/language-flag-images/us.png" style="overflow: auto;">
+                </li>
+                <!--Language Flag icon-->
+
+                <!--Language dropdown selector -->
+                <li class="nav-item" style="align-self: center; padding: 0.25rem 0.25rem">
+                    <select id="idiom" name="idiom" onchange="myFunction()">
+                        <option value="English">English</option>
+                        <option value="Spanish">Español</option>
+                    </select>
+                </li>
+                <!--Language dropdown selector -->
+
+            </ul>
+        </div>
+        <!--Navbar options right sided-->
+
+    </nav>
+    <!--Nav Bar Section-->
+
+    <div class="scrolling-box">
+
+        <!--TODO: Define this style css File-->
+        <style>
+
+            .intro-center {
+
+                text-align: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-family: Verdana cursive;
+
+            }
+
+        </style>
+        <!--TODO: Define this style css File-->
 
 
-    <section id="1" style="width: 100vw; height: 100vh; background-color: #f8f9fa">
+        <!--Intro Section (Image + Description)-->
+        <section id="1" style="width: 100vw; height: 100vh; background-color: #f8f9fa">
 
+            <div style="display: flex; align-items: center; justify-content: center; align-content: center; height: 100%; overflow-wrap: initial">
 
-        <div style="display: flex; align-items: center; justify-content: center; align-content: center; height: 100%; overflow-wrap: initial">
+                <!--Amazon basin image-->
+                <img style="height: 100%; width: 100%; background-image: url('river3.png'), linear-gradient(white,white); background-size: cover; border: 0px solid white">
+                <!--Amazon basin image-->
 
-            <img style="height: 100%; width: 100%; background-image: url('image.png'), linear-gradient(white,white); background-size: cover; border: 0px solid white">
+                <!--Amazon basin image Title (as hero)-->
+                <div class="intro-center">
+                    <h1 style="color: black ; font-family: 'Helvetica'; margin-bottom: 150px; width: 900px">Centro de Investigación y Tecnología del Agua</h1>
+                    <br>
+                </div>
+                <!--Amazon basin image Title (as hero)-->
 
-            <div class="intro-center">
-                <!-- <h3 >ABOUT</h3>  <img style="height: 100%; width: 100%;" src="./Titulo.JPG"> -->
-
-                <h1 style="color: black ; font-family: 'Helvetica'; margin-bottom: 150px; width: 900px">Centro de Investigación y Tecnología del Agua</h1><br>
-                <!--<p style="color: black;font-size: 30px">Centro de Investigación y Tecnología del Agua</p> <br>
-                <img height="30%" width="30%" src="UTEC_Logo.png">
-                -->
             </div>
 
+        </section>
+        <!--Intro Section (Image + Description)-->
 
-            <!--<img src="cita_demo.png" width="300px" height="100px" style="margin-top: -100px">-->
+        <!--Amazon basin description text -->
+        <div>
+
+            <div class="col-md-8 mx-auto" style="margin-top: 90px">
+                <p style="color: white; text-align: justify;"  data-i18n="intro_par_1"></p>
+                <p style="color: white; text-align: justify;" data-i18n="intro_par_2"></p>
+            </div>
 
         </div>
+        <!--Amazon basin description text -->
+
+        <!--TODO: Define this style css File-->
+        <style>
+
+            .flex-container {
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+            }
+
+            .button_explore {
+                z-index: -1;
+                position: absolute;
+                right: 10px;
+                bot: 10px;
+                width: 60px;
+                height: 60px;
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0s 0.45s;
+                cursor: pointer;
+            }
+
+        </style>
+        <!--TODO: Define this style css File-->
+
+        <!--Cards Section (High rseolution images)-->
+        <section id="2">
+
+            <div class="cont s--inactive">
+                <!-- cont inner start -->
+                <div class="cont__inner">
 
 
-    </section>
-    <div>
-        <div class="col-md-8 mx-auto" style="margin-top: 90px">
-            <p style="color: white; text-align: justify;"  data-i18n="intro_par_1"></p>
-            <p style="color: white; text-align: justify;" data-i18n="intro_par_2"></p>
+                    <!-- Card 1 content -->
+                    <div class="el">
+                        <div class="el__overflow">
+                            <div class="el__inner">
 
-        </div>
+                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
+                                <div class="el__bg"></div>
+
+                                <div class="el__preview-cont" >
+                                    <h2 class="el__heading">Dancing Rivers</h2>
+                                </div>
+
+                                <div class="el__content" style="overflow: scroll;">
+                                    <div class="el__text">Lorem ipsum</div>
+                                    <div>
+                                        <div class="flex-container">
+
+                                            <div style="padding:0px 40px; margin-top: 50px">
+                                                <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section1_text"></p>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="el__close-btn"></div>
+
+                                    <a target="_blank" rel="noopener noreferrer" href="map.html">
+                                        <button type="button"  style="cursor: pointer ;border:none; background-color: #17a2b8; color: white; ;border-radius: 18px ;font-size: 12px; width: 100px; height: 40px ;position: absolute; right: 70px; bottom: 25px;">EXPLORE</button>
+                                    </a>
+
+                                </div>
+                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
+
+                            </div>
+
+                        </div>
+                        <div class="el__index">
+                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            <!--<div class="el__index-back">1</div>-->
+                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            <div class="el__index-front">
+                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                                <!--<div class="el__index-overlay" data-index="1">1</div>-->
+                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 1 content -->
+
+
+                    <!-- Card 2 content -->
+                    <div class="el">
+                        <div class="el__overflow">
+                            <div class="el__inner">
+
+                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
+                                <div class="el__bg"></div>
+
+                                <div class="el__preview-cont">
+                                    <h2 class="el__heading">River Research</h2>
+                                </div>
+
+                                <div class="el__content" style="overflow: scroll;">
+                                    <div class="el__text">Lorem ipsum</div>
+                                    <div>
+                                        <div class="flex-container" style="height: 65%; ">
+
+                                            <div style="padding:0px 40px; margin-top: 50px">
+                                                <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section2_text"></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="el__close-btn"></div>
+
+                                    <a target="_blank" rel="noopener noreferrer" href="#">
+                                        <button type="button"  style="cursor: pointer ;border:none; background-color: #17a2b8; color: white; ;border-radius: 18px ;font-size: 12px; width: 100px; height: 40px ;position: absolute; right: 70px; bottom: 25px;">EXPLORE</button>
+                                    </a>
+
+                                </div>
+                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
+
+                            </div>
+                        </div>
+
+                        <div class="el__index">
+                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            <!--<div class="el__index-back">2</div>-->
+                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            <div class="el__index-front">
+                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                                <!--<div class="el__index-overlay" data-index="2">2</div>-->
+                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 content -->
+
+
+                    <!-- Card 3 content -->
+                    <div class="el">
+                        <div class="el__overflow">
+                            <div class="el__inner">
+
+                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
+                                <div class="el__bg"></div>
+                                <div class="el__preview-cont">
+                                    <h2 class="el__heading">GLACIERS</h2>
+                                </div>
+                                <div class="el__content" style="overflow: scroll;">
+                                    <div class="el__text">Lorem ipsum</div>
+                                    <div>
+                                        <div class="flex-container" style="height: 65%; ">
+
+                                            <div style="padding:0px 40px; margin-top: 50px">
+                                                <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section3_text"></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="el__close-btn"></div>
+
+                                    <a target="_blank" rel="noopener noreferrer" href="map.html">
+                                        <button type="button"  style="cursor: pointer ;border:none; background-color: #17a2b8; color: white; ;border-radius: 18px ;font-size: 12px; width: 100px; height: 40px ;position: absolute; right: 70px; bottom: 25px;">EXPLORE</button>
+                                    </a>
+
+                                </div>
+                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
+
+                            </div>
+                        </div>
+                        <div class="el__index">
+                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            <!--<div class="el__index-back">3</div>-->
+                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            <div class="el__index-front">
+                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                                <!--<div class="el__index-overlay" data-index="3">3</div>-->
+                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 content -->
+
+
+                    <!-- Card 4 content -->
+                    <div class="el">
+                        <div class="el__overflow">
+                            <div class="el__inner">
+
+                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
+                                <div class="el__bg"></div>
+                                <div class="el__preview-cont">
+                                    <h2 class="el__heading">COAST AND OCEAN</h2>
+                                </div>
+                                <div class="el__content" style="overflow: scroll;">
+                                    <div class="el__text">Lorem ipsum</div>
+                                    <div>
+                                        <div class="flex-container" style="height: 65%; ">
+
+                                            <div style="padding:0px 40px; margin-top: 50px">
+                                                <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section4_text"></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="el__close-btn"></div>
+
+                                    <a target="_blank" rel="noopener noreferrer" href="map.html">
+                                        <button type="button"  style="cursor: pointer ;border:none; background-color: #17a2b8; color: white; ;border-radius: 18px ;font-size: 12px; width: 100px; height: 40px ;position: absolute; right: 70px; bottom: 25px;">EXPLORE</button>
+                                    </a>
+
+                                </div>
+                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
+
+                            </div>
+                        </div>
+                        <div class="el__index">
+                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            <!--<div class="el__index-back">4</div>-->
+                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            <div class="el__index-front">
+                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                                <!--<div class="el__index-overlay" data-index="4">4</div>-->
+                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4 content -->
+
+
+                    <!-- Card 5 content -->
+                    <div class="el">
+                        <div class="el__overflow">
+                            <div class="el__inner">
+
+                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
+                                <div class="el__bg"></div>
+                                <div class="el__preview-cont">
+                                    <h2 class="el__heading">Voluptates</h2>
+                                </div>
+                                <div class="el__content" style="overflow: scroll;">
+                                    <div class="el__text">Lorem ipsum</div>
+                                    <div>
+                                        <div class="flex-container" style="height: 65%; ">
+
+                                            <div style="padding:0px 40px; margin-top: 50px">
+                                                <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section5_text"></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="el__close-btn"></div>
+
+                                    <a target="_blank" rel="noopener noreferrer" href="map.html">
+                                        <button type="button"  style="cursor: pointer ;border:none; background-color: #17a2b8; color: white; ;border-radius: 18px ;font-size: 12px; width: 100px; height: 40px ;position: absolute; right: 70px; bottom: 25px;">EXPLORE</button>
+                                    </a>
+
+                                </div>
+                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
+
+                            </div>
+                        </div>
+                        <div class="el__index">
+                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            <!--<div class="el__index-back">5</div>-->
+                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            <div class="el__index-front">
+                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                                <!--<div class="el__index-overlay" data-index="5">5</div>-->
+                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 5 content -->
+
+
+                </div>
+                <!-- cont inner end -->
+            </div>
+
+        </section>
+        <!--Cards Section (High rseolution images)-->
 
     </div>
 
-    <style>
-        .flex-container {
-            display: flex;
-
-            justify-content: center;
-            align-items: center;
-
-        }
-
-        .button_explore {
-            z-index: -1;
-            position: absolute;
-            right: 10px;
-            bot: 10px;
-            width: 60px;
-            height: 60px;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0s 0.45s;
-            cursor: pointer;
-        }
-    </style>
-
-    <!--
-    <div class="flex-container" style="width: 300px">
-
-
-background-color: #1e7e34;
-            <p class="el__heading" data-i18n="section1_text"></p>
-
-    </div>
-    -->
-
-
-    <section id="2">
-
-        <div class="cont s--inactive">
-            <!-- cont inner start -->
-            <div class="cont__inner">
-                <!-- el start -->
-                <div class="el">
-                    <div class="el__overflow">
-                        <div class="el__inner">
-                            <div class="el__bg"></div>
-                            <div class="el__preview-cont" >
-                                <h2 class="el__heading">Dancing Rivers</h2>
-
-                            </div>
-                            <div class="el__content" style="overflow: scroll;">
-                                <div class="el__text">Lorem ipsum</div>
-                                <!--<p class="el__heading" data-i18n="section1_text"></p>-->
-                                <div>
-                                    <div class="flex-container">
-
-
-                                        <div style="padding:0px 40px; margin-top: 50px">
-                                            <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section1_text"></p>
-                                        </div>
-
-                                        <!--<p class="flex-container" data-i18n="section1_text"></p>
-                                        height: 300px; max-width: 500px;
-                                        style="overflow-x: hidden; overflow-y: hidden;"
-                                         <div style="width: 600px;  border:1px solid red;">
-                                          <div class="flex-container" style="height: 65%; ">
-
-                                        position: absolute;
-                                        right: 10px;
-                                        top: 10px;
-                                        href="map.html"
-                                          -->
-
-                                    </div>
-
-                                </div>
-
-
-
-                                <div class="el__close-btn"></div>
-
-
-                                <a target="_blank" rel="noopener noreferrer" href="map.html">
-                                    <button type="button"  style="cursor: pointer ;border:none; background-color: #17a2b8; color: white; ;border-radius: 18px ;font-size: 12px; width: 100px; height: 40px ;position: absolute; right: 70px; bottom: 25px;">EXPLORE</button>
-
-                                </a>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="el__index">
-                        <!--<div class="el__index-back">1</div>-->
-                        <div class="el__index-front">
-                            <!--<div class="el__index-overlay" data-index="1">1</div>-->
-                        </div>
-                    </div>
-                </div>
-                <!-- el end -->
-                <!-- el start -->
-
-                <div class="el">
-                    <div class="el__overflow">
-                        <div class="el__inner">
-                            <div class="el__bg"></div>
-                            <div class="el__preview-cont">
-                                <h2 class="el__heading">River Research</h2>
-                            </div>
-                            <div class="el__content" style="overflow: scroll;">
-                                <div class="el__text">Lorem ipsum</div>
-                                <div>
-                                    <div class="flex-container" style="height: 65%; ">
-
-                                        <div style="padding:0px 40px; margin-top: 50px">
-                                            <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section2_text"></p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="el__close-btn"></div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="el__index">
-                        <!--<div class="el__index-back">2</div>-->
-                        <div class="el__index-front">
-                            <!--<div class="el__index-overlay" data-index="2">2</div>-->
-                        </div>
-                    </div>
-                </div>
-                <!-- el end -->
-                <!-- el start -->
-                <div class="el">
-                    <div class="el__overflow">
-                        <div class="el__inner">
-                            <div class="el__bg"></div>
-                            <div class="el__preview-cont">
-                                <h2 class="el__heading">GLACIERS</h2>
-                            </div>
-                            <div class="el__content" style="overflow: scroll;">
-                                <div class="el__text">Lorem ipsum</div>
-                                <div>
-                                    <div class="flex-container" style="height: 65%; ">
-
-                                        <div style="padding:0px 40px; margin-top: 50px">
-                                            <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section3_text"></p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="el__close-btn"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="el__index">
-                        <!--<div class="el__index-back">3</div>-->
-                        <div class="el__index-front">
-                            <!--<div class="el__index-overlay" data-index="3">3</div>-->
-                        </div>
-                    </div>
-                </div>
-                <!-- el end -->
-                <!-- el start -->
-                <div class="el">
-                    <div class="el__overflow">
-                        <div class="el__inner">
-                            <div class="el__bg"></div>
-                            <div class="el__preview-cont">
-                                <h2 class="el__heading">COAST AND OCEAN</h2>
-                            </div>
-                            <div class="el__content" style="overflow: scroll;">
-                                <div class="el__text">Lorem ipsum</div>
-                                <div>
-                                    <div class="flex-container" style="height: 65%; ">
-
-                                        <div style="padding:0px 40px; margin-top: 50px">
-                                            <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section4_text"></p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="el__close-btn"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="el__index">
-                        <!--<div class="el__index-back">4</div>-->
-                        <div class="el__index-front">
-                            <!--<div class="el__index-overlay" data-index="4">4</div>-->
-                        </div>
-                    </div>
-                </div>
-                <!-- el end -->
-                <!-- el start -->
-                <div class="el">
-                    <div class="el__overflow">
-                        <div class="el__inner">
-                            <div class="el__bg"></div>
-                            <div class="el__preview-cont">
-                                <h2 class="el__heading">Voluptates</h2>
-                            </div>
-                            <div class="el__content" style="overflow: scroll;">
-                                <div class="el__text">Lorem ipsum</div>
-                                <div>
-                                    <div class="flex-container" style="height: 65%; ">
-
-                                        <div style="padding:0px 40px; margin-top: 50px">
-                                            <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section5_text"></p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="el__close-btn"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="el__index">
-                        <!--<div class="el__index-back">5</div>-->
-                        <div class="el__index-front">
-                            <!--<div class="el__index-overlay" data-index="5">5</div>-->
-                        </div>
-                    </div>
-                </div>
-                <!-- el end -->
-            </div>
-            <!-- cont inner end -->
-        </div>
-
-    </section>
-
-</div>
-
-
-
-<script>
-
-    var $cont = document.querySelector('.cont');
-    var $elsArr = [].slice.call(document.querySelectorAll('.el'));
-    var $closeBtnsArr = [].slice.call(document.querySelectorAll('.el__close-btn'));
-
-    setTimeout(function() {
-        $cont.classList.remove('s--inactive');
-    }, 200);
-
-    $elsArr.forEach(function($el) {
-        $el.addEventListener('click', function() {
-            if (this.classList.contains('s--active')) return;
-            $cont.classList.add('s--el-active');
-            this.classList.add('s--active');
-        });
-    });
-
-    $closeBtnsArr.forEach(function($btn) {
-        $btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            $cont.classList.remove('s--el-active');
-            document.querySelector('.el.s--active').classList.remove('s--active');
-        });
-    });
-
-
-
-</script>
-
-<script>
-
-    var set_locale_to = function(locale) {
-        if (locale) {
-            $.i18n().locale = locale;
-        }
-        $('body').i18n();
-    };
-
-    var language="en";
-    $.i18n().load( {
-        'en': './i18n/en.json',
-        'ru': './i18n/ru.json',
-        'es': './i18n/es.json'
-    } ).done(function() {
-        set_locale_to(language);
-    });
-    History.Adapter.bind(window, 'statechange', function(){
-        set_locale_to(language);
-    });
-
-    var flag ="./img/us.png";
-    var bandera = document.getElementById("bandera");
-
-    function myFunction() {
-        var x = document.getElementById("idiom").value;
-
-        console.log("Changed to " + x);
-
-        if(x=="English"){
-            language = "en";
-            flag="./img/us.png";
-        };
-
-        if(x=="Spanish"){
-            language = "es";
-            flag="./img/es.png";
-        };
-
-        set_locale_to(language);
-        bandera.src = flag;
-
-    }
-
-
-
-</script>
-
+    <!--Bottom Cards Logic JS script-->
+    <script type="text/javascript" src="js/index/bottom_cards_logic.js"></script>
+    <!--Bottom Cards Logic JS script-->
+
+    <!--Language Handler Logic JS script-->
+    <script type="text/javascript" src="js/index/language_handler_logic.js"></script>
+    <!--Language Handler Logic JS script-->
 
 </body>
-
 
 </html>

@@ -45,32 +45,15 @@ var currentPolygon;
 var studyYearsMeandric = [1989, 1993, 1997, 2001, 2005, 2009, 2013, 2017];
 var studyYearsAnabranching = [1993, 1999, 2005, 2011, 2017];
 var polygons = [];
+
+/* */
+var disablePolygons = [];
 var infowindows = [];
 var centroids = [];
 var dataCounter = 0;
 var activeRivers = 0;
 
 var metricsContainer = document.getElementById("metricsContainer");
-
-var flexSideBarUTECButton = document.getElementById("flexSideBarUTECButton");
-var flexSideBarSenamhiButton = document.getElementById("flexSideBarSenamhiButton");
-var flexSideBarDroneButton = document.getElementById("flexSideBarDroneButton");
-
-var crossSectionsCardsContainer = document.getElementById("crossSectionsCardsContainer");
-
-// flexSideBarUTECButton.addEventListener('click', function () {
-//
-//
-// });
-//
-// flexSideBarSenamhiButton.addEventListener('click', function () {
-//
-//     var polygonCenter = polygonCenterTotal();
-//     var latLng = new google.maps.LatLng(polygonCenter.centerX, polygonCenter.centerY);
-//     map.panTo(latLng);
-//
-// });
-
 
 var overmap = document.getElementById("over_map");
 
@@ -269,6 +252,14 @@ morphoButton.addEventListener('click', function () {
     removeUHGLongMarkers();
     removeUHDMarkers();
     removeSenamhiMarkers();
+
+    /* */
+    removeDisablePolygonsFromMap();
+    addDisabledPolygons("data/rivers/Ucayali/ucayali2017.json", subArrayDisabledUcayaliCoords, ucayali2017DisabledCoords, 0);
+    addDisabledPolygons("data/rivers/Marañon/maranon2017.json", subArrayDisabledMaranonCoords, maranon2017DisabledCoords, 0);
+    addDisabledPolygons("data/rivers/Amazon/amazon2011.json", subArrayDisabledAmazonCoords, amazon2017DisabledCoords, 0);
+
+
     removeCurrentPolygonFromMap();
     addHuallagaRiverToMap();
 
@@ -295,6 +286,9 @@ senamhiButton.addEventListener('click', function () {
     removeUHDMarkers();
     removeUHGLongMarkers();
     removeSenamhiMarkers();
+
+    /* */
+    removeDisablePolygonsFromMap();
     removeCurrentPolygonFromMap();
 
 
@@ -484,6 +478,8 @@ function setRadioButtons() {
                     $("#huallagaSlider").fadeOut(350, function () {});
                     $("#droneVideoButton").fadeIn(350, function () {});
 
+                    /* */
+                    removeDisablePolygonsFromMap();
                     removeCurrentPolygonFromMap(); ``
                     addUHGPoints("data/cross_sections/huallaga-cross-section-location.geojson");
 
@@ -496,6 +492,8 @@ function setRadioButtons() {
                     $("#huallagaSlider").fadeOut(350, function () {});
                     $("#droneVideoButton").fadeIn(350, function () {});
 
+                    /* */
+                    removeDisablePolygonsFromMap();
                     removeCurrentPolygonFromMap();
 
                     addUHGLongPoints("data/long_sections/huallaga-long-section-location.geojson");
@@ -512,6 +510,9 @@ function setRadioButtons() {
                     $("#huallagaSlider").fadeOut(350, function () {});
                     $("#droneVideoButton").fadeIn(350, function () {});
 
+
+                    /* */
+                    removeDisablePolygonsFromMap();
                     removeCurrentPolygonFromMap();
 
                     addUHDPoints("data/cross_sections/huallaga-cross-section-location.geojson");
@@ -576,10 +577,20 @@ huallagaRiverButton.addEventListener('click', function () {
     $("#UHSCardsContainer").fadeOut(350, function () {});
     $("#crossSectionsCardsContainer").hide();
     huallagaRiverButton.style.backgroundColor = "#b3f4ff";
+
+    /* */
+    removeDisablePolygonsFromMap();
     removeCurrentPolygonFromMap();
     removeUHGMarkers();
     removeUHGLongMarkers();
     removeUHDMarkers();
+
+    /* */
+    addDisabledPolygons("data/rivers/Ucayali/ucayali2017.json", subArrayDisabledUcayaliCoords, ucayali2017DisabledCoords, 0);
+    addDisabledPolygons("data/rivers/Marañon/maranon2017.json", subArrayDisabledMaranonCoords, maranon2017DisabledCoords, 0);
+    addDisabledPolygons("data/rivers/Amazon/amazon2011.json", subArrayDisabledAmazonCoords, amazon2017DisabledCoords, 0);
+
+
     addHuallagaRiverToMap();
     activeRivers = 0;
 
@@ -604,10 +615,18 @@ ucayaliRiverButton.addEventListener('click', function () {
     $("#UHSCardsContainer").fadeOut(350, function () {});
     $("#crossSectionsCardsContainer").hide();
     ucayaliRiverButton.style.backgroundColor = "#b3f4ff";
+
+    /* */
+    removeDisablePolygonsFromMap();
     removeCurrentPolygonFromMap();
     removeUHGMarkers();
     removeUHGLongMarkers();
     removeUHDMarkers();
+
+    addDisabledPolygons("data/rivers/Huallaga/Huallaga2017.json", subArrayDisabledHuallagaCoords, huallaga2017DisabledCoords, 0);
+    addDisabledPolygons("data/rivers/Marañon/maranon2017.json", subArrayDisabledMaranonCoords, maranon2017DisabledCoords, 0);
+    addDisabledPolygons("data/rivers/Amazon/amazon2011.json", subArrayDisabledAmazonCoords, amazon2017DisabledCoords, 0);
+
     addUcayaliRiverToMap();
     activeRivers = 1;
 
@@ -632,10 +651,18 @@ maranonRiverButton.addEventListener('click', function () {
     $("#UHSCardsContainer").fadeOut(350, function () {});
     $("#crossSectionsCardsContainer").hide();
     maranonRiverButton.style.backgroundColor = "#b3f4ff";
+
+    /* */
+    removeDisablePolygonsFromMap();
     removeCurrentPolygonFromMap();
     removeUHGMarkers();
     removeUHGLongMarkers();
     removeUHDMarkers();
+
+    addDisabledPolygons("data/rivers/Huallaga/Huallaga2017.json", subArrayDisabledHuallagaCoords, huallaga2017DisabledCoords, 0);
+    addDisabledPolygons("data/rivers/Ucayali/ucayali2017.json", subArrayDisabledUcayaliCoords, ucayali2017DisabledCoords, 0);
+    addDisabledPolygons("data/rivers/Amazon/amazon2011.json", subArrayDisabledAmazonCoords, amazon2017DisabledCoords, 0);
+
     addMaranonRiverToMap();
     activeRivers = 2;
 
@@ -660,11 +687,19 @@ amazonasRiverButton.addEventListener('click', function () {
     $("#UHSCardsContainer").fadeOut(350, function () {});
     $("#crossSectionsCardsContainer").hide();
     amazonasRiverButton.style.backgroundColor = "#b3f4ff";
+
+
+    /* */
+    removeDisablePolygonsFromMap();
     removeCurrentPolygonFromMap();
     removeUHGMarkers();
     removeUHGLongMarkers();
     removeUHDMarkers();
 
+
+    addDisabledPolygons("data/rivers/Huallaga/Huallaga2017.json", subArrayDisabledHuallagaCoords, huallaga2017DisabledCoords, 0);
+    addDisabledPolygons("data/rivers/Ucayali/ucayali2017.json", subArrayDisabledUcayaliCoords, ucayali2017DisabledCoords, 0);
+    addDisabledPolygons("data/rivers/Marañon/maranon2017.json", subArrayDisabledMaranonCoords, maranon2017DisabledCoords, 0);
 
 
 
@@ -8494,6 +8529,7 @@ function addPolygonForDisabledRiver(coordsArray) {
 
         //polygons.push(currentPolygon);
         //centroids.push(polygonCenter(currentPolygon));
+        disablePolygons.push(currentPolygon);
 
         currentPolygon.setMap(map);
 
@@ -8534,6 +8570,16 @@ function removeCurrentPolygonFromMap() {
 
     for (var i = 0; i < polygons.length; i++){
         polygons[i].setMap(null);
+    }
+
+}
+
+/* */
+//Remove disable polygons
+function removeDisablePolygonsFromMap() {
+
+    for (var i = 0; i < disablePolygons.length; i++){
+        disablePolygons[i].setMap(null);
     }
 
 }
@@ -8853,6 +8899,21 @@ function initMap() {
                 strokeWeight: 0.5
             }
         });
+
+    });
+
+    $("#main-wrapper").hide();
+
+    google.maps.event.addListener(map, 'idle', function () {
+
+        setTimeout(function () {
+
+            $("#main-wrapper").fadeIn(1500, function () {});
+            $("#loading").fadeOut(100, function () {
+
+            });
+
+        }, 2000);
 
     });
 

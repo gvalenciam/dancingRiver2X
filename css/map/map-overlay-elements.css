@@ -1,0 +1,231 @@
+
+#main-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#map {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#over_map {
+    background-color: transparent;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000000;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.35);
+}
+
+#flexSideBar {
+    background-color: rgba(255,255,255,0.8);
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    z-index: 1000001;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.35);
+}
+
+#huallagaSlider{
+    position: absolute;
+    left: 10px;
+    right: 65px;
+    bottom: 10px;
+    z-index: 1000001;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+#riverButtonsBar{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 50vh;
+    z-index: 1000001;
+    border-radius: 6px;
+    padding: 0px;
+    width: 14vw;
+}
+
+#metricsContainer{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1000001;
+    border-radius: 6px;
+    padding: 20px;
+    min-width: 14vw;
+}
+
+#riverButtonsBarContainer{
+    width: 14vw;
+    height: 22vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-around;
+}
+
+#crossSectionsCardsContainer{
+    position: absolute;
+    left: 48.5vw;
+    width: 50vw;
+    height: 95vh;
+    top: 2.5vh;
+    z-index: 1000001;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#crossSectionsCardA{
+    width: 49.5vw;
+    height: 45vh;
+    background-color: white;
+    z-index: 1000005;
+}
+
+#crossSectionsCardB{
+    width: 49.5vw;
+    height: 45vh;
+    background-color: white;
+    z-index: 1000005;
+}
+
+#senamhiCardsContainer{
+    position: absolute;
+    left: 48.5vw;
+    width: 50vw;
+    height: 95vh;
+    top: 2.5vh;
+    z-index: 1000001;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#senamhiCardA{
+    width: 49.5vw;
+    height: 45vh;
+    background-color: white;
+    z-index: 1000005;
+}
+
+#senamhiCardB{
+    width: 49.5vw;
+    height: 45vh;
+    background-color: white;
+    z-index: 1000005;
+}
+
+#UHGCardsContainer{
+    position: absolute;
+    left: 48.5vw;
+    width: 50vw;
+    height: 95vh;
+    top: 2.5vh;
+    z-index: 1000001;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#UHGCardA{
+    width: 49.5vw;
+    height: 45vh;
+    background-color: white;
+    z-index: 1000005;
+}
+
+#UHGCardB{
+    width: 49.5vw;
+    height: 45vh;
+    background-color: white;
+    z-index: 1000005;
+}
+
+#UHSCardsContainer{
+    position: absolute;
+    left: 48.5vw;
+    width: 50vw;
+    height: 95vh;
+    top: 2.5vh;
+    z-index: 1000001;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#UHSCardA{
+    width: 49.5vw;
+    height: 45vh;
+    background-color: white;
+    z-index: 1000005;
+}
+
+#UHSCardB{
+    width: 49.5vw;
+    height: 45vh;
+    background-color: white;
+    z-index: 1000005;
+}
+
+#imageZoomOverlay{
+    position: absolute;
+    left: 0vw;
+    right: 0vw;
+    top: 0vh;
+    bottom: 0vh;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000001;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#droneVideoButton{
+    position: absolute;
+    left: 70px;
+    bottom: 70px;
+    width: 80px;
+    height: 80px;
+    z-index: 1000001;
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#droneVideoOverlay{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000001;
+    background-color: rgba(255,255,255,0.85);
+}
