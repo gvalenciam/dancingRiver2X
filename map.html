@@ -40,6 +40,27 @@
     <!--TODO: If a new overlay is added include its style in this file (use it as guideline too)-->
     <!--Map overlay CSS style-->
 
+    <style>
+
+        #main-wrapper {
+            display: block;
+        }
+        #loading {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(192, 192, 192, 0.5);
+            background-image: url("Gif/generated_gifs/cita.gif");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -763,6 +784,8 @@
         <!--Video player logic JS script-->
 
     </div>
+
+    <div id="loading"></div>
 
     <!--Main map JS script-->
     <!--TODO: The WHOLE code is located in this file-->

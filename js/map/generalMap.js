@@ -8902,6 +8902,21 @@ function initMap() {
 
     });
 
+    $("#main-wrapper").hide();
+
+    google.maps.event.addListener(map, 'idle', function () {
+
+        setTimeout(function () {
+
+            $("#main-wrapper").fadeIn(1500, function () {});
+            $("#loading").fadeOut(100, function () {
+
+            });
+
+        }, 2000);
+
+    });
+
 }
 
 function addHuallagaRiverToMap(){
