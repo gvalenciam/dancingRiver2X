@@ -55,26 +55,6 @@ var activeRivers = 0;
 
 var metricsContainer = document.getElementById("metricsContainer");
 
-var flexSideBarUTECButton = document.getElementById("flexSideBarUTECButton");
-var flexSideBarSenamhiButton = document.getElementById("flexSideBarSenamhiButton");
-var flexSideBarDroneButton = document.getElementById("flexSideBarDroneButton");
-
-var crossSectionsCardsContainer = document.getElementById("crossSectionsCardsContainer");
-
-// flexSideBarUTECButton.addEventListener('click', function () {
-//
-//
-// });
-//
-// flexSideBarSenamhiButton.addEventListener('click', function () {
-//
-//     var polygonCenter = polygonCenterTotal();
-//     var latLng = new google.maps.LatLng(polygonCenter.centerX, polygonCenter.centerY);
-//     map.panTo(latLng);
-//
-// });
-
-
 var overmap = document.getElementById("over_map");
 
 overmap.addEventListener('click', function () {

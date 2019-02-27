@@ -30,12 +30,12 @@ function myFunction() {
 
         if(selectedLanguage === "English"){
             language = "en";
-            flag="./img/us.png";
+            flag="./img/language-flag-images/us.png";
         }
 
     if(selectedLanguage === "Spanish"){
         language = "es";
-        flag="./img/es.png";
+        flag="./img/language-flag-images/es.png";
     }
 
     set_locale_to(language);
