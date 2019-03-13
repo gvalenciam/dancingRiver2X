@@ -118,6 +118,60 @@
     </nav>
     <!--Nav Bar Section-->
 
+    
+    <style>
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                transform: translate3d(0,40px,0)
+            }
+
+            to {
+                transform: translate3d(0,0,0);
+                opacity: 1
+            }
+        }
+        @-webkit-keyframes fadeInUp {
+            from {
+                transform: translate3d(0,40px,0)
+            }
+
+            to {
+                transform: translate3d(0,0,0);
+                opacity: 1
+            }
+        }
+
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-fill-mode: both
+        }
+
+        .animatedFadeInUp {
+            opacity: 0
+        }
+
+        .fadeInUp {
+            opacity: 0;
+            animation-name: fadeInUp;
+            -webkit-animation-name: fadeInUp;
+        }
+
+    </style>
+
+    <style>
+
+        .simple_text
+        {
+            opacity:0;
+            text-align: justify;
+        }
+
+    </style>
+
+
     <div class="scrolling-box">
 
         <!--TODO: Define this style css File-->
@@ -145,12 +199,14 @@
             <div style="display: flex; align-items: center; justify-content: center; align-content: center; height: 100%; overflow-wrap: initial">
 
                 <!--Amazon basin image-->
-                <img style="height: 100%; width: 100%; background-image: url('river3.png'), linear-gradient(white,white); background-size: cover; border: 0px solid white">
+                <img style="height: 100%; width: 100%; background-image: url('img/index/landing_image.png'), linear-gradient(white,white); background-size: cover; border: 0px solid white">
                 <!--Amazon basin image-->
 
                 <!--Amazon basin image Title (as hero)-->
                 <div class="intro-center">
-                    <h1 style="color: black ; font-family: 'Helvetica'; margin-bottom: 150px; width: 900px">Centro de Investigación y Tecnología del Agua</h1>
+
+                    <h1  id="Title_pag" class="animated animatedFadeInUp fadeInUp" style="color: black ; font-family: 'Helvetica'; margin-bottom: 150px; width: 900px">Centro de Investigación y Tecnología del Agua</h1>
+
                     <br>
                 </div>
                 <!--Amazon basin image Title (as hero)-->
@@ -160,12 +216,17 @@
         </section>
         <!--Intro Section (Image + Description)-->
 
+
         <!--Amazon basin description text -->
-        <div>
+        <div >
 
             <div class="col-md-8 mx-auto" style="margin-top: 90px">
-                <p style="color: white; text-align: justify;"  data-i18n="intro_par_1"></p>
-                <p style="color: white; text-align: justify;" data-i18n="intro_par_2"></p>
+                <p class="simple_text" style="color: white; text-align: justify;"  data-i18n="intro_par_1"></p>
+                <!-- <p class="animated animatedFadeInUp fadeInUp" style="color: white; text-align: justify;"  data-i18n="intro_par_1"></p> -->
+
+                <p class="simple_text" id="text2" style="color: white; text-align: justify;" data-i18n="intro_par_2"></p>
+                <!--<p class="fade_text" style="color: white; text-align: justify;" data-i18n="intro_par_2"></p> -->
+
             </div>
 
         </div>
@@ -269,13 +330,15 @@
                                     <h2 class="el__heading">River Research</h2>
                                 </div>
 
+
+
                                 <div class="el__content" style="overflow: scroll;">
                                     <div class="el__text">Lorem ipsum</div>
                                     <div>
                                         <div class="flex-container" style="height: 65%; ">
 
-                                            <div style="padding:0px 40px; margin-top: 50px">
-                                                <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section2_text"></p>
+                                            <div  style="padding:0px 40px; margin-top: 50px">
+                                                <p  style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section2_text"></p>
                                             </div>
                                         </div>
 
@@ -464,6 +527,37 @@
     <!--Language Handler Logic JS script-->
     <script type="text/javascript" src="js/index/language_handler_logic.js"></script>
     <!--Language Handler Logic JS script-->
+
+
+
+<script>
+    $(document).ready(function() {
+
+        $(window).scroll( function(){
+
+            $('.simple_text').each( function(i) {
+
+                var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+                var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+                if (bottom_of_window > bottom_of_object) {
+
+                    var k = document.getElementsByClassName("simple_text");
+                    for(i=0;i < k.length; i++){
+                        k[i].className = "animated animatedFadeInUp fadeInUp";
+                    }
+
+                    $(this).animate({'opacity': '1'}, 200);
+                    console.log(element.className);
+
+
+                }
+
+            });
+        });
+});
+
+</script>
 
 </body>
 

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Basin</title>
+    <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+
+    <!--JQuery JS Script-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!--JQuery JS Script-->
+
+    <!--Bootstrap JS script-->
+    <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <!--Bootstrap JS script-->
+
+    <!--Bootstrap CSS Style-->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <!--Bootstrap CSS Style-->
+
+    <!--Bottom Cards section CSS Style-->
+    <link rel="stylesheet" href="css/bottom-cards-style.css">
+    <!--Bottom Cards section CSS Style-->
+
+    <!--Image Handling JS Scripts-->
+    <script src="./lib/CLDRPluralRuleParser/CLDRPluralRuleParser.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.messagestore.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.fallbacks.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.language.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.parser.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.emitter.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
+    <!--Image Handling JS Scripts-->
+
+    <script src="./lib/history/jquery.history.js"></script>
+    <script src="./lib/url/url.min.js"></script>
+
+    <!--Country Picker CSS Style-->
+    <link rel="stylesheet" href="jquery.ccpicker.css">
+    <!--Country Picker CSS Style-->
+
+    <!--New layout script-->
+    <script type="text/javascript" href="js/index/new_layout.js"></script>
+    <!--New layout script-->
+
+</head>
+
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+        padding: 4px;
+        text-align: center;
+        background-color: #f1f1f1;
+        height: 200px;
+    }
+
+    .column {
+        float: left;
+        width: 25%;
+        padding: 0 10px;
+    }
+
+    .container_border{
+        width: 100%;
+        /*border: #1b1e21;* border-style: groove;*/
+        border-style: solid;
+        border-width: 2px;
+
+        /*padding: 20px;*/
+    }
+
+    .centered-bottom {
+        position: absolute;
+
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: 4px;
+    }
+
+</style>
+<style>
+    .overlay {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0, 0.9);
+        overflow-x: hidden;
+        /*overflow-y: hidden;*/
+
+        transition: 0.5s;
+
+
+    }
+    .overlay_popup{
+        height: 100%;
+        width: 100%;
+        /*width: 0;*/
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        /*        top: 20%;
+                left: 10%;*/
+        /*background-color: rgb(0,0,0);*/
+        /*background-color: rgba(0,0,0, 0.9);*/
+        /*overflow-x: hidden;*/
+        /*transition: 0.5s;*/
+        display: none;
+        /*align: center;*/
+        /*background-color  : white;*/
+
+    }
+    .text_overlay{
+        color: white;
+    }
+    .container_form{
+        width: 100%;
+        /*border: #1b1e21;* border-style: groove;*/
+        border-style: solid;
+        border-width: 2px;
+
+        padding: 30px;
+        /*padding: 20px;*/
+    }
+
+    .close_button{
+        background-color: #5a6268;
+        height:50px;
+        width: 50px;
+    }
+
+</style>
+
+
+<template>
+    <div class="col-8 mx-auto">
+    <div>
+        <h2 id="titlePag_temp1" style="text-align: center; color: #fd7e14"></h2>
+    </div>
+    <div style="margin-top: 60px">
+        <p id="introParagraph_temp1" style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    </div>
+    </div>
+</template>
+
+
+
+
+<template>
+<div class="col-8 mx-auto" style="margin-top: 40px; margin-bottom: 40px">
+
+
+
+
+
+
+    <div  class="row">
+        <div class="column">
+            <div class="card">
+
+                <a id="card_btn_1" href="#" style="width:100%; height: 100%">
+                    <img id="imgCard1_temp2" src="./img/bottom-cards-images/card_1.JPG"  style="width:100%; height: 100%">
+                    <p id="textCard1_temp2" class="centered-bottom" style="text-align: center; color: #fd7e14"></p>
+                </a>
+
+
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <a id="card_btn_2" href="#" style="width:100%; height: 100%">
+                    <img id="imgCard2_temp2" src="./img/bottom-cards-images/card_2.JPG" alt="Norway" style="width:100%; height: 100%">
+
+                    <p id="textCard2_temp2" class="centered-bottom" style="text-align: center; color: #fd7e14"></p>
+                </a>
+
+
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <a id="card_btn_3" href="#" style="width:100%; height: 100%">
+                    <img id="imgCard3_temp2" src="./img/bottom-cards-images/card_3.JPG" alt="Norway" style="width:100%; height: 100%">
+
+                    <p id="textCard3_temp2" class="centered-bottom" style="text-align: center; color: #fd7e14"></p>
+                </a>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+</template>
+
+
+
+<template>
+<div class="col-8 mx-auto" style="margin-bottom: 40px">
+    <div>
+        <h4 id="middleTitle_temp3" style="text-align: center;color: #fd7e14"></h4>
+
+    </div>
+    <div class="row">
+        <div class="col-9 mx-auto container_border" style="padding: 20px;">
+
+            <img id="mainImg_temp3" src="./img/web_river.PNG" alt="Norway" style="width:100%; height: 100%">
+
+        </div>
+        <div class="col-3 mx-auto">
+
+            <div style="width:100%; height: 50%">
+                <img id="rightImg_temp3" src="./img/peru_region.PNG" alt="Norway" style="width:100%; height: 100%">
+
+            </div>
+
+            <div class="container_border" style="height: 50%; padding: 20px;">
+                <h6 id="rightSubTitle1_temp3"></h6>
+                <p id="rightSubText1_temp3" style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. </p>
+
+                <h6 id="rightSubTitle2_temp3"></h6>
+                <p id="rightSubText2_temp3" style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua.</p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</template>
+
+
+<template>
+<div class="col-8 mx-auto" style="margin-top: 40px; margin-bottom: 40px">
+
+
+    <div id="myNav" class="overlay ">
+
+    </div>
+
+    <div style="height: 100%; width: 100%">
+
+        <div id="popup_ecosystem" class="overlay_popup" style="padding: 60px">
+            <div style=" background-color  : white; margin-left: 150px; margin-right: 150px; margin-top: 40px">
+
+
+                <a class="close_button" href="#" style="position: absolute; right: 20px; top: 10px;">
+                    <div style="background-color: #5a6268;  height:50px; width: 50px;"></div>
+                </a>
+
+
+
+                <div class="container_form"  >
+
+
+                    <div>
+                        <h4 style="color: #fd7e14">ECOSISTEMA AMAZÓNICO</h4><br>
+                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                            t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                            odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="./img/bottom-cards-images/card_1.JPG" style="width:100%; height: 100%">
+                        </div>
+                        <div class="col-6">
+                            <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                                t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                                odo consequat.</p>
+
+                        </div>
+                        <div class="col-3">
+                            <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <div id="popup_proyects" class="overlay_popup" style="padding: 60px">
+        <div style=" background-color  : white; margin-left: 150px; margin-right: 150px; margin-top: 40px">
+
+            <a class="close_button" href="#" style="position: absolute; right: 20px; top: 10px; background-color: #5a6268;  height:50px; width: 50px;">
+                <div style="background-color: #5a6268;  height:50px; width: 50px;"></div>
+            </a>
+
+            <div class="container_form"  >
+
+
+
+                <div>
+                    <h4 style="color: #fd7e14">PROYECTOS</h4><br>
+                    <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                        t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                        odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
+                </div>
+
+                <div style="width: 200px; height: 100px">
+                    <img src="./img/stadistic.PNG"  style="width:100%; height: 100%">
+
+                </div>
+
+                <div class="row">
+                    <div class="col-9" style="margin-top: 20px">
+                        <h6>PROYECTO 1</h6>
+                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                            t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                            odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                            t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                            odo consequat.</p>
+                    </div>
+
+                    <div class="col-3" style="height: 200px ">
+                        <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <div id="popup_education" class="overlay_popup" style="padding: 60px; overflow: scroll;">
+        <div style=" background-color  : white; margin-left: 150px; margin-right: 150px; margin-top: 40px">
+
+            <a class="close_button" href="#" style="position: absolute; right: 20px; top: 10px; background-color: #5a6268;  height:50px; width: 50px;">
+                <div style="background-color: #5a6268;  height:50px; width: 50px;"></div>
+            </a>
+
+            <div class="container_form"  >
+
+
+
+                <div>
+                    <h4 style="color: #fd7e14">EDUCACIÓN</h4><br>
+                    <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                        t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                        odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
+                </div>
+
+
+                <div style="margin-top: 10px">
+                    <h6>CHARLAS</h6>
+                    <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                        t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                        odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+
+                <div style="height: 100px; width: 200px; ">
+                    <img src="./img/stadistic.PNG"  style="width:100%; height: 100%">
+                </div>
+
+                <div style="margin-top: 10px">
+                    <h6>EVENTOS</h6>
+                    <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                        t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                        odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+
+                <div style="height: 100px; width: 200px; ">
+                    <img src="./img/stadistic.PNG"  style="width:100%; height: 100%">
+                </div>
+
+
+                <div style="margin-top: 10px">
+                    <h6>CURSOS</h6>
+                    <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                        t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                        odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+
+                <div>
+                    <div class="row" >
+                        <div class="col-4"  style="height: 200px; width: 100px; ">
+                            <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+                        </div>
+                        <div class="col-4"  style="height: 200px; width: 100px; ">
+                            <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+                        </div>
+                        <div class="col-4"  style="height: 200px; width: 100px; ">
+                            <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+    <script>
+
+        $("#card_btn_1").click(function(){
+            document.getElementById("myNav").style.width = "100%";
+            // $("#div1").fadeIn();
+            // $("#div2").fadeIn("slow");
+            $("#popup_ecosystem").fadeIn(2000);
+        });
+        $("#card_btn_2").click(function(){
+            document.getElementById("myNav").style.width = "100%";
+            // $("#div1").fadeIn();
+            // $("#div2").fadeIn("slow");
+            $("#popup_proyects").fadeIn(2000);
+        });
+        $("#card_btn_3").click(function(){
+            document.getElementById("myNav").style.width = "100%";
+            // $("#div1").fadeIn();
+            // $("#div2").fadeIn("slow");
+            $("#popup_education").fadeIn(2000);
+        });
+
+
+        $(".close_button").click(function(){
+            document.getElementById("myNav").style.width = "0%";
+            document.getElementById("popup_ecosystem").style.display="none";
+            document.getElementById("popup_proyects").style.display="none";
+            document.getElementById("popup_education").style.display="none";
+
+        });
+
+    </script>
+</template>
+
+<template>
+    <div class="row">
+        <div class="col-9" style="margin-top: 20px">
+            <h6>PROYECTO 1</h6>
+            <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                odo consequat.</p>
+        </div>
+
+        <div class="col-3" style="height: 200px ">
+            <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+        </div>
+    </div>
+    <script>
+
+        $("#card_btn_1").click(function(){
+            document.getElementById("myNav").style.width = "100%";
+            // $("#div1").fadeIn();
+            // $("#div2").fadeIn("slow");
+            $("#popup_ecosystem").fadeIn(2000);
+        });
+        $("#card_btn_2").click(function(){
+            document.getElementById("myNav").style.width = "100%";
+            // $("#div1").fadeIn();
+            // $("#div2").fadeIn("slow");
+            $("#popup_proyects").fadeIn(2000);
+        });
+        $("#card_btn_3").click(function(){
+            document.getElementById("myNav").style.width = "100%";
+            // $("#div1").fadeIn();
+            // $("#div2").fadeIn("slow");
+            $("#popup_education").fadeIn(2000);
+        });
+
+
+        $(".close_button").click(function(){
+            document.getElementById("myNav").style.width = "0%";
+            document.getElementById("popup_ecosystem").style.display="none";
+            document.getElementById("popup_proyects").style.display="none";
+            document.getElementById("popup_education").style.display="none";
+
+        });
+
+    </script>s
+</template>
+
+
+<body style="background-color: white;">
+
+<script>
+
+    $(document).ready(function() {
+
+        var portal ="amazon_basin";
+        const urlParams = new URLSearchParams(window.location.search);
+        const temp = urlParams.get('portal');
+
+        var temp_1 = document.getElementsByTagName("template")[0];
+        var temp_2 = document.getElementsByTagName("template")[1];
+        var temp_3 = document.getElementsByTagName("template")[2];
+        var temp_4 = document.getElementsByTagName("template")[3];
+
+
+        var title1= "AMAZON BASIN";
+        var title2= "DANCING RIVERS";
+        var paragraph1= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n" +
+            "                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n" +
+            "                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        var paragraph2= "ABCDEFGHIJK Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n" +
+            "                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n" +
+            "                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+        var imgCard1 = './img/bottom-cards-images/card_1.JPG';
+        var imgCard2 = './img/bottom-cards-images/card_2.JPG';
+        var imgCard3 = './img/bottom-cards-images/card_3.JPG';
+
+        var mainImg = './img/web_river.PNG';
+        var rightImg = './img/peru_region.PNG';
+
+
+
+        var textCard1_1= "ECOSISTEMA AMAZÓNICO";
+        var textCard2_1= "PROYECTOS";
+        var textCard3_1= "EDUCACIÓN";
+        var textCard1_2= "ABCDEFG";
+        var textCard2_2= "HIJKLM";
+        var textCard3_2= "MNOPQRS";
+        var middleTitle1 = "PORTALES";
+        var middleTitle2 = "PORTALES 2";
+        var rightTitle1_1 = "DANCING RIVERS";
+        var rightTitle1_2 = "DANCING RIVERS2";
+
+        var rightText1_1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n" +
+            "                        ut labore et dolore magna aliqua. ";
+        var rightText1_2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n" +
+            "                        ut labore et dolore magna aliqua. ";
+        var rightTitle2_1 = "RIVER RESEARCH";
+        var rightTitle2_2 = "RIVER RESEARCH2";
+
+        var rightText2_1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n" +
+            "                        ut labore et dolore magna aliqua.";
+        var rightText2_2 = "SADADAS Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n" +
+            "                        ut labore et dolore magna aliqua.";
+
+
+        var title = title1;
+        var paragraph = paragraph1;
+        var imgCard1 = imgCard1;
+        var textCard1 = textCard1_1;
+        var imgCard2 = imgCard2;
+        var textCard2 = textCard2_1;
+        var imgCard3 = imgCard3;
+        var textCard3 = textCard3_1;
+        var middleTitle = middleTitle1;
+        var mainImg = mainImg;
+        var rightImg = rightImg;
+        var rightTitleTop = rightTitle1_1;
+        var rightTextTop = rightText1_1;
+        var rightTitleDown = rightTitle2_1;
+        var rightText2Down = rightText2_1;
+
+
+
+        var showTemp1 = true;
+        var showTemp2 = true;
+        var showTemp3 = true;
+
+
+        switch(temp) {
+            case "amazon_basin":
+                console.log("amazon_basin");
+                title = title1;
+                paragraph = paragraph1;
+                imgCard1 = imgCard1;
+                textCard1 = textCard1_1;
+                imgCard2 = imgCard2;
+                textCard2 = textCard2_1;
+                imgCard3 = imgCard3;
+                textCard3 = textCard3_1;
+                middleTitle = middleTitle1;
+                mainImg = mainImg;
+                rightImg = rightImg;
+                rightTitleTop = rightTitle1_1;
+                rightTextTop = rightText1_1;
+                rightTitleDown = rightTitle2_1;
+                rightText2Down = rightText2_1;
+
+                showTemp1 = true;
+                showTemp2 = true;
+                showTemp3 = true;
+
+                break;
+            case "dancing_rivers":
+                console.log("dancing_rivers");
+
+                title = title2;
+                paragraph = paragraph2;
+                imgCard1 = imgCard1;
+                textCard1 = textCard1_2;
+                imgCard2 = imgCard2;
+                textCard2 = textCard2_2;
+                imgCard3 = imgCard3;
+                textCard3 = textCard3_2;
+                middleTitle = middleTitle2;
+                mainImg = mainImg;
+                rightImg = rightImg;
+                rightTitleTop = rightTitle1_2;
+                rightTextTop = rightText1_2;
+                rightTitleDown = rightTitle2_2;
+                rightText2Down = rightText2_2;
+
+                showTemp1 = true;
+                showTemp2 = true;
+                showTemp3 = true;
+
+                break;
+
+
+            default:
+                console.log("default");
+                title = title1;
+                paragraph = paragraph1;
+                imgCard1 = imgCard1;
+                textCard1 = textCard1_1;
+                imgCard2 = imgCard2;
+                textCard2 = textCard2_1;
+                imgCard3 = imgCard3;
+                textCard3 = textCard3_1;
+                middleTitle = middleTitle1;
+                mainImg = mainImg;
+                rightImg = rightImg;
+                rightTitleTop = rightTitle1_1;
+                rightTextTop = rightText1_1;
+                rightTitleDown = rightTitle2_1;
+                rightText2Down = rightText2_1;
+
+                showTemp1 = true;
+                showTemp2 = true;
+                showTemp3 = true;
+
+        }
+
+
+
+
+        temp_1.content.getElementById("titlePag_temp1").innerHTML = title;
+        temp_1.content.getElementById("introParagraph_temp1").innerHTML = paragraph;
+
+            var clon_1 = temp_1.content;
+            document.getElementById("section1").appendChild(clon_1);
+
+
+        temp_2.content.getElementById("imgCard1_temp2").src = imgCard1;
+        temp_2.content.getElementById("textCard1_temp2").innerHTML = textCard1;
+        temp_2.content.getElementById("imgCard2_temp2").src = imgCard2;
+        temp_2.content.getElementById("textCard2_temp2").innerHTML = textCard2;
+        temp_2.content.getElementById("imgCard3_temp2").src = imgCard3;
+        temp_2.content.getElementById("textCard3_temp2").innerHTML = textCard3;
+
+            var clon_2 = temp_2.content.cloneNode(true);
+            document.getElementById("section2").appendChild(clon_2);
+
+        temp_3.content.getElementById("middleTitle_temp3").innerHTML = middleTitle;
+        temp_3.content.getElementById("mainImg_temp3").src = mainImg;
+        temp_3.content.getElementById("rightImg_temp3").src = rightImg;
+        temp_3.content.getElementById("rightSubTitle1_temp3").innerHTML = rightTitleTop;
+        temp_3.content.getElementById("rightSubText1_temp3").innerHTML = rightTextTop;
+        temp_3.content.getElementById("rightSubTitle2_temp3").innerHTML = rightTitleDown;
+        temp_3.content.getElementById("rightSubText2_temp3").innerHTML = rightText2Down;
+
+        var clon_3 = temp_3.content.cloneNode(true);
+        document.getElementById("section3").appendChild(clon_3);
+
+
+        var clon_4 = temp_4.content.cloneNode(true);
+        document.getElementById("section4").appendChild(clon_4);
+    });
+
+</script>
+
+
+
+<section id="section1"></section>
+
+<section id="section2" ></section>
+
+
+
+<section id="section3" ></section>
+
+<section id="section4" ></section>
+
+</body>
+
+</html>

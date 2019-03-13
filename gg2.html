@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Basin</title>
+    <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+
+    <!--JQuery JS Script-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!--JQuery JS Script-->
+
+    <!--Bootstrap JS script-->
+    <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <!--Bootstrap JS script-->
+
+    <!--Bootstrap CSS Style-->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <!--Bootstrap CSS Style-->
+
+    <!--Bottom Cards section CSS Style-->
+    <link rel="stylesheet" href="css/bottom-cards-style.css">
+    <!--Bottom Cards section CSS Style-->
+
+    <!--Image Handling JS Scripts-->
+    <script src="./lib/CLDRPluralRuleParser/CLDRPluralRuleParser.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.messagestore.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.fallbacks.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.language.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.parser.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.emitter.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
+    <!--Image Handling JS Scripts-->
+
+    <script src="./lib/history/jquery.history.js"></script>
+    <script src="./lib/url/url.min.js"></script>
+
+    <!--Country Picker CSS Style-->
+    <link rel="stylesheet" href="jquery.ccpicker.css">
+    <!--Country Picker CSS Style-->
+</head>
+
+
+
+<body style="background-color: white;">
+
+
+<section id="section1" class="col-8 mx-auto">
+    <template></template>
+    <div>
+        <h2 style="text-align: center; color: #fd7e14">AMAZON BASIN</h2>
+    </div>
+    <div style="margin-top: 60px">
+        <P style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</P>
+
+    </div>
+
+</section>
+
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+        padding: 4px;
+        text-align: center;
+        background-color: #f1f1f1;
+        height: 200px;
+    }
+
+    .column {
+        float: left;
+        width: 25%;
+        padding: 0 10px;
+    }
+
+    .container_border{
+        width: 100%;
+        /*border: #1b1e21;* border-style: groove;*/
+        border-style: solid;
+        border-width: 2px;
+
+        /*padding: 20px;*/
+    }
+
+    .centered-bottom {
+        position: absolute;
+
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: 4px;
+    }
+
+</style>
+
+
+<style>
+    .overlay {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0, 0.9);
+        overflow-x: hidden;
+        /*overflow-y: hidden;*/
+
+        transition: 0.5s;
+
+
+    }
+    .overlay_popup{
+        height: 100%;
+        width: 100%;
+        /*width: 0;*/
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+/*        top: 20%;
+        left: 10%;*/
+        /*background-color: rgb(0,0,0);*/
+        /*background-color: rgba(0,0,0, 0.9);*/
+        /*overflow-x: hidden;*/
+        /*transition: 0.5s;*/
+        display: none;
+        /*align: center;*/
+        /*background-color  : white;*/
+
+    }
+    .text_overlay{
+        color: white;
+    }
+    .container_form{
+        width: 100%;
+        /*border: #1b1e21;* border-style: groove;*/
+        border-style: solid;
+        border-width: 2px;
+
+        padding: 30px;
+        /*padding: 20px;*/
+    }
+
+    .close_button{
+        background-color: #5a6268;
+        height:50px;
+        width: 50px;
+    }
+
+</style>
+
+
+
+
+<section id="section2" class="col-8 mx-auto" style="margin-top: 40px;margin-bottom: 40px">
+
+
+<div id="myNav" class="overlay ">
+<!--
+    <div class="el__close-btn" style="color: blue;  height:40px; width: 40px;"></div>
+
+    align="center"
+    position: absolute;
+    height:50px; width: 50px;
+    position: absolute;
+-->
+
+
+<!--        <a id="close_button" href="#" style="position: absolute; right: 20px; top: 10px; background-color: #5a6268;  height:50px; width: 50px;">
+            <div style="background-color: #5a6268;  height:50px; width: 50px;"></div>
+        </a>-->
+
+    <!--
+            <button id="close_button" style="position: absolute; right: 20px; top: 10px; background-color: #5a6268;  height:50px; width: 50px;">
+                <div style="background-color: #5a6268;  height:50px; width: 50px;"></div>
+            </button>
+            -->
+
+
+<!--    <a href="#">
+        <p>asdassa</p>
+    </a>-->
+
+        <!--  background-color: #5a6268; width: 40px; height: 40px;  -->
+
+
+</div>
+
+<!--    <div style="position: absolute; right: 20px; top: 10px;">
+        <a id="close_button" href="#" >
+            <div style="background-color: #5a6268;  height:50px; width: 50px;"></div>
+        </a>
+        &lt;!&ndash;  background-color: #5a6268; width: 40px; height: 40px;  &ndash;&gt;
+    </div>-->
+
+
+<div style="height: 100%; width: 100%">
+
+
+
+    <div id="popup_ecosystem" class="overlay_popup" style="padding: 60px">
+        <div style=" background-color  : white; margin-left: 150px; margin-right: 150px; margin-top: 40px">
+<!--            <div style="background-color: #5a6268; width: 40px; height: 40px; position: absolute; right: 20px; top: 10px;">
+                <a id="close_button" href="#" >
+                    <div style="background-color: #5a6268;  height:50px; width: 50px;"></div>
+                </a>
+            </div>-->
+
+            <a class="close_button" href="#" style="position: absolute; right: 20px; top: 10px;">
+                <div style="background-color: #5a6268;  height:50px; width: 50px;"></div>
+            </a>
+
+
+
+        <div class="container_form"  >
+<!--            <div style="background-color: #5a6268; width: 40px; height: 40px; left: 80%; top: 10px;">
+                <a id="close_button" href="#" >
+                    <div style="background-color: #5a6268;  height:50px; width: 50px;"></div>
+                </a>
+            </div>-->
+
+
+
+
+            <div>
+                <h4 style="color: #fd7e14">ECOSISTEMA AMAZÓNICO</h4><br>
+                <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                    t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                    odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
+            </div>
+
+
+            <div class="row">
+                <div class="col-3">
+                    <img src="./img/bottom-cards-images/card_1.JPG" style="width:100%; height: 100%">
+                </div>
+                <div class="col-6">
+                    <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                        t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                        odo consequat.</p>
+
+                </div>
+                <div class="col-3">
+                    <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+    <div id="popup_proyects" class="overlay_popup" style="padding: 60px">
+        <div style=" background-color  : white; margin-left: 150px; margin-right: 150px; margin-top: 40px">
+
+            <a class="close_button" href="#" style="position: absolute; right: 20px; top: 10px; background-color: #5a6268;  height:50px; width: 50px;">
+                <div style="background-color: #5a6268;  height:50px; width: 50px;"></div>
+            </a>
+
+            <div class="container_form"  >
+
+
+
+                <div>
+                    <h4 style="color: #fd7e14">PROYECTOS</h4><br>
+                    <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                        t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                        odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
+                </div>
+
+                <div style="width: 200px; height: 100px">
+                    <img src="./img/stadistic.PNG"  style="width:100%; height: 100%">
+
+                </div>
+
+                <div class="row">
+                    <div class="col-9" style="margin-top: 20px">
+                        <h6>PROYECTO 1</h6>
+                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                            t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                            odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                            t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                            odo consequat.</p>
+                    </div>
+
+                    <div class="col-3" style="height: 200px ">
+                        <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <div id="popup_education" class="overlay_popup" style="padding: 60px; overflow: scroll;">
+        <div style=" background-color  : white; margin-left: 150px; margin-right: 150px; margin-top: 40px">
+
+            <a class="close_button" href="#" style="position: absolute; right: 20px; top: 10px; background-color: #5a6268;  height:50px; width: 50px;">
+                <div style="background-color: #5a6268;  height:50px; width: 50px;"></div>
+            </a>
+
+            <div class="container_form"  >
+
+
+
+                <div>
+                    <h4 style="color: #fd7e14">EDUCACIÓN</h4><br>
+                    <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                        t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                        odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
+                </div>
+
+<!--                <div style="width: 200px; height: 100px">
+                    <img src="./img/web_river.PNG"  style="width:100%; height: 100%">
+
+                </div>-->
+
+                <div style="margin-top: 10px">
+                    <h6>CHARLAS</h6>
+                    <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                        t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                        odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+
+                <div style="height: 100px; width: 200px; ">
+                    <img src="./img/stadistic.PNG"  style="width:100%; height: 100%">
+                </div>
+
+                <div style="margin-top: 10px">
+                    <h6>EVENTOS</h6>
+                    <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                        t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                        odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+
+                <div style="height: 100px; width: 200px; ">
+                    <img src="./img/stadistic.PNG"  style="width:100%; height: 100%">
+                </div>
+
+
+                <div style="margin-top: 10px">
+                    <h6>CURSOS</h6>
+                    <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                        t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                        odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+
+                <div>
+                    <div class="row" >
+                        <div class="col-4"  style="height: 200px; width: 100px; ">
+                            <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+                        </div>
+                        <div class="col-4"  style="height: 200px; width: 100px; ">
+                            <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+                        </div>
+                        <div class="col-4"  style="height: 200px; width: 100px; ">
+                            <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+                        </div>
+                    </div>
+
+                </div>
+
+
+<!--                <div style="height: 200px "    style="height: 150px; ">
+                    <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+                </div>-->
+
+<!--                <div class="row">
+                    <div class="col-9" style="margin-top: 20px">
+                        <h6>PROYECTO 1</h6>
+                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                            t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                            odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+
+                    <div class="col-3" style="height: 200px ">
+                        <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+                    </div>
+                </div>-->
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+    <div  class="row">
+        <div class="column">
+            <div class="card">
+
+                <a id="card_btn_1" href="#" style="width:100%; height: 100%">
+                    <img src="./img/bottom-cards-images/card_1.JPG"  style="width:100%; height: 100%">
+                    <p class="centered-bottom" style="text-align: center; color: #fd7e14">ECOSISTEMA AMAZÓNICO</p>
+                </a>
+<!--                <button id="button_1" onclick="openNav()">
+                    <img src="./img/bottom-cards-images/card_1.JPG" alt="Norway" style="width:100%; height: 100%">
+                    <p class="centered-bottom" style="text-align: center; color: #fd7e14">ECOSISTEMA AMAZÓNICO</p>
+
+                </button>-->
+
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <a id="card_btn_2" href="#" style="width:100%; height: 100%">
+                    <img src="./img/bottom-cards-images/card_2.JPG" alt="Norway" style="width:100%; height: 100%">
+
+                    <p class="centered-bottom" style="text-align: center; color: #fd7e14">PROYECTOS</p>
+                </a>
+
+
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <a id="card_btn_3" href="#" style="width:100%; height: 100%">
+                    <img src="./img/bottom-cards-images/card_3.JPG" alt="Norway" style="width:100%; height: 100%">
+
+                    <p class="centered-bottom" style="text-align: center; color: #fd7e14">EDUCACIÓN</p>
+                </a>
+
+            </div>
+        </div>
+
+
+    </div>
+</section>
+<script>
+
+        $("#card_btn_1").click(function(){
+            document.getElementById("myNav").style.width = "100%";
+            // $("#div1").fadeIn();
+            // $("#div2").fadeIn("slow");
+            $("#popup_ecosystem").fadeIn(2000);
+        });
+        $("#card_btn_2").click(function(){
+            document.getElementById("myNav").style.width = "100%";
+            // $("#div1").fadeIn();
+            // $("#div2").fadeIn("slow");
+            $("#popup_proyects").fadeIn(2000);
+        });
+        $("#card_btn_3").click(function(){
+            document.getElementById("myNav").style.width = "100%";
+            // $("#div1").fadeIn();
+            // $("#div2").fadeIn("slow");
+            $("#popup_education").fadeIn(2000);
+        });
+
+
+        $(".close_button").click(function(){
+            document.getElementById("myNav").style.width = "0%";
+            document.getElementById("popup_ecosystem").style.display="none";
+            document.getElementById("popup_proyects").style.display="none";
+            document.getElementById("popup_education").style.display="none";
+
+
+            // $("#div1").fadeIn();
+            // $("#div2").fadeIn("slow"
+
+            //$("#popup").fadeIn(2000);
+        });
+
+
+
+        /*function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }*/
+
+/*    function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+    }*/
+</script>
+
+<!--
+    <div class="cont s--inactive">
+
+        <div class="cont__inner">
+
+            <div class="el">
+                <div class="el__overflow">
+                    <div class="el__inner">
+
+                        <div class="el__bg"></div>
+                        <div class="el__preview-cont" >
+                            <h2 class="el__heading">Dancing Rivers</h2>
+                        </div>
+
+                        <img src="./img/bottom-cards-images/card_1.JPG" alt="Norway" style="width:100%; height: 100%">
+
+                        <p class="centered-bottom" style="color: #fd7e14">ECOSISTEMA AMAZÓNICO</p>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+-->
+
+
+
+
+
+<section id="section3" class="col-8 mx-auto" style="margin-bottom: 40px">
+
+
+    <div>
+        <h4 style="text-align: center;color: #fd7e14">PORTALES</h4>
+
+    </div>
+    <div class="row">
+        <div class="col-9 mx-auto container_border" style="padding: 20px;">
+
+            <img src="./img/web_river.PNG" alt="Norway" style="width:100%; height: 100%">
+
+        </div>
+        <div class="col-3 mx-auto">
+
+            <div style="width:100%; height: 50%">
+                <img src="./img/peru_region.PNG" alt="Norway" style="width:100%; height: 100%">
+
+            </div>
+
+            <div class="container_border" style="height: 50%; padding: 20px;">
+                <h6>DANCING RIVERS</h6>
+                <p style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. </p>
+
+                <h6>RIVEER  RESEARCH</h6>
+                <p style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <template>
+
+
+    </template>
+
+
+<!--    <div class="container">
+        <h4>ECOSISTEMA AMAZÓNICO</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+            t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+            odo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="row">
+            <div class="col-3">
+                <img src="./img/web_river.PNG" style="width:100%; height: 100%">
+            </div>
+            <div class="col-6">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore e
+                    t dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comm
+                    odo consequat.</p>
+
+            </div>
+            <div class="col-3">
+                <img src="./img/peru_region.PNG"  style="width:100%; height: 100%">
+            </div>
+        </div>
+    </div>-->
+
+</section>
+
+
+
+</body>
+
+</html>

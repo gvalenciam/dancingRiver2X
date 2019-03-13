@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+
+    <!--JQuery JS Script-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!--JQuery JS Script-->
+
+    <!--Bootstrap JS script-->
+    <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <!--Bootstrap JS script-->
+
+    <!--Bootstrap CSS Style-->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <!--Bootstrap CSS Style-->
+
+    <!--Bottom Cards section CSS Style-->
+    <link rel="stylesheet" href="css/bottom-cards-style.css">
+    <!--Bottom Cards section CSS Style-->
+
+    <!--Image Handling JS Scripts-->
+    <script src="./lib/CLDRPluralRuleParser/CLDRPluralRuleParser.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.messagestore.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.fallbacks.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.language.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.parser.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.emitter.js"></script>
+    <script src="./lib/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
+    <!--Image Handling JS Scripts-->
+
+    <script src="./lib/history/jquery.history.js"></script>
+    <script src="./lib/url/url.min.js"></script>
+
+    <!--Country Picker CSS Style-->
+    <link rel="stylesheet" href="jquery.ccpicker.css">
+    <!--Country Picker CSS Style-->
+
+    <!--New layout script-->
+    <script type="text/javascript" href="js/index/new_layout.js"></script>
+    <!--New layout script-->
+
+</head>
+
+<template>
+    <div class="col-8 mx-auto">
+        <div>
+            <h2 id="titlePag_temp1" style="text-align: center; color: #fd7e14"></h2>
+        </div>
+        <div style="margin-top: 60px">
+            <P id="introParagraph_temp1" style="text-align: justify"></P>
+
+        </div>
+    </div>
+
+</template>
+
+
+<template>
+    <div class="col-8 mx-auto" style="margin-top: 40px;margin-bottom: 40px">
+
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <img id="imgCard1_temp2"  alt="Norway" style="width:100%; height: 100%">
+
+                    <p id="textCard1_temp2" class="centered-bottom" style="text-align: center; color: #fd7e14"></p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <img id="imgCard2_temp2"  alt="Norway" style="width:100%; height: 100%">
+
+                    <p id="textCard2_temp2" class="centered-bottom" style="text-align: center; color: #fd7e14"></p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <img id="imgCard3_temp2"  alt="Norway" style="width:100%; height: 100%">
+
+                    <p id="textCard3_temp2" class="centered-bottom" style="text-align: center; color: #fd7e14"></p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</template>
+
+
+
+<template>
+    <div class="col-8 mx-auto" style="margin-bottom: 40px">
+        <div>
+            <h4 id="middleTitle_temp3" style="text-align: center;color: #fd7e14"></h4>
+
+        </div>
+        <div class="row">
+            <div class="col-9 mx-auto container">
+
+                <img id="mainImg_temp3"  alt="Norway" style="width:100%; height: 100%">
+
+            </div>
+            <div class="col-3 mx-auto">
+
+                <div style="width:100%; height: 50%">
+                    <img id="rightImg_temp3"  alt="Norway" style="width:100%; height: 100%">
+
+                </div>
+
+                <div class="container" style="height: 50%">
+                    <h6 id="rightSubTitle1_temp3"></h6>
+                    <p id="rightSubText1_temp3" style="font-size: 12px"></p>
+
+                    <h6 id="rightSubTitle2_temp3"></h6>
+                    <p id="rightSubText2_temp3" style="font-size: 12px"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</template>
+
+<body style="background-color: white;">
+
+<script>
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const temp = urlParams.get('tempVar');
+
+    //var myParam2 = Number(myParam);
+    /* var qs = new Querystring();
+     var v1 = qs.get("myVar1");
+    var var2 = myParam2 + 3;
+     console.log(var2);
+     console.log(temp);*/
+
+</script>
+
+
+<script>
+
+    $(document).ready(function() {
+
+
+        var title1= "AMAZON BASIN";
+        var title2= "DANCING RIVERS";
+        var paragraph1= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n" +
+            "                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n" +
+            "                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        var paragraph2= "ABCDEFGHIJK Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n" +
+            "                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n" +
+            "                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+        var imgCard1 = './img/bottom-cards-images/card_1.JPG';
+        var imgCard2 = './img/bottom-cards-images/card_2.JPG';
+        var imgCard3 = './img/bottom-cards-images/card_3.JPG';
+
+        var mainImg = './img/web_river.PNG';
+        var rightImg = './img/peru_region.PNG';
+
+
+        var textCard1_1= "ECOSISTEMA AMAZÓNICO";
+        var textCard2_1= "PROYECTOS";
+        var textCard3_1= "EDUCACIÓN";
+        var textCard1_2= "ABCDEFG";
+        var textCard2_2= "HIJKLM";
+        var textCard3_2= "MNOPQR";
+        var middleTitle1 = "PORTALES";
+        var middleTitle2 = "PORTALES2";
+        var rightTitle1_1 = "DANCING RIVERS";
+        var rightTitle1_2 = "DANCING RIVERS2";
+
+        var rightText1_1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n" +
+            "                        ut labore et dolore magna aliqua. ";
+        var rightText1_2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n" +
+            "                        ut labore et dolore magna aliqua. ";
+        var rightTitle2_1 = "DANCING RIVERS";
+        var rightTitle2_2 = "DANCING RIVERS22";
+
+        var rightText2_1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n" +
+            "                        ut labore et dolore magna aliqua.";
+        var rightText2_2 = "SADADAS Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n" +
+            "                        ut labore et dolore magna aliqua.";
+
+
+
+        /*if(temp == "1"){
+            console.log("oli");
+            //title1 = title2;
+            var title = title1;
+        }
+        else{
+
+        }*/
+
+
+        var temp_1 = document.getElementsByTagName("template")[0];
+        var temp_2 = document.getElementsByTagName("template")[1];
+        var temp_3 = document.getElementsByTagName("template")[2];
+
+
+        temp_1.content.getElementById("titlePag_temp1").innerHTML = title1;
+        temp_1.content.getElementById("introParagraph_temp1").innerHTML = paragraph1;
+        var clon_1 = temp_1.content;
+        document.getElementById("section1").appendChild(clon_1);
+
+
+        temp_2.content.getElementById("imgCard1_temp2").src = imgCard1;
+        temp_2.content.getElementById("textCard1_temp2").innerHTML = textCard1_1;
+        temp_2.content.getElementById("imgCard2_temp2").src = imgCard2;
+        temp_2.content.getElementById("textCard2_temp2").innerHTML = textCard2_1;
+        temp_2.content.getElementById("imgCard3_temp2").src = imgCard3;
+        temp_2.content.getElementById("textCard3_temp2").innerHTML = textCard3_1;
+        var clon_2 = temp_2.content.cloneNode(true);
+        document.getElementById("section2").appendChild(clon_2);
+
+
+        temp_3.content.getElementById("middleTitle_temp3").innerHTML = middleTitle1;
+        temp_3.content.getElementById("mainImg_temp3").src = mainImg;
+        temp_3.content.getElementById("rightImg_temp3").src = rightImg;
+        temp_3.content.getElementById("rightSubTitle1_temp3").innerHTML = rightTitle1_1;
+        temp_3.content.getElementById("rightSubText1_temp3").innerHTML = rightText1_1;
+        temp_3.content.getElementById("rightSubTitle2_temp3").innerHTML = rightTitle2_1;
+        temp_3.content.getElementById("rightSubText2_temp3").innerHTML = rightText2_1;
+        var clon_3 = temp_3.content.cloneNode(true);
+        document.getElementById("section3").appendChild(clon_3);
+
+    });
+
+</script>
+
+<section id="section1" ></section>
+
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+        padding: 4px;
+        text-align: center;
+        background-color: #f1f1f1;
+        height: 200px;
+    }
+
+    .column {
+        float: left;
+        width: 25%;
+        padding: 0 10px;
+    }
+
+    .container{
+        width: 100%;
+        /*border: #1b1e21;* border-style: groove;*/
+        border-style: solid;
+        border-width: 2px;
+
+        padding: 20px;
+    }
+
+    .centered-bottom {
+        position: absolute;
+
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: 4px;
+    }
+
+</style>
+
+<section id="section2" >
+
+</section>
+
+<section id="section3" ></section>
+
+</body>
+
+</html>

@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
-    <!-- <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="js/jquery/jquery.min.js"></script> -->
+    <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
 
     <!--JQuery JS Script-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -39,270 +40,28 @@
     <!--Country Picker CSS Style-->
     <link rel="stylesheet" href="jquery.ccpicker.css">
     <!--Country Picker CSS Style-->
+
+    <!--New layout script-->
+    <script type="text/javascript" href="js/index/new_layout.js"></script>
+    <!--New layout script-->
+
 </head>
 
-
-
-<body style="background-color: white;">
-
-<style>
-
-    html{
-
-        scroll-behavior: smooth;
-        overscroll-behavior: contain;
-        background-color: transparent;
-
-    }
-    .scrolling-box{
-
-        background-color: transparent;
-        display: block;
-
-    }
-    ::-webkit-scrollbar {
-        display: none;
-    }﻿
-
-</style>
-<!-- <style>
-
-    body{
-        background-color: rgba(0,0,0,1.0);
-    }
-    #div1{
-
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        top: 0;
-
-
-    }
-    #div2{
-
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        top: 0;
-
-
-    }
-    #div3{
-
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        top: 0;
-
-
-    }
-    #div4{
-
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        top: 0;
-
-
-    }
-</style> -->
-
-<section id="section1" class="col-8 mx-auto">
-    <template></template>
-    <div>
-        <h2 style="text-align: center; color: #fd7e14">AMAZON BASIN</h2>
-    </div>
-    <div style="margin-top: 60px">
-        <P style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</P>
-
-    </div>
-
-</section>
-
-<style>
-    .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-        padding: 4px;
-        text-align: center;
-        background-color: #f1f1f1;
-        height: 200px;
-    }
-
-    .column {
-        float: left;
-        width: 25%;
-        padding: 0 10px;
-    }
-
-    .container{
-        width: 100%;
-        /*border: #1b1e21;* border-style: groove;*/
-        border-style: solid;
-        border-width: 2px;
-
-        padding: 20px;
-    }
-
-    .centered-bottom {
-        position: absolute;
-
-        left: 50%;
-        transform: translate(-50%, -50%);
-        bottom: 4px;
-    }
-
-</style>
-
-
-<section id="section2" class="col-8 mx-auto" style="margin-top: 40px;margin-bottom: 40px">
-
-    <div class="cont s--inactive">
-        <!-- cont inner start -->
-        <div class="cont__inner">
-
-            <div class="el">
-                <div class="el__overflow">
-                    <div class="el__inner">
-
-                        <div class="el__bg"></div>
-                        <div class="el__preview-cont" >
-                            <h2 class="el__heading">Dancing Rivers</h2>
-                        </div>
-
-                        <!--<img src="./img/bottom-cards-images/card_1.JPG" alt="Norway" style="width:100%; height: 100%">-->
-                        <!--<h3>ECOSISTEMA AMAZÓNICO</h3>-->
-                        <p class="centered-bottom" style="color: #fd7e14">ECOSISTEMA AMAZÓNICO</p>
-
-                    </div>
-                </div>
-            </div>
-
+<template>
+    <div class="col-8 mx-auto">
+        <div>
+            <h2 id="titlePag_temp1" style="text-align: center; color: #fd7e14"></h2>
+        </div>
+        <div style="margin-top: 60px">
+            <P id="introParagraph_temp1" style="text-align: justify"></P>
 
         </div>
     </div>
 
-    <!--
-
-      <divclass="container ">
-        <div class="row">
-            <div class="el">
-                <div class="el__overflow">
-                    <div class="el__inner">
-
-                        <div class="el__bg"></div>
-                        <div class="el__preview-cont" >
-                            <h2 class="el__heading">Dancing Rivers</h2>
-                        </div>
-
-                    <img src="./img/bottom-cards-images/card_1.JPG" alt="Norway" style="width:100%; height: 100%">
-                    <h3>ECOSISTEMA AMAZÓNICO</h3>
-        <p class="centered-bottom" style="color: #fd7e14">ECOSISTEMA AMAZÓNICO</p>
-
-        </div>
-        </div>
-        </div>
+</template>
 
 
-        </div>
-        </div>
-
-
-
-
-
-            <div class="column">
-                <div class="card">
-                    <img src="./img/bottom-cards-images/card_2.JPG" alt="Norway" style="width:100%; height: 100%">
-
-                    <p class="centered-bottom" style="text-align: center; color: #fd7e14">PROYECTOS</p>
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="card">
-                    <img src="./img/bottom-cards-images/card_3.JPG" alt="Norway" style="width:100%; height: 100%"   >
-                    <p class="centered-bottom" style="text-align: center; color: #fd7e14">EDUCACIÓN</p>
-
-                </div>
-            </div>
-
-            -->
-
-
-</section>
-
-
-<section id="section3" class="col-8 mx-auto" style="margin-bottom: 40px">
-    <template>
-    </template>
-
-    <div>
-        <h4 style="text-align: center;color: #fd7e14">PORTALES</h4>
-
-    </div>
-    <div class="row">
-        <div class="col-9 mx-auto container">
-
-            <img src="./img/web_river.PNG" alt="Norway" style="width:100%; height: 100%">
-
-        </div>
-        <div class="col-3 mx-auto">
-
-            <div style="width:100%; height: 50%">
-                <img src="./img/peru_region.PNG" alt="Norway" style="width:100%; height: 100%">
-
-            </div>
-
-            <div class="container" style="height: 50%">
-                <h6>DANCING RIVERS</h6>
-                <p style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. </p>
-
-                <h6>DANCING RIVERS</h6>
-                <p style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua.</p>
-            </div>
-
-        </div>
-
-    </div>
-
-
-</section>
-
-
-<!-- ------------------------------------------------------------------------------------------------------------------------- -->
-<style>
-
-    .flex-container {
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-    }
-
-    .button_explore {
-        z-index: -1;
-        position: absolute;
-        right: 10px;
-        bot: 10px;
-        width: 60px;
-        height: 60px;
-        opacity: 0;
-        pointer-events: none;
-        transition: all 0s 0.45s;
-        cursor: pointer;
-    }
-
-</style>
-<!--TODO: Define this style css File-->
-
-<!--Cards Section (High resolution images)-->
-<div class="scrolling-box">
-<section id="2">
+<template>
 
     <div class="cont s--inactive">
         <!-- cont inner start -->
@@ -318,7 +77,7 @@
                         <div class="el__bg"></div>
 
                         <div class="el__preview-cont" >
-                            <h2 class="el__heading">Dancing Rivers</h2>
+                            <h2 class="el__heading">ECOSISTEMA AMAZÓNICO</h2>
                         </div>
 
                         <div class="el__content" style="overflow: scroll;">
@@ -369,7 +128,7 @@
                         <div class="el__bg"></div>
 
                         <div class="el__preview-cont">
-                            <h2 class="el__heading">River Research</h2>
+                            <h2 class="el__heading">PROYECTOS</h2>
                         </div>
 
 
@@ -420,7 +179,7 @@
                         <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
                         <div class="el__bg"></div>
                         <div class="el__preview-cont">
-                            <h2 class="el__heading">GLACIERS</h2>
+                            <h2 class="el__heading">EDUCACIÓN</h2>
                         </div>
                         <div class="el__content" style="overflow: scroll;">
                             <div class="el__text">Lorem ipsum</div>
@@ -557,77 +316,289 @@
         <!-- cont inner end -->
     </div>
 
-</section>
-<!--Cards Section (High rseolution images)-->
-</div>
+</template>
 
-<!--Cards Section (High rseolution images)-->
+
+<!-- 3° tempalate-->
+<template>
+    <div class="col-8 mx-auto" style="margin-bottom: 40px">
+        <div>
+            <h4 id="middleTitle_temp3" style="text-align: center;color: #fd7e14"></h4>
+
+        </div>
+        <div class="row">
+            <div class="col-9 mx-auto container">
+
+                <img id="mainImg_temp3"  alt="Norway" style="width:100%; height: 100%">
+
+            </div>
+            <div class="col-3 mx-auto">
+
+                <div style="width:100%; height: 50%">
+                    <img id="rightImg_temp3"  alt="Norway" style="width:100%; height: 100%">
+
+                </div>
+
+                <div class="container" style="height: 50%">
+                    <h6 id="rightSubTitle1_temp3"></h6>
+                    <p id="rightSubText1_temp3" style="font-size: 12px"></p>
+
+                    <h6 id="rightSubTitle2_temp3"></h6>
+                    <p id="rightSubText2_temp3" style="font-size: 12px"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <script type="text/javascript" src="js/index/bottom_cards_logic.js"></script>
+    <!--Bottom Cards Logic JS script class="col-8 mx-auto" style="margin-bottom: 40px"-->
+
+    <!--Language Handler Logic JS script-->
+    <script type="text/javascript" src="js/index/language_handler_logic.js"></script>
+    <!--Language Handler Logic JS script-->
+</template>
+
+<body style="background-color: white;">
+
+
+<script>
+
+    $(document).ready(function() {
+
+
+
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const temp = urlParams.get('portal');
+
+        var temp_1 = document.getElementsByTagName("template")[0];
+        var temp_2 = document.getElementsByTagName("template")[1];
+        var temp_3 = document.getElementsByTagName("template")[2];
+
+
+        var title1= "AMAZON BASIN";
+        var title2= "DANCING RIVERS";
+        var paragraph1= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n" +
+            "                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n" +
+            "                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        var paragraph2= "ABCDEFGHIJK Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n" +
+            "                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n" +
+            "                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+        var imgCard1 = './img/bottom-cards-images/card_1.JPG';
+        var imgCard2 = './img/bottom-cards-images/card_2.JPG';
+        var imgCard3 = './img/bottom-cards-images/card_3.JPG';
+
+        var mainImg = './img/web_river.PNG';
+        var rightImg = './img/peru_region.PNG';
+
+
+
+        var textCard1_1= "ECOSISTEMA AMAZÓNICO";
+        var textCard2_1= "PROYECTOS";
+        var textCard3_1= "EDUCACIÓN";
+        var textCard1_2= "ABCDEFG";
+        var textCard2_2= "HIJKLM";
+        var textCard3_2= "MNOPQRS";
+        var middleTitle1 = "PORTALES";
+        var middleTitle2 = "PORTALES 2";
+        var rightTitle1_1 = "DANCING RIVERS";
+        var rightTitle1_2 = "DANCING RIVERS2";
+
+        var rightText1_1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n" +
+            "                        ut labore et dolore magna aliqua. ";
+        var rightText1_2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n" +
+            "                        ut labore et dolore magna aliqua. ";
+        var rightTitle2_1 = "DANCING RIVERS";
+        var rightTitle2_2 = "DANCING RIVERS22";
+
+        var rightText2_1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n" +
+            "                        ut labore et dolore magna aliqua.";
+        var rightText2_2 = "SADADAS Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt\n" +
+            "                        ut labore et dolore magna aliqua.";
+
+
+        var title = title1;
+        var paragraph = paragraph1;
+        var imgCard1 = imgCard1;
+        var textCard1 = textCard1_1;
+        var imgCard2 = imgCard2;
+        var textCard2 = textCard2_1;
+        var imgCard3 = imgCard3;
+        var textCard3 = textCard3_1;
+        var middleTitle = middleTitle1;
+        var mainImg = mainImg;
+        var rightImg = rightImg;
+        var rightTitleTop = rightTitle1_1;
+        var rightTextTop = rightText1_1;
+        var rightTitleDown = rightTitle2_1;
+        var rightText2Down = rightText2_1;
+
+
+
+        var showTemp1 = true;
+        var showTemp2 = true;
+        var showTemp3 = true;
+
+
+        switch(temp) {
+            case "amazon_basin":
+                console.log("amazon_basin");
+                title = title1;
+                paragraph = paragraph1;
+                imgCard1 = imgCard1;
+                textCard1 = textCard1_1;
+                imgCard2 = imgCard2;
+                textCard2 = textCard2_1;
+                imgCard3 = imgCard3;
+                textCard3 = textCard3_1;
+                middleTitle = middleTitle1;
+                mainImg = mainImg;
+                rightImg = rightImg;
+                rightTitleTop = rightTitle1_1;
+                rightTextTop = rightText1_1;
+                rightTitleDown = rightTitle2_1;
+                rightText2Down = rightText2_1;
+
+                showTemp1 = true;
+                showTemp2 = true;
+                showTemp3 = true;
+
+                break;
+            case "dancing_rivers":
+                console.log("dancing_rivers");
+
+                title = title2;
+                paragraph = paragraph2;
+                imgCard1 = imgCard1;
+                textCard1 = textCard1_2;
+                imgCard2 = imgCard2;
+                textCard2 = textCard2_2;
+                imgCard3 = imgCard3;
+                textCard3 = textCard3_2;
+                middleTitle = middleTitle2;
+                mainImg = mainImg;
+                rightImg = rightImg;
+                rightTitleTop = rightTitle1_2;
+                rightTextTop = rightText1_2;
+                rightTitleDown = rightTitle2_2;
+                rightText2Down = rightText2_2;
+
+                showTemp1 = true;
+                showTemp2 = true;
+                showTemp3 = true;
+
+                break;
+
+
+            default:
+                console.log("default");
+
+                showTemp1 = true;
+                showTemp2 = true;
+                showTemp3 = true;
+
+        }
+
+
+
+
+
+        temp_1.content.getElementById("titlePag_temp1").innerHTML = title;
+        temp_1.content.getElementById("introParagraph_temp1").innerHTML = paragraph;
+        if (showTemp1 ==  true ){
+            var clon_1 = temp_1.content;
+            document.getElementById("section1").appendChild(clon_1);
+        }
+
+
+
+        /*temp_2.content.getElementById("imgCard1_temp2").src = imgCard1;
+        temp_2.content.getElementById("textCard1_temp2").innerHTML = textCard1;
+        temp_2.content.getElementById("imgCard2_temp2").src = imgCard2;
+        temp_2.content.getElementById("textCard2_temp2").innerHTML = textCard2;
+        temp_2.content.getElementById("imgCard3_temp2").src = imgCard3;
+        temp_2.content.getElementById("textCard3_temp2").innerHTML = textCard3;*/
+        if (showTemp2 ==  true ){
+
+            console.log("entro");
+
+            var clon_2 = temp_2.content.cloneNode(true);
+            document.getElementById("section2").appendChild(clon_2);
+        }
+
+
+
+        temp_3.content.getElementById("middleTitle_temp3").innerHTML = middleTitle;
+        temp_3.content.getElementById("mainImg_temp3").src = mainImg;
+        temp_3.content.getElementById("rightImg_temp3").src = rightImg;
+        temp_3.content.getElementById("rightSubTitle1_temp3").innerHTML = rightTitleTop;
+        temp_3.content.getElementById("rightSubText1_temp3").innerHTML = rightTextTop;
+        temp_3.content.getElementById("rightSubTitle2_temp3").innerHTML = rightTitleDown;
+        temp_3.content.getElementById("rightSubText2_temp3").innerHTML = rightText2Down;
+        if (showTemp3 ==  true ){
+            var clon_3 = temp_3.content.cloneNode(true);
+            document.getElementById("section3").appendChild(clon_3);
+        }
+
+
+    });
+
+</script>
+
+<section id="section1" ></section>
+
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+        padding: 4px;
+        text-align: center;
+        background-color: #f1f1f1;
+        height: 200px;
+    }
+
+    .column {
+        float: left;
+        width: 25%;
+        padding: 0 10px;
+    }
+
+    .container{
+        width: 100%;
+        /*border: #1b1e21;* border-style: groove;*/
+        border-style: solid;
+        border-width: 2px;
+
+        padding: 20px;
+    }
+
+    .centered-bottom {
+        position: absolute;
+
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: 4px;
+    }
+
+</style>
+
+<section id="section2" >
+
+</section>
+
+<section id="section3" ></section>
+
 
 <!--Bottom Cards Logic JS script-->
 <script type="text/javascript" src="js/index/bottom_cards_logic.js"></script>
-<!--Bottom Cards Logic JS script-->
+<!--Bottom Cards Logic JS script class="col-8 mx-auto" style="margin-bottom: 40px"-->
 
 <!--Language Handler Logic JS script-->
 <script type="text/javascript" src="js/index/language_handler_logic.js"></script>
 <!--Language Handler Logic JS script-->
-
-
-<!--
-<script>
-    var $cont = document.querySelector('.cont');
-    var $elsArr = [].slice.call(document.querySelectorAll('.el'));
-    var $closeBtnsArr = [].slice.call(document.querySelectorAll('.el__close-btn'));
-
-    setTimeout(function() {
-        $cont.classList.remove('s--inactive');
-    }, 200);
-
-    $elsArr.forEach(function($el) {
-        $el.addEventListener('click', function() {
-            if (this.classList.contains('s--active')) return;
-            $cont.classList.add('s--el-active');
-            this.classList.add('s--active');
-        });
-    });
-
-    $closeBtnsArr.forEach(function($btn) {
-        $btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            $cont.classList.remove('s--el-active');
-            document.querySelector('.el.s--active').classList.remove('s--active');
-        });
-    });
-</script>
--->
-
-<script>
-    $(document).ready(function() {
-
-        $(window).scroll( function(){
-
-            $('.simple_text').each( function(i) {
-
-                var bottom_of_object = $(this).offset().top + $(this).outerHeight();
-                var bottom_of_window = $(window).scrollTop() + $(window).height();
-
-                if (bottom_of_window > bottom_of_object) {
-
-                    var k = document.getElementsByClassName("simple_text");
-                    for(i=0;i < k.length; i++){
-                        k[i].className = "animated animatedFadeInUp fadeInUp";
-                    }
-
-                    $(this).animate({'opacity': '1'}, 200);
-                    console.log(element.className);
-
-
-                }
-
-            });
-        });
-    });
-
-</script>
 
 </body>
 
