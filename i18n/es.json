@@ -1,15 +1,25 @@
 {
 
+  "main_title": "AMAZONÍA",
+  "main_subtitle": "Desde los Andes hacia el Atlántico",
+
   "intro_title": "Introducción",
   "intro_subtitle": "El Amazonas es un río de América del Sur",
-  "intro_par_1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. dvfef",
-  "dancingRivers_par": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-  "dancingRivers_subtitle": "Los ríos danzantes",
-  "riverResearch_subtitle": "El Amazonas es un río de América del Sur",
-  "riverResearch_par": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+  "intro_par_1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+
+  "dancingRivers_par": "A lo largo del tiempo los ríos se mueven, crean erosión, depositan sedimentos y, por consiguiente, cambian de forma. Sin embargo, estos movimientos son diferentes para cada río, ya que cada uno posee características y dinámicas específicas.",
+  "dancingRivers_par2": "En Dancing Rivers encontrará información sobre las metodologías que se han desarrollado y aplicado para conocer y comprender mejor la dinámica física de los principales ríos amazónicos.",
+
+  "dancingRivers_subtitle": "La ciencia detrás del movimiento de los ríos",
+
+  "storytelling_subtitle": "El Amazonas es un río de América del Sur",
+  "storytelling_par": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+
   "portal_link": "Conoce más sobre nuestro portal >",
+
   "dancingRivers_title": "Dancing Rivers",
-  "riverResearch_title": "River Research",
+  "storytelling_title": "Storytelling Web",
+
   "footer_copyright": "Todos los derechos reservados.",
 
   "side-bar-right-title": "Contenido",

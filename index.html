@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazon Basin</title>
+    <!--<script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>-->
+    <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
 
     <!--JQuery JS Script-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <!--JQuery JS Script-->
 
     <!--Bootstrap JS script-->
-    <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
-    <!--Bootstrap JS script-->
+    <!--<script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>-->
 
     <!--Bootstrap CSS Style-->
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
-    <!--Bootstrap CSS Style-->
 
     <!--Bottom Cards section CSS Style-->
     <link rel="stylesheet" href="css/bottom-cards-style.css">
-    <!--Bottom Cards section CSS Style-->
 
-    <!--Image Handling JS Scripts-->
+    <!--Handling JS Scripts-->
     <script src="./lib/CLDRPluralRuleParser/CLDRPluralRuleParser.js"></script>
     <script src="./lib/jquery.i18n/jquery.i18n.js"></script>
     <script src="./lib/jquery.i18n/jquery.i18n.messagestore.js"></script>
@@ -31,534 +28,480 @@
     <script src="./lib/jquery.i18n/jquery.i18n.parser.js"></script>
     <script src="./lib/jquery.i18n/jquery.i18n.emitter.js"></script>
     <script src="./lib/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
-    <!--Image Handling JS Scripts-->
-
     <script src="./lib/history/jquery.history.js"></script>
     <script src="./lib/url/url.min.js"></script>
 
-    <!--Country Picker CSS Style-->
-    <link rel="stylesheet" href="jquery.ccpicker.css">
-    <!--Country Picker CSS Style-->
+    <!--New layout script-->
+    <script type="text/javascript" src="./js/index/amazon_basin.js"></script>
+
+    <!--Language Handler Logic JS script-->
+    <script type="text/javascript" src="js/index/language_handler_logic_index.js"></script>
 
 </head>
 
-<body>
 
-    <!--TODO: Define this style css File-->
-    <style>
 
-        html{
+<body id="bodyMain">
 
-            scroll-behavior: smooth;
-            overscroll-behavior: contain;
-            background-color: transparent;
+<!-- Browser-->
+<style>
+    /**New Font**/
+    @font-face {
+        font-family: 'MyriadPro';
+        src: url('./font/MYRIADPRO-REGULAR.woff') format('truetype');
+    }
+    @font-face {
+        font-family: 'MyriadPro-Bold';
+        src: url('./font/MYRIADPRO-BOLD.woff') format('truetype');
+    }
+    @font-face {
+        font-family: 'Museo-Sans';
+        src: url('./font/MuseoSans_500.otf') format('truetype');
+    }
 
-        }
-        .scrolling-box{
+    body, html {
+        height: 100%;
+        width: 100vw;
+        position: absolute;
+        overflow-x: hidden;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgba(255,255,255,0.1);
+        scroll-behavior: smooth;
+    }
 
-            background-color: transparent;
-            display: block;
+    ::-webkit-scrollbar {
+        display: none;
+    }
 
-        }
-        ::-webkit-scrollbar {
-            display: none;
-        }﻿
+</style>
 
-    </style>
-    <!--TODO: Define this style css File-->
 
-    <!--Nav Bar Section-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<!-- Global Style-->
+<style>
+    .row {
+        display: flex;
+        flex-wrap: nowrap;
+        padding: 0 4px;
+        align-items: center;
+    }
 
-        <!--CITA Image left side-->
-        <a class="navbar-brand">
-            <img width="80%" height="80%" src="Logo-CITA.png">
-        </a>
-        <!--CITA Image left side-->
+    .column {
+        flex: 60%;
+        max-width: 60%;
+        flex-direction: column;
+        padding: 0 4px;
+    }
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    #Intro {
+        width: 100vw;
+        /*height: 100vh;*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background: url('./img/index/img_video_background.PNG') no-repeat scroll 0 0 #000;
+    }
 
-        <!--Navbar options right sided-->
-        <div class="collapse navbar-collapse d-none d-sm-block" id="navbarNav" style="display: flex; justify-content: flex-end">
-            <ul class="navbar-nav">
+    #Info {
+        width: 100vw;
+        /*height: 100vh;*/
+        height: 50vw;
+        background-color: #ffffff;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+    }
 
-                <!--Main section navbar link -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="#1" data-i18n="Main_header"> <span class="sr-only">(current)</span></a>
-                </li>
-                <!--Main section navbar link -->
+    #dancingRivers {
+        width: 100vw;
+        height: 50vw;
+        background-image: url('./img/index/river_outline_image.PNG');
+        background-size: 100% 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-evenly;
+        justify-content: center;
+    }
 
-                <!--Projects section navbar link-->
-                <li class="nav-item">
-                    <a class="nav-link" href="#2" data-i18n="Projects_header"></a>
-                </li>
-                <!--Projects section navbar link-->
+    #storytelling {
+        width: 100vw;
+        height: 50vw;
+        background-image: url('./img/index/peru_outline_green.PNG');
+        background-size: 100% 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-evenly;
+        justify-content: space-evenly;
+    }
 
-                <!--Language Flag icon-->
-                <li class="nav-item" style="align-self: center; padding: 0.4rem 0.5rem 0.4rem 2.0rem; display: flex; justify-content: space-between; align-content: space-between">
-                    <img id="bandera" width="38px" height="26px" src="img/language-flag-images/us.png" style="overflow: auto;">
-                </li>
-                <!--Language Flag icon-->
+    #Footer {
+        height: 14vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: rgba(0,0,0,0.05);
+    }
 
-                <!--Language dropdown selector -->
-                <li class="nav-item" style="align-self: center; padding: 0.25rem 0.25rem">
-                    <select id="idiom" name="idiom" onchange="myFunction()">
-                        <option value="English">English</option>
-                        <option value="Spanish">Español</option>
-                    </select>
-                </li>
-                <!--Language dropdown selector -->
+    #Header {
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+</style>
 
-            </ul>
+
+
+<!-- Intro Style -->
+<style>
+
+    #videoBackground{
+        background: url('./img/index/img_video_background.PNG') no-repeat scroll 0 0 #000;
+        width: 100vw;
+        /*height: 100%;*/
+        background-size: 100% ;
+
+        overflow: hidden;
+    }
+
+    .dot {
+        /*height: 24px;*/
+        height: 1.5vw;
+        width: 1.5vw;
+        background-color: white;
+        /*border-radius: 12px;*/
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+</style>
+
+<!-- Intro Section-->
+<div id="Intro">
+    <!--
+        <div style="height: 100%; width: 100%">
+        </div>-->
+
+
+    <div style="overflow: hidden; height: 50vw">
+        <video id="videoBackground"  muted loop autoplay >
+            <source src="./videos/drone_flights/DJI_0107.MOV" type="video/mp4">
+            <source src="movie.ogg" type="video/ogg">
+            Your browser does not support the video.
+        </video>
+    </div>
+
+
+
+    <div style="position: absolute; display: flex; flex-direction: column; justify-content: center; align-items: center">
+        <p style="font-family: 'MyriadPro'; font-size: 7.8vw; color: white" data-i18n="main_title"></p>
+        <p id="paragraph1" style="color: white; text-align: center; font-size: 1.9vw; max-width: 60vw; display: block" data-i18n="main_subtitle"></p>
+    </div>
+
+    <div class="row" style="height: 20%; position: absolute; width: 50%; justify-content: space-evenly; margin: 0; margin-top: 18%">
+        <div class="row"  style="width: 75%; height: 50%; justify-content: space-around; border-radius: 12px;
+                background-color: rgba(0,0,0,0.05);">
+            <div style="background-image: url('./img/index/cita_logo.png'); width: 7.5vw; height: 2.6vw; background-size: 100% 100%;"></div>
+            <div style="background-image: url('./img/index/moore_logo.png'); width: 7.5vw; height: 2.9vw; background-size: 100% 100%"></div>
+            <div style="background-image: url('./img/index/utec_logo.png'); width: 6.8vw; height: 3.5vw; background-size: 100% 100%"></div>
         </div>
-        <!--Navbar options right sided-->
-
-    </nav>
-    <!--Nav Bar Section-->
-
-
-    <style>
-        /* Animation */
-        @keyframes fadeInUp {
-            from {
-                transform: translate3d(0,40px,0)
-            }
-
-            to {
-                transform: translate3d(0,0,0);
-                opacity: 1
-            }
-        }
-        @-webkit-keyframes fadeInUp {
-            from {
-                transform: translate3d(0,40px,0)
-            }
-
-            to {
-                transform: translate3d(0,0,0);
-                opacity: 1
-            }
-        }
-
-        .animated {
-            animation-duration: 1s;
-            animation-fill-mode: both;
-            -webkit-animation-duration: 1s;
-            -webkit-animation-fill-mode: both
-        }
-
-        .animatedFadeInUp {
-            opacity: 0
-        }
-
-        .fadeInUp {
-            opacity: 0;
-            animation-name: fadeInUp;
-            -webkit-animation-name: fadeInUp;
-        }
-
-    </style>
-
-    <style>
-
-        .simple_text
-        {
-            opacity:0;
-            text-align: justify;
-        }
-
-    </style>
-
-
-    <div class="scrolling-box">
-
-        <!--TODO: Define this style css File-->
-        <style>
-
-            .intro-center {
-
-                text-align: center;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                color: white;
-                font-family: Verdana cursive;
-
-            }
-
-        </style>
-        <!--TODO: Define this style css File-->
-
-
-        <!--Intro Section (Image + Description)-->
-        <section id="1" style="width: 100vw; height: 100vh; background-color: #f8f9fa">
-
-            <div style="display: flex; align-items: center; justify-content: center; align-content: center; height: 100%; overflow-wrap: initial">
-
-                <!--Amazon basin image-->
-                <img style="height: 100%; width: 100%; background-image: url('img/index/landing_image.png'), linear-gradient(white,white); background-size: cover; border: 0px solid white">
-                <!--Amazon basin image-->
-
-                <!--Amazon basin image Title (as hero)-->
-                <div class="intro-center">
-
-                    <h1  id="Title_pag" class="animated animatedFadeInUp fadeInUp" style="color: black ; font-family: 'Helvetica'; margin-bottom: 150px; width: 900px">Centro de Investigación y Tecnología del Agua</h1>
-
-                    <br>
-                </div>
-                <!--Amazon basin image Title (as hero)-->
-
-            </div>
-
-        </section>
-        <!--Intro Section (Image + Description)-->
-
-
-        <!--Amazon basin description text -->
-        <div>
-
-            <div class="col-md-8 mx-auto" style="margin-top: 90px">
-                <p class="simple_text" style="color: white; text-align: justify;"  data-i18n="intro_par_1"></p>
-                <!-- <p class="animated animatedFadeInUp fadeInUp" style="color: white; text-align: justify;"  data-i18n="intro_par_1"></p> -->
-
-                <p class="simple_text" id="text2" style="color: white; text-align: justify;" data-i18n="intro_par_2"></p>
-                <!--<p class="fade_text" style="color: white; text-align: justify;" data-i18n="intro_par_2"></p> -->
-
-            </div>
-
-        </div>
-        <!--Amazon basin description text -->
-
-        <!--TODO: Define this style css File-->
-        <style>
-
-            .flex-container {
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-            }
-
-            .button_explore {
-                z-index: -1;
-                position: absolute;
-                right: 10px;
-                bot: 10px;
-                width: 60px;
-                height: 60px;
-                opacity: 0;
-                pointer-events: none;
-                transition: all 0s 0.45s;
-                cursor: pointer;
-            }
-
-        </style>
-        <!--TODO: Define this style css File-->
-
-        <!--Cards Section (High rseolution images)-->
-        <section id="2">
-
-            <div class="cont s--inactive">
-                <!-- cont inner start -->
-                <div class="cont__inner">
-
-
-                    <!-- Card 1 content -->
-                    <div class="el">
-                        <div class="el__overflow">
-                            <div class="el__inner">
-
-                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
-                                <div class="el__bg"></div>
-
-                                <div class="el__preview-cont" >
-                                    <h2 class="el__heading">Dancing Rivers</h2>
-                                </div>
-
-                                <div class="el__content" style="overflow: scroll;">
-                                    <div class="el__text">Lorem ipsum</div>
-                                    <div>
-                                        <div class="flex-container">
-
-                                            <div style="padding:0px 40px; margin-top: 50px">
-                                                <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section1_text"></p>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="el__close-btn"></div>
-
-                                    <a target="_blank" rel="noopener noreferrer" href="map.html">
-                                        <button type="button"  style="cursor: pointer ;border:none; background-color: #17a2b8; color: white; ;border-radius: 18px ;font-size: 12px; width: 100px; height: 40px ;position: absolute; right: 70px; bottom: 25px;">EXPLORE</button>
-                                    </a>
-
-                                </div>
-                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
-
-                            </div>
-
-                        </div>
-                        <div class="el__index">
-                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            <!--<div class="el__index-back">1</div>-->
-                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            <div class="el__index-front">
-                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                                <!--<div class="el__index-overlay" data-index="1">1</div>-->
-                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 1 content -->
-
-
-                    <!-- Card 2 content -->
-                    <div class="el">
-                        <div class="el__overflow">
-                            <div class="el__inner">
-
-                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
-                                <div class="el__bg"></div>
-
-                                <div class="el__preview-cont">
-                                    <h2 class="el__heading">River Research</h2>
-                                </div>
-
-
-
-                                <div class="el__content" style="overflow: scroll;">
-                                    <div class="el__text">Lorem ipsum</div>
-                                    <div>
-                                        <div class="flex-container" style="height: 65%; ">
-
-                                            <div  style="padding:0px 40px; margin-top: 50px">
-                                                <p  style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section2_text"></p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="el__close-btn"></div>
-
-                                    <a target="_blank" rel="noopener noreferrer" href="#">
-                                        <button type="button"  style="cursor: pointer ;border:none; background-color: #17a2b8; color: white; ;border-radius: 18px ;font-size: 12px; width: 100px; height: 40px ;position: absolute; right: 70px; bottom: 25px;">EXPLORE</button>
-                                    </a>
-
-                                </div>
-                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
-
-                            </div>
-                        </div>
-
-                        <div class="el__index">
-                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            <!--<div class="el__index-back">2</div>-->
-                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            <div class="el__index-front">
-                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                                <!--<div class="el__index-overlay" data-index="2">2</div>-->
-                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 2 content -->
-
-
-                    <!-- Card 3 content -->
-                    <div class="el">
-                        <div class="el__overflow">
-                            <div class="el__inner">
-
-                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
-                                <div class="el__bg"></div>
-                                <div class="el__preview-cont">
-                                    <h2 class="el__heading">GLACIERS</h2>
-                                </div>
-                                <div class="el__content" style="overflow: scroll;">
-                                    <div class="el__text">Lorem ipsum</div>
-                                    <div>
-                                        <div class="flex-container" style="height: 65%; ">
-
-                                            <div style="padding:0px 40px; margin-top: 50px">
-                                                <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section3_text"></p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="el__close-btn"></div>
-
-                                    <a target="_blank" rel="noopener noreferrer" href="map.html">
-                                        <button type="button"  style="cursor: pointer ;border:none; background-color: #17a2b8; color: white; ;border-radius: 18px ;font-size: 12px; width: 100px; height: 40px ;position: absolute; right: 70px; bottom: 25px;">EXPLORE</button>
-                                    </a>
-
-                                </div>
-                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
-
-                            </div>
-                        </div>
-                        <div class="el__index">
-                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            <!--<div class="el__index-back">3</div>-->
-                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            <div class="el__index-front">
-                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                                <!--<div class="el__index-overlay" data-index="3">3</div>-->
-                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 3 content -->
-
-
-                    <!-- Card 4 content -->
-                    <div class="el">
-                        <div class="el__overflow">
-                            <div class="el__inner">
-
-                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
-                                <div class="el__bg"></div>
-                                <div class="el__preview-cont">
-                                    <h2 class="el__heading">COAST AND OCEAN</h2>
-                                </div>
-                                <div class="el__content" style="overflow: scroll;">
-                                    <div class="el__text">Lorem ipsum</div>
-                                    <div>
-                                        <div class="flex-container" style="height: 65%; ">
-
-                                            <div style="padding:0px 40px; margin-top: 50px">
-                                                <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section4_text"></p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="el__close-btn"></div>
-
-                                    <a target="_blank" rel="noopener noreferrer" href="map.html">
-                                        <button type="button"  style="cursor: pointer ;border:none; background-color: #17a2b8; color: white; ;border-radius: 18px ;font-size: 12px; width: 100px; height: 40px ;position: absolute; right: 70px; bottom: 25px;">EXPLORE</button>
-                                    </a>
-
-                                </div>
-                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
-
-                            </div>
-                        </div>
-                        <div class="el__index">
-                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            <!--<div class="el__index-back">4</div>-->
-                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            <div class="el__index-front">
-                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                                <!--<div class="el__index-overlay" data-index="4">4</div>-->
-                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 4 content -->
-
-
-                    <!-- Card 5 content -->
-                    <div class="el">
-                        <div class="el__overflow">
-                            <div class="el__inner">
-
-                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
-                                <div class="el__bg"></div>
-                                <div class="el__preview-cont">
-                                    <h2 class="el__heading">Voluptates</h2>
-                                </div>
-                                <div class="el__content" style="overflow: scroll;">
-                                    <div class="el__text">Lorem ipsum</div>
-                                    <div>
-                                        <div class="flex-container" style="height: 65%; ">
-
-                                            <div style="padding:0px 40px; margin-top: 50px">
-                                                <p style="color: #fff; font-size: 22px; text-align: justify;" data-i18n="section5_text"></p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="el__close-btn"></div>
-
-                                    <a target="_blank" rel="noopener noreferrer" href="map.html">
-                                        <button type="button"  style="cursor: pointer ;border:none; background-color: #17a2b8; color: white; ;border-radius: 18px ;font-size: 12px; width: 100px; height: 40px ;position: absolute; right: 70px; bottom: 25px;">EXPLORE</button>
-                                    </a>
-
-                                </div>
-                                <!--TODO: Card content (Card title + Inner card title + inner card description + inner card button)-->
-
-                            </div>
-                        </div>
-                        <div class="el__index">
-                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            <!--<div class="el__index-back">5</div>-->
-                            <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            <div class="el__index-front">
-                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                                <!--<div class="el__index-overlay" data-index="5">5</div>-->
-                                <!--TODO: Instead of big number show -> show icon or w/e looks good-->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 5 content -->
-
-
-                </div>
-                <!-- cont inner end -->
-            </div>
-
-        </section>
-        <!--Cards Section (High rseolution images)-->
 
     </div>
 
-    <!--Bottom Cards Logic JS script-->
-    <script type="text/javascript" src="js/index/bottom_cards_logic.js"></script>
-    <!--Bottom Cards Logic JS script-->
-
-    <!--Language Handler Logic JS script-->
-    <script type="text/javascript" src="js/index/language_handler_logic.js"></script>
-    <!--Language Handler Logic JS script-->
 
 
-    <!--TODO: Define this script on separate file-->
-    <script>
-        $(document).ready(function() {
 
-            $(window).scroll( function(){
 
-                $('.simple_text').each( function(i) {
+</div>
 
-                    var bottom_of_object = $(this).offset().top + $(this).outerHeight();
-                    var bottom_of_window = $(window).scrollTop() + $(window).height();
 
-                    if (bottom_of_window > bottom_of_object) {
+<!-- Description Section-->
+<div id="Info">
 
-                        var k = document.getElementsByClassName("simple_text");
-                        for(i=0;i < k.length; i++){
-                            k[i].className = "animated animatedFadeInUp fadeInUp";
-                        }
+    <div class="row" style="width: 80%; height: 40vw;  ">
 
-                        $(this).animate({'opacity': '1'}, 200);
-                        console.log(element.className);
+        <div style="width: 60%;display: flex; flex-direction: column; justify-content: center; align-items: flex-start">
+            <p style="font-family: 'MyriadPro-Bold';font-size: 3.9vw; color: black" data-i18n="intro_title"></p>
+            <P style="font-family: 'MyriadPro' ;color: black; font-size: 2.4vw; " data-i18n="intro_subtitle"></P>
+            <P  style="font-family: 'MyriadPro' ;color: black; font-size: 1.6vw;" data-i18n="intro_par_1"></P>
+        </div>
 
-                    }
+        <div style="width: 40%; display: flex; justify-content: center; align-items: center; height: 100%">
+            <img src="./img/index/otorongo.png" height="90%">
+        </div>
 
-                });
-            });
-    });
+    </div>
+</div>
 
-    </script>
-    <!--TODO: Define this script on separate file-->
+
+<style>
+    .text-link {
+        font-family: 'MyriadPro' ;
+        font-size: 1.8vw;
+        max-width: 65%;
+    }
+
+    .text-link:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+</style>
+
+
+<!-- Stories Section-->
+<div id="storytelling">
+    <div class="row" style="width: 80%">
+
+        <div style="width: 36%"></div>
+        <div style="width: 64%; display: flex; flex-direction: column; justify-content: center; align-items: flex-end">
+            <p style="font-family: 'MyriadPro-Bold';font-size: 3.9vw; color: black" data-i18n="storytelling_title"></p>
+            <P style="font-family: 'MyriadPro' ;color: black; font-size: 2.4vw; max-width: 100%; text-align: right; " data-i18n="storytelling_subtitle"></P>
+            <P style="font-family: 'MyriadPro' ;color: black; font-size: 1.6vw; text-align: right; " data-i18n="storytelling_par"></P>
+            <P class="text-link" style="color: white; " data-i18n="portal_link">Conoce más sobre nuestro portal ></P>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Dancing Rivers Section-->
+<div id="dancingRivers">
+
+    <div class="row" style="width: 80%">
+
+
+        <div style="width: 64%">
+            <p style="font-family: 'MyriadPro-Bold';font-size: 3.9vw; color: black" data-i18n="dancingRivers_title"></p>
+            <P style="font-family: 'MyriadPro' ;color: black; font-size: 2.4vw; max-width: 100%; " data-i18n="dancingRivers_subtitle"></P>
+            <P style="font-family: 'MyriadPro' ;color: black; font-size: 1.6vw; " data-i18n="dancingRivers_par"></P>
+            <P style="font-family: 'MyriadPro' ;color: black; font-size: 1.6vw; " data-i18n="dancingRivers_par2"></P>
+            <P class="text-link" style="color: #4a72b2; " data-i18n="portal_link">Conoce más sobre nuestro portal ></P>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Footer Style-->
+<style>
+
+    .footer {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: #7c7b79;
+        text-align: center;
+    }
+
+    .horizontal-line{
+        display: block;
+        margin-bottom: 10px;
+        width:100%;
+        border-color: rgba(0,0,0,0.4);
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 1px;
+    }
+
+</style>
+
+<!-- Footer Section -->
+<div id="Footer" class="footer">
+
+    <div class="row" style="width: 58%; height: 60%; justify-content: space-between ">
+        <p style="margin: 0; font-size: 0.8vw; font-family: 'Museo-Sans';">Jr. Medrano Silva 165 Barranco 15063</p>
+        <p style="margin: 0; font-size: 0.8vw; font-family: 'Museo-Sans'; ">P. (01) 2305020 Anexo 4295</p>
+        <p style="margin: 0; font-size: 0.8vw;  font-family: 'Museo-Sans';">W. http://www.cita.utec.edu.pe/</p>
+        <p style="margin: 0; font-size: 0.8vw;  font-family: 'Museo-Sans';">C. cita@utec.edu.pe</p>
+        <div class="row">
+
+            <div style="width: 28px; height: 28px; margin-left: 5px;" >
+                <a href="https://www.facebook.com/CITAUTEC/" target="_blank"><img src="./img/index/facebook_circle.png" width="100%" height="100%"></a>
+            </div>
+            <div style="width: 28px; height: 28px; margin-left: 5px;">
+                <a href="https://www.youtube.com/channel/UCwC0Nzlv29aYXlZSMwXqgqw" target="_blank"><img src="./img/index/youtube_circle.png" width="100%" height="100%" ></a>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row" style="width: 60%; height: 40%; justify-content: center; align-items: flex-start ">
+        <p style="margin: 0; font-size: 0.8vw; font-family: 'Museo-Sans';">Copyright &copy 2018 CITA-UTEC. &nbsp;</p>
+        <span style="margin: 0; font-size: 0.8vw; font-family: 'Museo-Sans'; " data-i18n="footer_copyright"></span>
+    </div>
+
+</div>
+
+
+
+<!-- Header Style -->
+<style>
+
+    .header {
+        overflow: hidden;
+        padding: 5px 10px;
+        width: 100%;
+    }
+
+    .header a {
+        float: left;
+        color: black;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        line-height: 25px;
+        border-radius: 4px;
+    }
+
+    .header a.logo {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .header a:hover {
+        /*background-color: rgba(0,0,0,0.1);*/
+        color: #9EC663;
+    }
+
+    .header a.active {
+        background-color: #9EC663;
+        color: white;
+        border-radius: 25px;
+    }
+
+    .header-right {
+        float: right;
+    }
+
+    @media screen and (max-width: 500px) {
+        .header a {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+
+        .header-right {
+            float: none;
+        }
+    }
+
+
+
+    .header-style1{
+        background-image: linear-gradient( rgba(0,0,0,0.4), rgba(0,0,0,0.0));
+    }
+
+    .header-style2{
+        box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+        background-color: white;
+    }
+
+    .header-text-logo1{
+        margin: 0;
+        color: white;
+        font-size: 1.5vw;
+        font-weight: bold
+    }
+
+    .header-text-logo2{
+        margin: 0;
+        color: black;
+        /*font-size: 25px;*/
+        font-size: 1.5vw;
+        font-weight: bold
+    }
+
+    .header-text1{
+        color: white;
+        margin: 0;
+    }
+
+    .header-text1:hover {
+        color: #9EC663;
+    }
+    .header-text2{
+        color: black;
+        margin: 0;
+    }
+
+    .header-text2:hover {
+        color: #9EC663;
+    }
+
+    .lg-button1{
+        border-radius: 50%;
+        color: white;
+        background-color: #9EC663;
+        border: none;
+        /*font-size: 16px;*/
+        font-size: 1.2vw;
+        padding: 0;
+        height: 2.6vw;
+        width: 2.6vw;
+        cursor: pointer;
+        text-align: center;
+
+    }
+
+    .lg-button2{
+        height: 2.6vw;
+        width: 2.6vw;
+        border-radius: 50%;
+        color: white;
+        background-color: #9d9d9d;
+        border: none;
+        font-size: 1.2vw;
+        /*padding: 8px;*/
+        padding: 0;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    *:focus {
+        outline: 0 !important;
+    }
+
+</style>
+
+
+<!-- Header Section-->
+<div id="Header" class="header header-style1">
+
+    <div style="width: 80%; display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap">
+
+        <div style="width: 20%; margin: 0; padding: 0;  display: flex; justify-content: flex-start; align-items: center; flex-wrap: nowrap">
+            <div class="dot" style="background-color: #9EC663; margin-right: 0.4vw"></div>
+            <p id="logo-header" class="header-text-logo1">Amazon Basin</p>
+        </div>
+
+        <div class="header-right" style="display: flex; justify-content: flex-end; align-items: center; width: 50%">
+            <a  href="#storytelling"><p id="h_text2" class="header-text1" style="font-size: 1.2vw">Storytelling</p></a>
+            <a  href="#dancingRivers"><p id="h_text1" class="header-text1" style="font-size: 1.2vw" >Dancing Rivers</p></a>
+
+            <div style="width: 20%; display: flex; flex-wrap: nowrap; justify-content: flex-end; align-items: center">
+                <button id="button_esp" class="lg-button1"  style="margin-left: 0.7vw; ">ES</button>
+                <button id="button_eng" class="lg-button2"  style="margin-left: 0.7vw;">EN</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+
+</script>
 
 </body>
-
 </html>
