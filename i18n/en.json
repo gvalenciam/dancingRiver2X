@@ -1,15 +1,24 @@
 {
 
+  "main_title": "AMAZON",
+  "main_subtitle": "From the Andes to the Atlantic",
+
   "intro_title": "Introduction",
   "intro_par_1": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
   "intro_subtitle": "The Amazon is a river in South America",
-  "dancingRivers_par": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
-  "dancingRivers_subtitle": "The dancing rivers",
-  "riverResearch_subtitle": "The Amazon is a river in South America",
-  "riverResearch_par": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
+
+  "dancingRivers_par": "Through time rivers move, create erosion, deposit sediments and, consequently, change their shape. However, these movements are different for each river, since each one has specific characteristics and dynamics.",
+  "dancingRivers_par2": "In Dancing Rivers you will find information on the methodologies that have been developed and applied to know and get a better understanding of the physical dynamics of the main Amazonian rivers.",
+  "dancingRivers_subtitle": "The science behind the movements of rivers",
+
+  "storytelling_subtitle": "The Amazon is a river in South America",
+  "storytelling_par": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
+
   "portal_link": "Learn more about our portal >",
+
   "dancingRivers_title": "Dancing Rivers",
-  "riverResearch_title": "River Research",
+  "storytelling_title": "Storytelling Web",
+
   "footer_copyright": "Todos los derechos reservados.",
 
   "side-bar-right-title": "Content",
