@@ -1223,7 +1223,7 @@ var ucayaliJSONs = [
 
 
 
-//<editor-fold desc="Original Data Project Functions">
+//<editor-fold desc="Original & Background Data Project Functions">
 
 //Original Data
 
@@ -1591,6 +1591,8 @@ function hydrodynamic_submenu_option_clicked() {
         UHDHuallagaMarkersPositions = [];
         clearMap();
 
+        addButtonOptionsUHDDropdown(23, "dropdown-uhd-top-buttons-container");
+        addButtonOptionsUHDDropdown(23, "dropdown-uhd-bottom-buttons-container");
         addUHDMarkers("data/cross_sections/huallaga-cross-section-location.geojson", "img/marker-icons/blanco.png", UHDHuallagaMarkers, UHDHuallagaMarkersPositions, hydrodynamic_marker_click_function);
 
     }else{}
@@ -1728,6 +1730,23 @@ function aguaruna_submenu_option_clicked() {
 
 }
 
+//Communities
+function communitiesOptionClicked() {
+
+    if(communities_enabled){
+        communities_data_layer.setMap(null);
+        document.getElementById("communities_menu_button_icon_id").src = "img/side-bar-icon/communities-icon.png";
+        document.getElementById("communities_menu_option_title_id").style.color = "#FFFFFF";
+    }else{
+        communities_data_layer.setMap(map);
+        document.getElementById("communities_menu_button_icon_id").src = "img/side-bar-icon/communities-enabled_icon.png";
+        document.getElementById("communities_menu_option_title_id").style.color = "#00BFDF";
+    }
+
+    communities_enabled = !communities_enabled;
+
+}
+
 //DEM Menu
 function demMenuOptionClicked() {
 
@@ -1742,9 +1761,7 @@ function demMenuOptionClicked() {
         removeElementChildNodesWithClass("legendDIVStyle");
         addMorphometricsLegend(["#050505", "#424242", "#808080", "#bdbdbd", "#fafafa"], ["6246 m.a.s.l", "2928 m.a.s.l", "478 m.a.s.l", "183 m.a.s.l", "0 m.a.s.l"]);
 
-        var mapBounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(-18.358391, -81.298417),
-            new google.maps.LatLng(0.007659, -68.673950));
+        var mapBounds = new google.maps.LatLngBounds(new google.maps.LatLng(-18.358391, -81.298417), new google.maps.LatLng(0.007659, -68.673950));
         var mapMinZoom = 4;
         var mapMaxZoom = 9;
         dem_overlay_map = new google.maps.ImageMapType({
@@ -1852,6 +1869,7 @@ function spanishLanguageClickFunction(){
     toggleBackgroundDataIconAndTextEnabled("spanish_submenu_option_button", 10);
     activeRiverIndex = temp;
     switchLanguage("es");
+    fadeInElements(["general-loader"], 350);
 }
 
 //Spanish Language Submenu
@@ -1883,17 +1901,7 @@ $(document).ready(function () {
 
     hideElements(["lspiv-marker-click-container"]);
 
-    // document.getElementById("communities-menu-option").addEventListener("click", function () {
-    //
-    //     if(communities_enabled){
-    //         communities_data_layer.setMap(null);
-    //     }else{
-    //         addSinglePolygonToMap("data/communities/amazon-native-communities.geojson", communities_data_layer, "#0000FF", 0.2, "#0000FF", 0.8);
-    //     }
-    //
-    //     communities_enabled = !communities_enabled;
-    //
-    // });
+    document.getElementById("communities_menu_button_option_id").addEventListener("click", communitiesOptionClicked);
     document.getElementById("dem_menu_button_option_id").addEventListener("click", demMenuOptionClicked);
     document.getElementById("malos_pasos_menu_button_option_id").addEventListener("click", firesMenuOptionClicked);
     document.getElementById("clear_map_menu_button_option_id").addEventListener("click", clearMapSubmenuOptionClicked);
@@ -2167,6 +2175,7 @@ function initMap() {
     hideElements(["morphometrics-legend-container", "progress-bar-container", "UHD-top-card-container", "UHD-bottom-card-container", "help-tooltip", "UHD-top-card-cross-icon", "UHD-bottom-card-cross-icon"]);
     hideElements(["drone-flights-marker-click-container", "water-level-card-container", "dunes-card-container", "bedload-card-container", "sediments-card-container"]);
     hideElements(["map-bottom-left-container"]);
+    hideElements(["general-loader"]);
 
     south_america_limits_data_layer = new google.maps.Data();
     amazonas_river_data_layer = new google.maps.Data();
@@ -2310,6 +2319,9 @@ function initMap() {
     //South America Limits
     addInteractiveSinglePolygonToMap("data/country_limits/south_america.geojson", south_america_limits_data_layer, "limits", null, null, null, null);
 
+    //Communities
+    addInteractiveSinglePolygonToMap("data/communities/amazon-native-communities.geojson", communities_data_layer, "communities", null, null, null, null);
+
     //Malos pasos
     addInteractiveSinglePolygonToMap("data/malos_pasos/malos_pasos.geojson", malos_pasos_points_data_layer, "malos_pasos", null, null, null, null);
     addInteractiveSinglePolygonToMap("data/malos_pasos/malos_pasos_huallaga.geojson", malos_pasos_lines_data_layer, "malos_pasos_lineas", null, null, null, null);
@@ -2322,7 +2334,6 @@ function initMap() {
     addInteractiveSinglePolygonToMap("data/disabled-rivers/Huallaga/huallaga_test.geojson", huallaga_river_data_layer, "disabled", null, null, null, null);
     addInteractiveSinglePolygonToMap("data/disabled-rivers/Marañon/marañon_test.geojson", marañon_river_data_layer, "disabled", null, null, null, null);
     addInteractiveSinglePolygonToMap("data/disabled-rivers/Ucayali/ucayali_test.geojson", ucayali_river_data_layer, "disabled", null, null, null, initMapComplete);
-
 
 }
 //</editor-fold>
@@ -2720,8 +2731,11 @@ function addUHDMarkers(filePath, markerImagePath, markersArray, markersPositionA
                     offsetCenter(marker.getPosition(), 12);
                     marker.setIcon("img/marker-icons/rojo.png");
                     geocodeLatLng(marker.getPosition(), "top");
+                    console.log(UHDMarkerIndexTop);
                     document.getElementById("UHD-top-card-image").src = "img/cross_sections_images/huallaga/Section " + (i + 1) +".png";
-                    document.getElementById("dropdownMenuButtonTop").innerHTML = "Section " + UHDMarkerIndexTop;
+                    // document.getElementById("dropdownMenuButtonTop").setAttribute("data-i18n", 'dropdown-UHD-section-item-' + UHDMarkerIndexTop.toString());
+                    //document.getElementById("dropdownMenuButtonTop").setAttribute("data-i18n", 'dropdown-UHD-section-item');
+                    document.getElementById("dropdownMenuButtonTop").innerHTML = $.i18n('dropdown-UHD-section-item', UHDMarkerIndexTop.toString());
 
                 });
 
@@ -4059,6 +4073,7 @@ function addInteractiveSinglePolygonToMap(JSON_path, river_data_layer, polygonPr
             if(polygonProperty.localeCompare("arcwavelen") === 0) return {strokeColor: "#000000", strokeOpacity: 1.0, fillColor: colorMapWavelength(feature.getProperty(polygonProperty)/1000), fillOpacity: 1.0, strokeWeight: 2.0};
             if(polygonProperty.localeCompare("disabled") === 0) return {strokeColor: "#000000", strokeOpacity: 0.2, fillColor: "#555555", fillOpacity: 0.8, strokeWeight: 2.0};
             if(polygonProperty.localeCompare("limits") === 0) return {strokeColor: "#000000", strokeOpacity: 0.2, fillColor: "#000000", fillOpacity: 0.2, strokeWeight: 0.5};
+            if(polygonProperty.localeCompare("communities") === 0) return {strokeColor: "#000000", strokeOpacity: 0.5, fillColor: "#0000FF", fillOpacity: 0.5, strokeWeight: 2.0};
             if(polygonProperty.localeCompare("malos_pasos") === 0) return {icon: "img/marker-icons/rojo.png", title: feature.getProperty("NOMBRE")};
             if(polygonProperty.localeCompare("malos_pasos_lineas") === 0) return {strokeColor: "#000000", strokeOpacity: 1.0, strokeWeight: 3.0};
             if(polygonProperty.localeCompare("rivers_valley") === 0) return {strokeColor: "#000000", strokeOpacity: 1.0, fillColor: "#00FF00", fillOpacity: 0.9, strokeWeight: 1.0}
@@ -4159,8 +4174,9 @@ function setUHDDropdownsListeners() {
 
         e.preventDefault();
         var ele = this;
-        document.getElementById("dropdownMenuButtonTop").innerHTML = ele.textContent;
-        UHDMarkerIndexTop = parseInt(ele.name);
+        UHDMarkerIndexTop = parseInt(ele.name) + 1;
+        //document.getElementById("dropdownMenuButtonTop").setAttribute("data-i18n", 'dropdown-UHD-section-item');
+        document.getElementById("dropdownMenuButtonTop").innerHTML = $.i18n('dropdown-UHD-section-item', (parseInt(ele.name) + 1).toString());
 
         UHDHuallagaMarkers.forEach(function (marker) {
 
@@ -4170,7 +4186,7 @@ function setUHDDropdownsListeners() {
 
         });
 
-        UHDHuallagaMarkers[parseInt(ele.name) - 1].setIcon("img/marker-icons/rojo.png");
+        UHDHuallagaMarkers[parseInt(ele.name)].setIcon("img/marker-icons/rojo.png");
         offsetCenter(UHDHuallagaMarkersPositions[parseInt(ele.name) - 1], 10);
         geocodeLatLng(UHDHuallagaMarkersPositions[parseInt(ele.name) - 1], "top");
         document.getElementById("UHD-top-card-image").src = "img/cross_sections_images/huallaga/Section " + ele.name +".png";
@@ -4356,6 +4372,21 @@ function loadJSONData(JSON_path, river_data_layer, strokeColor, strokeOpacity, s
         }).done(function () {
             if(doneFunction != null) doneFunction();
         })
+
+}
+
+function addButtonOptionsUHDDropdown(optionsLength, dropdownButtonContainerID) {
+
+    var dropdown_button_option_template = document.getElementsByTagName("template")[14];
+
+    for (var i = 0; i < optionsLength; i++){
+        var dropdown_button_option_template_content = document.importNode(dropdown_button_option_template.content,true);
+        dropdown_button_option_template_content.querySelectorAll(".dropdown-item")[0].name = i.toString();
+        // dropdown_button_option_template_content.querySelectorAll(".dropdown-item")[0].setAttribute("data-i18n", "dropdown-UHD-section-item" + "-" + (i+1).toString());
+        dropdown_button_option_template_content.querySelectorAll(".dropdown-item")[0].setAttribute("data-i18n", "dropdown-UHD-section-item");
+        dropdown_button_option_template_content.querySelectorAll(".dropdown-item")[0].innerHTML = $.i18n('dropdown-UHD-section-item', (i+1).toString());
+        document.getElementById(dropdownButtonContainerID).appendChild(dropdown_button_option_template_content);
+    }
 
 }
 //</editor-fold>

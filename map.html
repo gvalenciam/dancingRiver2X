@@ -25,16 +25,16 @@
     <!--TODO: Bootstrap JS script-->
 
     <!--TODO: Language dependencies JS script-->
-    <script src="./lib/CLDRPluralRuleParser/CLDRPluralRuleParser.js"></script>
-    <script src="./lib/jquery.i18n/jquery.i18n.js"></script>
-    <script src="./lib/jquery.i18n/jquery.i18n.messagestore.js"></script>
-    <script src="./lib/jquery.i18n/jquery.i18n.fallbacks.js"></script>
-    <script src="./lib/jquery.i18n/jquery.i18n.language.js"></script>
-    <script src="./lib/jquery.i18n/jquery.i18n.parser.js"></script>
-    <script src="./lib/jquery.i18n/jquery.i18n.emitter.js"></script>
-    <script src="./lib/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
-    <script src="./lib/history/jquery.history.js"></script>
-    <script src="./lib/url/url.min.js"></script>
+    <!--<script src="./lib/CLDRPluralRuleParser/CLDRPluralRuleParser.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.messagestore.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.fallbacks.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.language.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.parser.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.emitter.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>-->
+    <!--<script src="./lib/history/jquery.history.js"></script>-->
+    <!--<script src="./lib/url/url.min.js"></script>-->
     <!--TODO: Language dependencies JS script-->
 
 
@@ -54,11 +54,11 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans+Narrow"/>
     <!--TODO: Missing Windows font include-->
 
-    <!--Map overlay CSS style-->
+    <!--TODO: Map overlay CSS style-->
     <!--TODO: If a new overlay is added include its style in this file (use it as guideline too)-->
     <link rel="stylesheet" href="css/map/map-overlay-elements.css">
     <!--TODO: If a new overlay is added include its style in this file (use it as guideline too)-->
-    <!--Map overlay CSS style-->
+    <!--TODO: Map overlay CSS style-->
 
     <!--TODO: Horizontal side bar styles with icons-->
     <link rel="stylesheet" href="css/map/horizontal-side-bar.css">
@@ -715,6 +715,13 @@
 </template>
 <!--TODO: Template background data list submenu option "13" -->
 
+
+<!--TODO: Template dropdown button option "14"-->
+<template>
+    <button class="dropdown-item" type="button"></button>
+</template>
+<!--TODO: Template dropdown button option "14"-->
+
 <body>
 
     <!--TODO: Page main container-->
@@ -1010,38 +1017,13 @@
                             <button style="width: 100%; height: 70%; font-size: 1vw; border-radius: 10px" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonTop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Section 1
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonTop" style="overflow-x: hidden; height: auto; max-height: 200px; z-index: 1000000">
-                                <button class="dropdown-item" type="button" name="1">Section 1</button>
-                                <button class="dropdown-item" type="button" name="2">Section 2</button>
-                                <button class="dropdown-item" type="button" name="3">Section 3</button>
-                                <button class="dropdown-item" type="button" name="4">Section 4</button>
-                                <button class="dropdown-item" type="button" name="5">Section 5</button>
-                                <button class="dropdown-item" type="button" name="6">Section 6</button>
-                                <button class="dropdown-item" type="button" name="7">Section 7</button>
-                                <button class="dropdown-item" type="button" name="8">Section 8</button>
-                                <button class="dropdown-item" type="button" name="9">Section 9</button>
-                                <button class="dropdown-item" type="button" name="10">Section 10</button>
-                                <button class="dropdown-item" type="button" name="11">Section 11</button>
-                                <button class="dropdown-item" type="button" name="12">Section 12</button>
-                                <button class="dropdown-item" type="button" name="13">Section 13</button>
-                                <button class="dropdown-item" type="button" name="14">Section 14</button>
-                                <button class="dropdown-item" type="button" name="15">Section 15</button>
-                                <button class="dropdown-item" type="button" name="16">Section 16</button>
-                                <button class="dropdown-item" type="button" name="17">Section 17</button>
-                                <button class="dropdown-item" type="button" name="18">Section 18</button>
-                                <button class="dropdown-item" type="button" name="19">Section 19</button>
-                                <button class="dropdown-item" type="button" name="20">Section 20</button>
-                                <button class="dropdown-item" type="button" name="21">Section 21</button>
-                                <button class="dropdown-item" type="button" name="22">Section 22</button>
-                                <button class="dropdown-item" type="button" name="23">Section 23</button>
-                            </div>
+                            <div id="dropdown-uhd-top-buttons-container" class="dropdown-menu" aria-labelledby="dropdownMenuButtonTop" style="overflow-x: hidden; height: auto; max-height: 200px; z-index: 1000000"></div>
                         </div>
 
                     </div>
 
                 </div>
                 <div id="UHD-top-card-image-container" style="background-color: transparent; width: 90%; height: 75%; align-self: center; display: flex; align-content: center; justify-content: center">
-                    <!--<img id="UHD-top-card-cross-icon" src="img/side-bar-icon/cross_rotated_icon.png" style="position:absolute; height: 50px; width: 50px; align-self: center; border-radius: 25px; z-index: 100005">-->
                     <img id="UHD-top-card-image" src="img/cross_sections_images/huallaga/Section%201.png" height="100%" width="100%" style="z-index: 100003; cursor: zoom-in">
                 </div>
 
@@ -1069,38 +1051,13 @@
                             <button style="width: 100%; height: 70%; font-size: 1vw; border-radius: 10px" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonBottom" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Section 1
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonBottom" style="overflow-x: hidden; height: auto; max-height: 200px; z-index: 100000">
-                                <button class="dropdown-item" type="button" name="1">Section 1</button>
-                                <button class="dropdown-item" type="button" name="2">Section 2</button>
-                                <button class="dropdown-item" type="button" name="3">Section 3</button>
-                                <button class="dropdown-item" type="button" name="4">Section 4</button>
-                                <button class="dropdown-item" type="button" name="5">Section 5</button>
-                                <button class="dropdown-item" type="button" name="6">Section 6</button>
-                                <button class="dropdown-item" type="button" name="7">Section 7</button>
-                                <button class="dropdown-item" type="button" name="8">Section 8</button>
-                                <button class="dropdown-item" type="button" name="9">Section 9</button>
-                                <button class="dropdown-item" type="button" name="10">Section 10</button>
-                                <button class="dropdown-item" type="button" name="11">Section 11</button>
-                                <button class="dropdown-item" type="button" name="12">Section 12</button>
-                                <button class="dropdown-item" type="button" name="13">Section 13</button>
-                                <button class="dropdown-item" type="button" name="14">Section 14</button>
-                                <button class="dropdown-item" type="button" name="15">Section 15</button>
-                                <button class="dropdown-item" type="button" name="16">Section 16</button>
-                                <button class="dropdown-item" type="button" name="17">Section 17</button>
-                                <button class="dropdown-item" type="button" name="18">Section 18</button>
-                                <button class="dropdown-item" type="button" name="19">Section 19</button>
-                                <button class="dropdown-item" type="button" name="20">Section 20</button>
-                                <button class="dropdown-item" type="button" name="21">Section 21</button>
-                                <button class="dropdown-item" type="button" name="22">Section 22</button>
-                                <button class="dropdown-item" type="button" name="23">Section 23</button>
-                            </div>
+                            <div id="dropdown-uhd-bottom-buttons-container" class="dropdown-menu" aria-labelledby="dropdownMenuButtonBottom" style="overflow-x: hidden; height: auto; max-height: 200px; z-index: 100000"></div>
                         </div>
 
                     </div>
 
                 </div>
                 <div id="UHD-bottom-card-image-container" style="background-color: transparent; width: 90%; height: 75%; align-self: center; display: flex; align-content: center; justify-content: center">
-                    <!--<img id="UHD-bottom-card-cross-icon" src="img/side-bar-icon/cross_rotated_icon.png" style="position:absolute; height: 50px; width: 50px; align-self: center; border-radius: 25px; z-index: 100000">-->
                     <img id="UHD-bottom-card-image" src="img/cross_sections_images/huallaga/Section%201.png" height="100%"; width="100%" style="cursor: zoom-in;">
                 </div>
 
@@ -1316,22 +1273,60 @@
     <div id="loading"></div>
     <!--TODO: Page splash loader-->
 
+    <!--TODO: General process loader-->
+    <div id="general-loader"></div>
+    <!--TODO: General process loader-->
+
     <!--TODO: Visualizer full logic-->
     <script type="text/javascript" src="js/map/visualizer-logic.js"></script>
     <!--TODO: Visualizer full logic-->
 
     <!--TODO: Language handler logic-->
-    <script type="text/javascript" src="js/index/language_handler_logic.js"></script>
+    <!--<script type="text/javascript" src="js/index/language_handler_logic.js"></script>-->
     <!--TODO: Language handler logic-->
 
     <!--TODO: Video player logic JS script-->
     <script type="text/javascript" src="js/map/drone-overlay-logic.js"></script>
     <!--TODO: Video player logic JS script-->
 
+    <!--&lt;!&ndash;TODO: Language dependencies JS script&ndash;&gt;-->
+    <!--<script src="./lib/CLDRPluralRuleParser/CLDRPluralRuleParser.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.messagestore.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.fallbacks.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.language.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.parser.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.emitter.js"></script>-->
+    <!--<script src="./lib/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>-->
+    <!--<script src="./lib/history/jquery.history.js"></script>-->
+    <!--<script src="./lib/url/url.min.js"></script>-->
+    <!--&lt;!&ndash;TODO: Language dependencies JS script&ndash;&gt;-->
+
+    <!--&lt;!&ndash;TODO: Language handler logic&ndash;&gt;-->
+    <!--<script type="text/javascript" src="js/index/language_handler_logic.js"></script>-->
+    <!--&lt;!&ndash;TODO: Language handler logic&ndash;&gt;-->
+
     <!--TODO: Google maps map async load-->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq3F5ugcDYAm1NwcZ1gQL4IIszRpQmm_k&callback=initMap"></script>
     <!--TODO: Google maps map async load-->
 
 </body>
+
+<!--TODO: Language dependencies JS script-->
+<script src="./lib/CLDRPluralRuleParser/CLDRPluralRuleParser.js"></script>
+<script src="./lib/jquery.i18n/jquery.i18n.js"></script>
+<script src="./lib/jquery.i18n/jquery.i18n.messagestore.js"></script>
+<script src="./lib/jquery.i18n/jquery.i18n.fallbacks.js"></script>
+<script src="./lib/jquery.i18n/jquery.i18n.language.js"></script>
+<script src="./lib/jquery.i18n/jquery.i18n.parser.js"></script>
+<script src="./lib/jquery.i18n/jquery.i18n.emitter.js"></script>
+<script src="./lib/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
+<script src="./lib/history/jquery.history.js"></script>
+<script src="./lib/url/url.min.js"></script>
+<!--TODO: Language dependencies JS script-->
+
+<!--TODO: Language handler logic-->
+<script type="text/javascript" src="js/index/language_handler_logic.js"></script>
+<!--TODO: Language handler logic-->
 
 </html>

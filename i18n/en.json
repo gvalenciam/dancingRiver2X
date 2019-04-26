@@ -71,6 +71,9 @@
   "metrics-arc-wavelength": "Arc Wavelength",
   "coordinates-hover-container-title": "Coordinates",
   "coordinates-hover-container-latitude": "Latitude",
-  "coordinates-hover-container-longitude": "Longitude"
+  "coordinates-hover-container-longitude": "Longitude",
+
+  "dropdown-UHD-section-item": "Section $1"
+
 }
 
