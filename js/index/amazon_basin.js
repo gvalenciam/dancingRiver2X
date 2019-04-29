@@ -1,3 +1,4 @@
+//<editor-fold desc="Document Ready Functio">
 $(document).ready(function() {
 
     $("#bodyMain").on("scroll", function () {
@@ -36,54 +37,31 @@ $(document).ready(function() {
         }
     });
 
-    /*document.getElementById("button_esp").addEventListener("click", function(){
-        document.getElementById("button_esp").className = "lg-button1";
-        document.getElementById("button_eng").className = "lg-button2";
-
-    });
-    document.getElementById("button_eng").addEventListener("click", function(){
-        document.getElementById("button_eng").className = "lg-button1";
-        document.getElementById("button_esp").className = "lg-button2";
-    });
-*/
+    var width_screen  = $(window).width();
+    var height_screen  = $(window).height();
+    var k = height_screen/width_screen;
 
 
-    /* var cont = setInterval(myTimer, 1000);
-    function myTimer() {
+    document.getElementById("videoContainer").style.height  = 100*k + "vw";
+    document.getElementById("Info").style.height  = 100*k + "vw";
 
-        $("#parag1").fadeIn(2000);
-        document.getElementById("parag1").innerHTML = "El Amazonas es el río más caudaloso del mundo";
-        $("#parag1").delay(3000).fadeOut(1000);
-    }*/
+    document.getElementById("dancingRivers").style.height  = 100*k + "vw";
+    document.getElementById("storytelling").style.height  = 100*k + "vw";
 
-    /*var message = "El Amazonas es el río más caudaloso del mundo";*/
-
-
-
-/*
-    document.getElementById("paragraph1").innerHTML = "El Amazonas es el río más caudaloso del mundo";
-    function FadeText() {
-        $("#paragraph1").fadeOut(1000);
-        /!*$("#parag1").html(message).fadeIn(2000).delay(3000);*!/
-        $("#paragraph1").fadeIn(2000).delay(3000);
-    }
-    FadeText();
-    setInterval(FadeText, 6000);
-*/
+    //<editor-fold desc="Description">
+    addPortalLink("linkStoryTelling","map.html");
+    addPortalLink("linkDancingRivers","map.html");
+    //</editor-fold>
 
 
 
 });
+//</editor-fold>
 
 
-
-
-
-
-
-
-
-
-
-
+//<editor-fold desc="General Functions">
+function addPortalLink(id_,link) {
+    document.getElementById(id_).href = link;
+}
+//</editor-fold>
 

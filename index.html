@@ -66,7 +66,7 @@
         overflow-x: hidden;
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
-        background-color: rgba(255,255,255,0.1);
+        background-color: rgba(255,255,255,1);
         scroll-behavior: smooth;
     }
 
@@ -96,17 +96,19 @@
     #Intro {
         width: 100vw;
         /*height: 100vh;*/
+        /*height: 100%;*/
         display: flex;
         justify-content: center;
         align-items: center;
         overflow: hidden;
         background: url('./img/index/img_video_background.PNG') no-repeat scroll 0 0 #000;
+        /*background-size: cover;*/
     }
 
     #Info {
         width: 100vw;
         /*height: 100vh;*/
-        height: 50vw;
+        /*height: 50vw;*/
         background-color: #ffffff;
         display: flex;
         flex-wrap: wrap;
@@ -116,7 +118,7 @@
 
     #dancingRivers {
         width: 100vw;
-        height: 50vw;
+        /*height: 50vw;*/
         background-image: url('./img/index/river_outline_image.PNG');
         background-size: 100% 100%;
         display: flex;
@@ -127,7 +129,7 @@
 
     #storytelling {
         width: 100vw;
-        height: 50vw;
+        /*height: 50vw;*/
         background-image: url('./img/index/peru_outline_green.PNG');
         background-size: 100% 100%;
         display: flex;
@@ -164,7 +166,8 @@
         background: url('./img/index/img_video_background.PNG') no-repeat scroll 0 0 #000;
         width: 100vw;
         /*height: 100%;*/
-        background-size: 100% ;
+        /*background-size: 100% ;*/
+        background-size: cover ;
 
         overflow: hidden;
     }
@@ -187,8 +190,8 @@
         <div style="height: 100%; width: 100%">
         </div>-->
 
-
-    <div style="overflow: hidden; height: 50vw">
+    <!--height: 50vw-->
+    <div id="videoContainer" style="overflow: hidden; ">
         <video id="videoBackground"  muted loop autoplay >
             <source src="./videos/drone_flights/DJI_0107.MOV" type="video/mp4">
             <source src="movie.ogg" type="video/ogg">
@@ -261,9 +264,10 @@
         <div style="width: 36%"></div>
         <div style="width: 64%; display: flex; flex-direction: column; justify-content: center; align-items: flex-end">
             <p style="font-family: 'MyriadPro-Bold';font-size: 3.9vw; color: black" data-i18n="storytelling_title"></p>
-            <P style="font-family: 'MyriadPro' ;color: black; font-size: 2.4vw; max-width: 100%; text-align: right; " data-i18n="storytelling_subtitle"></P>
-            <P style="font-family: 'MyriadPro' ;color: black; font-size: 1.6vw; text-align: right; " data-i18n="storytelling_par"></P>
-            <P class="text-link" style="color: white; " data-i18n="portal_link">Conoce más sobre nuestro portal ></P>
+            <p style="font-family: 'MyriadPro' ;color: black; font-size: 2.4vw; max-width: 100%; text-align: right; " data-i18n="storytelling_subtitle"></p>
+            <p style="font-family: 'MyriadPro' ;color: black; font-size: 1.6vw; text-align: right; " data-i18n="storytelling_par"></p>
+            <p><a id="linkStoryTelling" class="text-link" style="color: white;" target="_blank" data-i18n="portal_link"></a></p>
+
         </div>
 
     </div>
@@ -279,10 +283,10 @@
 
         <div style="width: 64%">
             <p style="font-family: 'MyriadPro-Bold';font-size: 3.9vw; color: black" data-i18n="dancingRivers_title"></p>
-            <P style="font-family: 'MyriadPro' ;color: black; font-size: 2.4vw; max-width: 100%; " data-i18n="dancingRivers_subtitle"></P>
-            <P style="font-family: 'MyriadPro' ;color: black; font-size: 1.6vw; " data-i18n="dancingRivers_par"></P>
-            <P style="font-family: 'MyriadPro' ;color: black; font-size: 1.6vw; " data-i18n="dancingRivers_par2"></P>
-            <P class="text-link" style="color: #4a72b2; " data-i18n="portal_link">Conoce más sobre nuestro portal ></P>
+            <p style="font-family: 'MyriadPro' ;color: black; font-size: 2.4vw; max-width: 100%; " data-i18n="dancingRivers_subtitle"></p>
+            <p style="font-family: 'MyriadPro' ;color: black; font-size: 1.6vw; " data-i18n="dancingRivers_par"></p>
+            <p style="font-family: 'MyriadPro' ;color: black; font-size: 1.6vw; " data-i18n="dancingRivers_par2"></p>
+            <p><a id="linkDancingRivers" class="text-link" style="color: #4a72b2;" target="_blank" data-i18n="portal_link"></a></p>
         </div>
 
     </div>
